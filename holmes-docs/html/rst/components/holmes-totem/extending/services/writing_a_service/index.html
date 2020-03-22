@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1.6.1.1. Writing a Service &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="5.1.6.1.2. Example Service: Hello World" href="../example_service.html" />
+    <link rel="prev" title="5.1.6.1. Services for Totem" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../index.html">5.1. Holmes Totem</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation/index.html">5.1.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../services/index.html">5.1.5. Services</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">5.1.6. Extending Holmes Totem</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">5.1.6.1. Writing Services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">5.1. Holmes Totem</a> &raquo;</li>
+        
+          <li><a href="../../index.html">5.1.6. Extending Holmes Processing</a> &raquo;</li>
+        
+          <li><a href="../index.html">5.1.6.1. Services for Totem</a> &raquo;</li>
+        
+      <li>5.1.6.1.1. Writing a Service</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../../_sources/rst/components/holmes-totem/extending/services/writing_a_service/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="writing-a-service">
+<h1>5.1.6.1.1. Writing a Service<a class="headerlink" href="#writing-a-service" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>5.1.6.1.1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><strong>For a service to be accepted into the main repository, the proper additions to
+the following files need to be made:</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Config Files</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">totem.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker-compose.yml.example</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compose_download_conf.sh</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Scala Files</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">driver.scala</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Additionally the following files need to be added:</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Service Files</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">acl.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service.conf.example</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">watchdog.scala</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SERVICE_NAME_CAMELCASE&gt;REST.scala</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Any additional files your service needs</dt><dd><ul>
+<li><p>Python e.g.: <code class="docutils literal notranslate"><span class="pre">service.py</span></code></p></li>
+<li><p>Go e.g.: <code class="docutils literal notranslate"><span class="pre">service.go</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Try to stick to the naming convention (uppercase/lowercase/camelcase were
+appropriate) to avoid confusion!</p>
+<p>If you did not write a service yet, please consult the subcategories.</p>
+</div>
+</div>
+<div class="section" id="details">
+<h2>5.1.6.1.1.2. Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="files-to-add">
+<h3>5.1.6.1.1.2.1. Files To Add<a class="headerlink" href="#files-to-add" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">The following table declares variables used in the sections below.</div>
+</div>
+<p>These need to be replaced by their respective values.</p>
+<p>Compare with other service implementations for suitable values.</p>
+<ul class="simple">
+<li><p>All additional files required by your service also belong into the folder
+<code class="docutils literal notranslate"><span class="pre">src/main/scala/org/holmesprocessing/totem/services/SERVICE_NAME</span></code>.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>SERVICE_NAME</p></td>
+<td><p>The name of the service, e.g. My_Totem_Service</p></td>
+</tr>
+<tr class="row-even"><td><p>SERVICE_NAME_CAMELCASE</p></td>
+<td><p>CamelCase version of your service’s name,
+e.g. MyTotemService</p></td>
+</tr>
+<tr class="row-odd"><td><p>SERVICE_NAME_UPPERCASE</p></td>
+<td><p>Upper case version of the service’s name,
+e.g. MY_TOTEM_SERVICE</p></td>
+</tr>
+<tr class="row-even"><td><p>SERVICE_NAME_LOWERCASE</p></td>
+<td><p>Lower case version of your service’s name,
+e.g. my_totem_service</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONFSTORAGE_SERVICE_NAME</p></td>
+<td><p>String CONFSTORAGE_ followed by an upper case
+version of your service’s name,
+e.g. CONFSTORAGE_MY_TOTEM_SERVICE</p></td>
+</tr>
+<tr class="row-even"><td><p>SERVICE_IP</p></td>
+<td><p>The IP at which the service is reachable.
+Usually this should be 127.0.0.1.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SERVICE_PORT</p></td>
+<td><p>The convention for ports is simple, file
+processing services are in the <code class="docutils literal notranslate"><span class="pre">77xx</span></code> range,
+no-file services are in the <code class="docutils literal notranslate"><span class="pre">79xx</span></code> range.
+Additionally by default there is a gap of 10 free
+ports per service, so if the first service starts
+at <code class="docutils literal notranslate"><span class="pre">7700</span></code> the second starts at <code class="docutils literal notranslate"><span class="pre">7710</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>SERVICE_CLASS_SUCCESS</p></td>
+<td><p>The name of the service’s success class,
+e.g. MyTotemServiceSuccess</p></td>
+</tr>
+<tr class="row-odd"><td><p>SERVICE_CLASS_WORK</p></td>
+<td><p>The name of the service’s work class,
+e.g. MyTotemServiceWork</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="service-files">
+<h4>Service Files<a class="headerlink" href="#service-files" title="Permalink to this headline">¶</a></h4>
+<p>All files in this section belong into the folder
+<code class="docutils literal notranslate"><span class="pre">src/main/scala/org/holmesprocessing/totem/services/SERVICE_NAME</span></code>.</p>
+<div class="section" id="dockerfile">
+<h5>Dockerfile<a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h5>
+<p>In order to make optimal use of Docker’s caching ability, you must use the given
+Dockerfiles and extend them according to your services needs.</p>
+<ul>
+<li><p>Dockerfile for Python2:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> python:2-alpine</span>
+
+<span class="c"># add tornado</span>
+<span class="k">RUN</span> pip install tornado
+
+<span class="c"># create folder</span>
+<span class="k">RUN</span> mkdir -p /service
+<span class="k">WORKDIR</span><span class="s"> /service</span>
+
+<span class="c"># add holmeslibrary</span>
+<span class="k">RUN</span> apk add --no-cache <span class="se">\</span>
+        wget <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> wget https://github.com/HolmesProcessing/Holmes-Totem-Service-Library/archive/v0.1.tar.gz <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> tar xf v0.1.tar.gz <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> mv Holmes-Totem-Service* holmeslibrary <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/* v0.1.tar.gz
+
+<span class="c">###</span>
+<span class="c"># service specific options</span>
+<span class="c">###</span>
+
+<span class="c"># INSTALL SERVICE DEPENDENCIES</span>
+<span class="c">#</span>
+<span class="c">#   RUN pip install &lt;stuff&gt;</span>
+<span class="c">#   RUN apk add --no-cache &lt;stuff&gt;</span>
+<span class="c">#   RUN wget &lt;url&gt; &amp;&amp; tar xf &lt;stuff&gt; ...</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># add the files to the container</span>
+<span class="k">COPY</span> LICENSE /service
+<span class="k">COPY</span> README.md /service
+<span class="k">COPY</span> service.py /service
+
+<span class="c"># ADD FURTHER SERVICE FILES</span>
+<span class="c">#</span>
+<span class="c">#   COPY specialLibrary/ /service/specialLibrary</span>
+<span class="c">#   COPY extraFile.py /service</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># add the configuration file (possibly from a storage uri)</span>
+<span class="k">ARG</span> <span class="nv">conf</span><span class="o">=</span>service.conf
+<span class="k">ADD</span> <span class="nv">$conf</span> /service/service.conf
+
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;python2&quot;</span><span class="p">,</span> <span class="s2">&quot;service.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Dockerfile for Python3</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> python:alpine</span>
+
+<span class="c"># add tornado</span>
+<span class="k">RUN</span> pip3 install tornado
+
+<span class="c"># create folder</span>
+<span class="k">RUN</span> mkdir -p /service
+<span class="k">WORKDIR</span><span class="s"> /service</span>
+
+<span class="c"># add holmeslibrary</span>
+<span class="k">RUN</span> apk add --no-cache <span class="se">\</span>
+        wget <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> wget https://github.com/HolmesProcessing/Holmes-Totem-Service-Library/archive/v0.1.tar.gz <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> tar xf v0.1.tar.gz <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> mv Holmes-Totem-Service* holmeslibrary <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/* v0.1.tar.gz
+
+<span class="c">###</span>
+<span class="c"># service specific options</span>
+<span class="c">###</span>
+
+<span class="c"># INSTALL SERVICE DEPENDENCIES</span>
+<span class="c">#</span>
+<span class="c">#   RUN pip install &lt;stuff&gt;</span>
+<span class="c">#   RUN apk add --no-cache &lt;stuff&gt;</span>
+<span class="c">#   RUN wget &lt;url&gt; &amp;&amp; tar xf &lt;stuff&gt; ...</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># add the files to the container</span>
+<span class="k">COPY</span> LICENSE /service
+<span class="k">COPY</span> README.md /service
+<span class="k">COPY</span> service.py /service
+
+<span class="c"># ADD FURTHER SERVICE FILES</span>
+<span class="c">#</span>
+<span class="c">#   COPY specialLibrary/ /service/specialLibrary</span>
+<span class="c">#   COPY extraFile.py /service</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># add the configuration file (possibly from a storage uri)</span>
+<span class="k">ARG</span> <span class="nv">conf</span><span class="o">=</span>service.conf
+<span class="k">ADD</span> <span class="nv">$conf</span> /service/service.conf
+
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span> <span class="s2">&quot;service.py&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Dockerfile for Go 1.7:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="s"> golang:alpine</span>
+
+<span class="c"># create folder</span>
+<span class="k">RUN</span> mkdir -p /service
+<span class="k">WORKDIR</span><span class="s"> /service</span>
+
+<span class="c"># get go dependencies</span>
+<span class="k">RUN</span> apk add --no-cache <span class="se">\</span>
+        git <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> go get github.com/julienschmidt/httprouter <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/*
+
+<span class="c">###</span>
+<span class="c"># passivetotal specific options</span>
+<span class="c">###</span>
+
+<span class="c"># INSTALL SERVICE DEPENDENCIES</span>
+<span class="c">#</span>
+<span class="c">#   RUN go get &lt;stuff&gt;</span>
+<span class="c">#   RUN apk add --no-cache &lt;stuff&gt;</span>
+<span class="c">#   RUN wget &lt;url&gt; &amp;&amp; tar xf &lt;stuff&gt; ...</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># create directory to hold sources for compilation</span>
+<span class="k">RUN</span> mkdir -p src/SERVICE_NAME_LOWERCASE
+
+<span class="c"># add files to the container</span>
+<span class="c"># sources files to GOPATH instead of /service for compilation</span>
+<span class="k">COPY</span> LICENSE /service
+<span class="k">COPY</span> README.md /service
+<span class="k">COPY</span> service.go /service
+
+<span class="c"># ADD FURTHER SERVICE FILES</span>
+<span class="c">#</span>
+<span class="c">#   COPY specialLibrary/ /service/specialLibrary</span>
+<span class="c">#   COPY extraFile.go /service</span>
+<span class="c">#   ...</span>
+<span class="c">#</span>
+
+<span class="c"># add the configuration file (possibly from a storage uri)</span>
+<span class="k">ARG</span> <span class="nv">conf</span><span class="o">=</span>service.conf
+<span class="k">ADD</span> <span class="nv">$conf</span> /service/service.conf
+
+<span class="c"># build service</span>
+<span class="k">RUN</span> go build -o service.run *.go
+
+<span class="c"># clean up git</span>
+<span class="c"># clean up behind the service build</span>
+<span class="c"># clean up golang it is not necessary anymore</span>
+<span class="k">RUN</span> apk del --purge <span class="se">\</span>
+        git <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/* <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf <span class="nv">$GOPATH</span> <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /usr/local/go
+
+<span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;./service.run&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you require a more complex namespacing in your service’s code, check out
+the Passivetotal service’s
+<a class="reference external" href="https://github.com/HolmesProcessing/Holmes-Totem/blob/master/src/main/scala/org/holmesprocessing/totem/services/passivetotal/Dockerfile">Dockerfile</a></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="license">
+<h5>LICENSE<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>The license under which the service is distributed.</p></li>
+</ul>
+</div>
+<div class="section" id="readme-md">
+<h5>README.md<a class="headerlink" href="#readme-md" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>An appropriate readme file for your service (also displayed if the service’s
+info url is looked up)</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Passivetotal service for Holmes-Totem</span>
+
+<span class="c1">## Description</span>
+
+<span class="n">A</span> <span class="n">simple</span> <span class="n">service</span> <span class="n">to</span> <span class="n">check</span> <span class="n">PassiveTotal</span> <span class="k">for</span> <span class="n">additional</span> <span class="n">enrichment</span> <span class="n">data</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">an</span> <span class="n">API</span> <span class="n">key</span><span class="p">,</span> <span class="n">visit</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">passivetotal</span><span class="o">.</span><span class="n">org</span> <span class="n">to</span> <span class="n">get</span> <span class="n">one</span><span class="o">.</span>
+
+<span class="c1">## Usage</span>
+
+<span class="n">Build</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">the</span> <span class="n">docker</span> <span class="n">container</span> <span class="n">using</span> <span class="n">the</span> <span class="n">included</span> <span class="n">Dockerfile</span><span class="o">.</span>
+
+<span class="n">Upon</span> <span class="n">building</span> <span class="n">the</span> <span class="n">Dockerfile</span> <span class="n">downloads</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">TLDs</span> <span class="kn">from</span> <span class="nn">iana.org.</span>
+<span class="n">To</span> <span class="n">update</span> <span class="n">this</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">TLDs</span><span class="p">,</span> <span class="n">the</span> <span class="n">image</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">built</span> <span class="n">again</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">service</span> <span class="n">accepts</span> <span class="n">domain</span> <span class="n">names</span><span class="p">,</span> <span class="n">IP</span> <span class="n">addresses</span> <span class="ow">and</span> <span class="n">emails</span> <span class="k">as</span> <span class="n">request</span> <span class="n">objects</span><span class="o">.</span>
+<span class="n">These</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">supplied</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span> <span class="n">after</span> <span class="n">the</span> <span class="n">request</span> <span class="n">URL</span><span class="o">.</span>
+<span class="p">(</span><span class="n">If</span> <span class="n">the</span> <span class="n">analysisURL</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="o">/</span><span class="n">passivetotal</span><span class="p">,</span> <span class="n">then</span> <span class="n">a</span> <span class="n">request</span> <span class="k">for</span> <span class="n">the</span>
+<span class="n">domain</span> <span class="n">www</span><span class="o">.</span><span class="n">passivetotal</span><span class="o">.</span><span class="n">org</span> <span class="n">would</span> <span class="n">look</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span> <span class="o">/</span><span class="n">passivetotal</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">passivetotal</span><span class="o">.</span><span class="n">org</span><span class="p">)</span>
+
+<span class="n">The</span> <span class="n">service</span> <span class="n">performs</span> <span class="n">some</span> <span class="n">checks</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">input</span> <span class="nb">object</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">a</span> <span class="n">passed</span> <span class="n">domain</span> <span class="n">name</span> <span class="n">contains</span> <span class="n">an</span> <span class="n">invalid</span> <span class="n">TLD</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">invalid</span> <span class="ow">and</span> <span class="n">rejected</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">a</span> <span class="n">passed</span> <span class="n">email</span> <span class="n">address</span> <span class="n">contains</span> <span class="n">an</span> <span class="n">invalid</span> <span class="n">domain</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">rejected</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">a</span> <span class="n">passed</span> <span class="n">IP</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">reserved</span> <span class="nb">range</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">rejected</span><span class="o">.</span> <span class="p">(</span><span class="n">IETF</span> <span class="n">RFC6890</span><span class="p">,</span> <span class="n">RFC4291</span><span class="p">)</span>
+
+<span class="n">Only</span> <span class="k">if</span> <span class="n">a</span> <span class="n">request</span> <span class="nb">object</span> <span class="ow">is</span> <span class="n">determined</span> <span class="n">valid</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">selected</span> <span class="n">passivetotal</span>
+<span class="n">api</span> <span class="n">endpoints</span><span class="o">.</span> <span class="n">The</span> <span class="n">maximum</span> <span class="n">of</span> <span class="n">simultaneous</span> <span class="n">requests</span> <span class="ow">is</span> <span class="mf">9.</span>
+<span class="n">If</span> <span class="n">an</span> <span class="n">error</span> <span class="ow">is</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">the</span> <span class="n">api</span> <span class="n">queries</span><span class="p">,</span> <span class="n">the</span> <span class="n">request</span> <span class="n">fails</span> <span class="ow">and</span> <span class="n">returns</span>
+<span class="n">an</span> <span class="n">appropriate</span> <span class="n">error</span> <span class="n">code</span><span class="o">.</span> <span class="n">Check</span> <span class="n">the</span> <span class="n">local</span> <span class="n">logs</span> <span class="k">for</span> <span class="n">detailed</span> <span class="n">information</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">the</span> <span class="n">query</span> <span class="n">succeeds</span><span class="p">,</span> <span class="n">a</span> <span class="n">JSON</span> <span class="n">struct</span> <span class="n">containing</span> <span class="nb">all</span> <span class="mi">9</span> <span class="n">api</span> <span class="n">endpoints</span> <span class="ow">is</span> <span class="n">returned</span><span class="o">.</span>
+<span class="n">Those</span> <span class="n">endpoints</span> <span class="n">that</span> <span class="n">were</span> <span class="ow">not</span> <span class="n">queried</span> <span class="n">are</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">null</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="acl-conf">
+<h5>acl.conf<a class="headerlink" href="#acl-conf" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Currently empty</p></li>
+</ul>
+</div>
+<div class="section" id="service-conf-example">
+<h5>service.conf.example<a class="headerlink" href="#service-conf-example" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>JSON file containing service settings like internal port (default must be
+8080), but also service specific settings like maybe output limits or
+parsing limits.</p>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+    <span class="nt">&quot;max-output-lines&quot;</span><span class="p">:</span> <span class="mi">10000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="watchdog-scala">
+<h5>watchdog.scala<a class="headerlink" href="#watchdog-scala" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Currently empty</p></li>
+</ul>
+</div>
+<div class="section" id="yourservicerest-scala">
+<h5>YourServiceREST.scala<a class="headerlink" href="#yourservicerest-scala" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For most services <code class="docutils literal notranslate"><span class="pre">YourServiceREST.scala</span></code> can be copy &amp; pasted and the
+names adjusted.</p>
+</div>
+<p>Now that Totem knows about your service and where to find it, we need to tell it
+how to communicate with the service. This is done in a separate file, that
+defines 3 (or more) classes and one object:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="k">class</span> <span class="nc">YourServiceWork</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">YourServiceSuccess</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">YourServiceFailure</span>
+<span class="k">object</span> <span class="nc">YourServiceREST</span>
+</pre></div>
+</div>
+<p>Full working example:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">org.holmesprocessing.totem.services.yourservice</span>
+
+<span class="k">import</span> <span class="nn">dispatch.Defaults._</span>
+<span class="k">import</span> <span class="nn">dispatch.</span><span class="o">{</span><span class="n">url</span><span class="o">,</span> <span class="k">_</span><span class="o">}</span>
+<span class="k">import</span> <span class="nn">org.json4s.JsonAST.</span><span class="o">{</span><span class="nc">JString</span><span class="o">,</span> <span class="nc">JValue</span><span class="o">}</span>
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.types.</span><span class="o">{</span><span class="nc">TaskedWork</span><span class="o">,</span> <span class="nc">WorkFailure</span><span class="o">,</span> <span class="nc">WorkResult</span><span class="o">,</span> <span class="nc">WorkSuccess</span><span class="o">}</span>
+<span class="k">import</span> <span class="nn">collection.mutable</span>
+
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">yourserviceWork</span><span class="o">(</span><span class="n">key</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="nc">TimeoutMillis</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="nc">WorkType</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="nc">Worker</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="nc">Arguments</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">extends</span> <span class="nc">TaskedWork</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">doWork</span><span class="o">()(</span><span class="k">implicit</span> <span class="n">myHttp</span><span class="k">:</span> <span class="kt">dispatch.Http</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">WorkResult</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+
+    <span class="k">val</span> <span class="n">uri</span> <span class="k">=</span> <span class="n">yourserviceREST</span><span class="o">.</span><span class="n">constructURL</span><span class="o">(</span><span class="nc">Worker</span><span class="o">,</span> <span class="n">filename</span><span class="o">,</span> <span class="nc">Arguments</span><span class="o">)</span>
+    <span class="k">val</span> <span class="n">requestResult</span> <span class="k">=</span> <span class="n">myHttp</span><span class="o">(</span><span class="n">url</span><span class="o">(</span><span class="n">uri</span><span class="o">)</span> <span class="nc">OK</span> <span class="n">as</span><span class="o">.</span><span class="nc">String</span><span class="o">)</span>
+      <span class="o">.</span><span class="n">either</span>
+      <span class="o">.</span><span class="n">map</span><span class="o">({</span>
+      <span class="k">case</span> <span class="nc">Right</span><span class="o">(</span><span class="n">content</span><span class="o">)</span> <span class="k">=&gt;</span>
+        <span class="n">yourserviceSuccess</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="nc">JString</span><span class="o">(</span><span class="n">content</span><span class="o">),</span> <span class="nc">Arguments</span><span class="o">)</span>
+
+      <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="nc">StatusCode</span><span class="o">(</span><span class="mi">404</span><span class="o">))</span> <span class="k">=&gt;</span>
+        <span class="n">yourserviceFailure</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="nc">JString</span><span class="o">(</span><span class="s">&quot;Not found (File already deleted?)&quot;</span><span class="o">),</span> <span class="nc">Arguments</span><span class="o">)</span>
+
+      <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="nc">StatusCode</span><span class="o">(</span><span class="mi">500</span><span class="o">))</span> <span class="k">=&gt;</span>
+        <span class="n">yourserviceFailure</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="nc">JString</span><span class="o">(</span><span class="s">&quot;Objdump service failed, check local logs&quot;</span><span class="o">),</span> <span class="nc">Arguments</span><span class="o">)</span> <span class="c1">//would be ideal to print response body here</span>
+
+      <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="nc">StatusCode</span><span class="o">(</span><span class="n">code</span><span class="o">))</span> <span class="k">=&gt;</span>
+        <span class="n">yourserviceFailure</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="nc">JString</span><span class="o">(</span><span class="s">&quot;Some other code: &quot;</span> <span class="o">+</span> <span class="n">code</span><span class="o">.</span><span class="n">toString</span><span class="o">),</span> <span class="nc">Arguments</span><span class="o">)</span>
+
+      <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="n">something</span><span class="o">)</span> <span class="k">=&gt;</span>
+        <span class="n">yourserviceFailure</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="nc">JString</span><span class="o">(</span><span class="s">&quot;wildcard failure: &quot;</span> <span class="o">+</span> <span class="n">something</span><span class="o">.</span><span class="n">toString</span><span class="o">),</span> <span class="nc">Arguments</span><span class="o">)</span>
+    <span class="o">})</span>
+    <span class="n">requestResult</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">yourserviceSuccess</span><span class="o">(</span><span class="n">status</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">data</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="nc">Arguments</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span> <span class="n">routingKey</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;yourservice.result.static.totem&quot;</span><span class="o">,</span> <span class="nc">WorkType</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;YOURSERVICE&quot;</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">WorkSuccess</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">yourserviceFailure</span><span class="o">(</span><span class="n">status</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">data</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="nc">Arguments</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span> <span class="n">routingKey</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">,</span> <span class="nc">WorkType</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">&quot;YOURSERVICE&quot;</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">WorkFailure</span>
+
+
+<span class="k">object</span> <span class="nc">yourserviceREST</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">constructURL</span><span class="o">(</span><span class="n">root</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">arguments</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="n">arguments</span><span class="o">.</span><span class="n">foldLeft</span><span class="o">(</span><span class="k">new</span> <span class="n">mutable</span><span class="o">.</span><span class="nc">StringBuilder</span><span class="o">(</span><span class="n">root</span><span class="o">+</span><span class="n">filename</span><span class="o">))({</span>
+      <span class="o">(</span><span class="n">acc</span><span class="o">,</span> <span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">acc</span><span class="o">.</span><span class="n">append</span><span class="o">(</span><span class="n">e</span><span class="o">)}).</span><span class="n">toString</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Explanation</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">YourServiceWork</span></code> class initiates the request with your service, creating
+the final <code class="docutils literal notranslate"><span class="pre">uri</span></code> via the <code class="docutils literal notranslate"><span class="pre">YourServiceREST</span></code> object.</p>
+<p>The request result is gathered and depending on what the returned HTTP status
+code was, a specific class (<code class="docutils literal notranslate"><span class="pre">YourServiceSuccess</span></code> or <code class="docutils literal notranslate"><span class="pre">YourServiceFailure</span></code>)
+is instantiated with the result as a parameter and returned.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The 2 generic cases at the end of the map should be there in any case to
+avoid exceptions.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">YourServiceSuccess</span></code> and <code class="docutils literal notranslate"><span class="pre">YourServiceFailure</span></code> classes should be self-explanatory. They extend the default interfaces for success and failure and are
+very convenient for mapping cases as done in <code class="docutils literal notranslate"><span class="pre">driver.scala</span></code>, for example.</p>
+<p><code class="docutils literal notranslate"><span class="pre">YourServiceREST</span></code> object should be self-explanatory as well, it defines how the
+request address for your service gets constructed from the supplied parameters.</p>
+</div>
+<div class="section" id="service-logic-file">
+<h5>Service-logic file<a class="headerlink" href="#service-logic-file" title="Permalink to this headline">¶</a></h5>
+<p>This is the file that makes the Service act like a web server. The service can be accessible from 2 endpoints.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Endpoint</p></th>
+<th class="head"><p>Operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/</p></td>
+<td><p>Provide information about the
+service</p></td>
+</tr>
+<tr class="row-odd"><td><p>/analyze?obj=?</p></td>
+<td><p>Perform tasking and return results</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="endpoint">
+<h6>Endpoint - ‘/’<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h6>
+<p>You can use this page to view the information about the Service. Basically this page should state every aspect of Service the you are creating.</p>
+<p>The INFO page should contain</p>
+<ol class="arabic simple">
+<li><p>Author name.</p></li>
+<li><p>Service name and version. ( or any metadata about the service. )</p></li>
+<li><p>Brief Description about the Service.</p></li>
+<li><p>Licence</p></li>
+<li><p>General information about how to use the Service and expected JSON output.</p></li>
+</ol>
+<dl>
+<dt><strong>Info-output Generation in Go</strong></dt><dd><div class="highlight-Go notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">info_output</span><span class="p">(</span><span class="nx">f_response</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">ps</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">`&lt;p&gt;%s - %s&lt;/p&gt;</span>
+<span class="s">        &lt;hr&gt;</span>
+<span class="s">        &lt;p&gt;%s&lt;/p&gt;</span>
+<span class="s">        &lt;hr&gt;</span>
+<span class="s">        &lt;p&gt;%s&lt;/p&gt;</span>
+<span class="s">        `</span><span class="p">,</span>
+        <span class="nx">metadata</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+        <span class="nx">metadata</span><span class="p">.</span><span class="nx">Version</span><span class="p">,</span>
+        <span class="nx">metadata</span><span class="p">.</span><span class="nx">Description</span><span class="p">,</span>
+        <span class="nx">metadata</span><span class="p">.</span><span class="nx">License</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Info-Output Generation in Python</strong></dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">InfoHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+        <span class="c1"># Emits a string which describes the purpose of the analytics</span>
+        <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  &lt;p&gt;{name:s} - {version:s}&lt;/p&gt;</span>
+<span class="s2">  &lt;hr&gt;</span>
+<span class="s2">  &lt;p&gt;{description:s}&lt;/p&gt;</span>
+<span class="s2">  &lt;hr&gt;</span>
+<span class="s2">  &lt;p&gt;{license:s}&lt;/p&gt;</span>
+<span class="s2">  &lt;hr&gt;</span>
+<span class="s2">  &lt;p&gt;{copyright:s}&lt;/p&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">name</span>        <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+                <span class="n">version</span>     <span class="o">=</span> <span class="n">version</span><span class="p">,</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">description</span><span class="p">,</span>
+                <span class="n">license</span>     <span class="o">=</span> <span class="n">license</span><span class="p">,</span>
+                <span class="n">copyright</span>   <span class="o">=</span> <span class="n">copyright</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">InfoHandler</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="endpoint-analyze-obj">
+<h6>Endpoint ‘/analyze?obj=’<a class="headerlink" href="#endpoint-analyze-obj" title="Permalink to this headline">¶</a></h6>
+<p>In this Endpoint you write the logic for interacting with <strong>analyer library</strong> and producing the JSON output and appropriate error codes.</p>
+<div class="section" id="reading-configuration-file">
+<h7>Reading configuration file<a class="headerlink" href="#reading-configuration-file" title="Permalink to this headline">¶</a></h7>
+<p>Before you start about writing the service logic, you first need to parse settings from service.conf ( renamed from service.conf.example ). Since the format Service’s configuration file JSON, you can use any JSON parsing library.</p>
+<p><strong>Reading configuration in Golang</strong></p>
+<p>With the <code class="docutils literal notranslate"><span class="pre">json</span></code> package it’s a snap to read JSON data into your Go programs. The json package provides Decoder and Encoder types to support the common operation of reading and writing streams of JSON data. We read the configuration file and then we fit the output to <code class="docutils literal notranslate"><span class="pre">Config</span></code> struct</p>
+<div class="highlight-Go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;encoding/json&quot;</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// ....</span>
+
+<span class="kd">var</span> <span class="p">(</span>
+    <span class="nx">config</span> <span class="o">*</span><span class="nx">Config</span>
+    <span class="nx">configPath</span> <span class="kt">string</span>
+<span class="p">)</span>
+
+<span class="c1">// ....</span>
+
+<span class="kd">type</span> <span class="nx">Config</span> <span class="kd">struct</span> <span class="p">{</span>
+<span class="nx">HTTPBinding</span> <span class="kt">string</span> <span class="nx">MaxNumberOfObjects</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// ....</span>
+
+<span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">configPath</span><span class="p">,</span> <span class="s">&quot;config&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;Path to the configuration file&quot;</span><span class="p">)</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+
+<span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Config</span><span class="p">{}</span>
+
+<span class="nx">cfile</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">configPath</span><span class="p">)</span> <span class="nx">dec</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">(</span><span class="nx">cfile</span><span class="p">)</span> <span class="c1">// reading from json data</span>
+
+<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dec</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">config</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+<span class="c1">// handle error</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Reading configuration for Python</strong></p>
+<p>Try opening the path, reading it all in and parsing it as a JSON. If an error occurs, throw a tornado.web.HTTPError (well define behaviour by tornado for these) If parsing succeeds, update provided config dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># reading configuration file</span>
+  <span class="n">configPath</span> <span class="o">=</span> <span class="s2">&quot;./service.conf&quot;</span>
+  <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">configPath</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http-error-codes">
+<h7>HTTP Error Codes<a class="headerlink" href="#http-error-codes" title="Permalink to this headline">¶</a></h7>
+<p>Holmes totem service is RESTful service which communicates with HTTP protocol.  The first line of the HTTP response is called the status line and includes a numeric status code (such as “404”) and a textual reason phrase (such as “Not Found”). Also when something went wrong in the service, we should return a HTTP error code so that user agent can debug accordingly.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 26%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>HTTP Error Code</p></th>
+<th class="head"><p>Summary</p></th>
+<th class="head"><p>Operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>200</p></td>
+<td><p>OK</p></td>
+<td><p>Services returns result</p></td>
+</tr>
+<tr class="row-odd"><td><p>400</p></td>
+<td><p>Bad Operation</p></td>
+<td><p>Missing argument <cite>Obj</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p>401</p></td>
+<td><p>Authorization required</p></td>
+<td><p><em>currently empty</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>404</p></td>
+<td><p>Not Found</p></td>
+<td><p>Invalid URL format.  A user should follow URL API scheme
+to submit objects.</p></td>
+</tr>
+<tr class="row-even"><td><p>500</p></td>
+<td><p>Internal Server Error</p></td>
+<td><p>Generating JSON failed</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Raising error codes in Go</p></li>
+</ul>
+<div class="highlight-Go notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">returnCode500</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">&quot;Generating JSON failed&#39;&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">returnCode400</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">&quot; Missing argument Obj&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">returnCode404</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">&quot; Invalid URL format. &quot;</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Raising error codes in Python</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For python tornado.</span>
+<span class="k">raise</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="n">code</span><span class="p">,</span> <span class="n">log_message</span><span class="o">=</span><span class="n">custom_msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="files-to-edit">
+<h3>5.1.6.1.1.2.2. Files to Edit<a class="headerlink" href="#files-to-edit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="config-files">
+<h4>Config Files<a class="headerlink" href="#config-files" title="Permalink to this headline">¶</a></h4>
+<p>The following files can be found in the <code class="docutils literal notranslate"><span class="pre">config/</span></code> folder within the
+Holmes-Totem repository.</p>
+<div class="section" id="totem-conf-example">
+<h5>totem.conf.example<a class="headerlink" href="#totem-conf-example" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><div class="line-block">
+<div class="line">The entry in the totem.conf tells Totem your service exists, where to reach it, and where to store its results.</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">uri</span></code> field supports multiple address entries for automatic load balancing.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>totem <span class="o">{</span>
+    services <span class="o">{</span>
+        SERVICE_NAME_LOWERCASE <span class="o">{</span>
+            <span class="nv">uri</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;http://SERVICE_IP:SERVICE_PORT/analyze/?obj=&quot;</span><span class="o">]</span>
+            <span class="nv">resultRoutingKey</span> <span class="o">=</span> <span class="s2">&quot;SERVICE_NAME_LOWERCASE.result.static.totem&quot;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="docker-compose-yml-example">
+<h5>docker-compose.yml.example<a class="headerlink" href="#docker-compose-yml-example" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>Holmes-Totem relies on Docker to provide the services. As such all services need
+to provide an entry in the docker-compose file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services</span><span class="p">:</span>
+  <span class="nt">SERVICE_NAME_LOWERCASE</span><span class="p">:</span>
+    <span class="nt">build</span><span class="p">:</span>
+      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">../src/main/scala/org/holmesprocessing/totem/services/SERVICE_NAME_LOWERCASE</span>
+      <span class="nt">args</span><span class="p">:</span>
+        <span class="nt">conf</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${CONFSTORAGE_SERVICE_NAME}service.conf</span>
+    <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;SERVICE_PORT:8080&quot;</span>
+    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+</pre></div>
+</div>
+<p>If the service processes files (i.e. it needs access to <code class="docutils literal notranslate"><span class="pre">/tmp/</span></code> on the host),
+the following option needs to be added additionally to build, ports, and restart:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">volumes</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/tmp:/tmp:ro</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="compose-download-conf-sh">
+<h5>compose_download_conf.sh<a class="headerlink" href="#compose-download-conf-sh" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>This file runs docker-compose with certain environmental variables set, that allow fetching service configuration files from a server.
+Add an <code class="docutils literal notranslate"><span class="pre">export</span></code> statement like this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CONFSTORAGE_SERVICE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">CONFSTORAGE</span><span class="si">}</span>zipmeta/
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the above example, <code class="docutils literal notranslate"><span class="pre">${CONFSTORAGE}</span></code> is the actual term and nothing
+needs to be replaced there.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scala-files">
+<h4>Scala Files<a class="headerlink" href="#scala-files" title="Permalink to this headline">¶</a></h4>
+<p>The following files can be found in the
+<code class="docutils literal notranslate"><span class="pre">src/main/scala/org/holmesprocessing/totem/</span></code> folder within the
+Holmes-Totem repository</p>
+<div class="section" id="driver-scala">
+<h5>driver.scala<a class="headerlink" href="#driver-scala" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p>Import your services scala classes (see the respective section for information
+on these classes).</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.holmesprocessing.totem.services.SERVICE_NAME_LOWERCASE.</span><span class="o">{</span>
+    <span class="nc">SERVICE_CLASS_SUCCESS</span><span class="o">,</span>
+    <span class="nc">SERVICE_CLASS_WORK</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a case to the method <code class="docutils literal notranslate"><span class="pre">GeneratePartial</span></code></p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nc">GeneratePartial</span><span class="o">(</span><span class="n">work</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">work</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;SERVICE_NAME_UPPERCASE&quot;</span> <span class="k">=&gt;</span> <span class="nc">Random</span><span class="o">.</span><span class="n">shuffle</span><span class="o">(</span><span class="n">services</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;SERVICE_NAME_LOWERCASE&quot;</span><span class="o">,</span> <span class="nc">List</span><span class="o">())).</span><span class="n">head</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a case to the method <code class="docutils literal notranslate"><span class="pre">enumerateWork</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your service does not process
+files but rather the input string, use <code class="docutils literal notranslate"><span class="pre">uuid_filename</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">orig_filename</span></code> below.</p>
+</div>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">enumerateWork</span><span class="o">(</span><span class="n">key</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">orig_filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">uuid_filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">workToDo</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">TaskedWork</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">w</span> <span class="k">=</span> <span class="n">workToDo</span><span class="o">.</span><span class="n">map</span><span class="o">({</span>
+    <span class="k">case</span> <span class="o">(</span><span class="s">&quot;SERVICE_NAME_UPPERCASE&quot;</span><span class="o">,</span> <span class="n">li</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">SERVICE_CLASS_WORK</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">orig_filename</span><span class="o">,</span> <span class="n">taskingConfig</span><span class="o">.</span><span class="n">default_service_timeout</span><span class="o">,</span> <span class="s">&quot;SERVICE_NAME_UPPERCASE&quot;</span><span class="o">,</span> <span class="nc">GeneratePartial</span><span class="o">(</span><span class="s">&quot;SERVICE_NAME_UPPERCASE&quot;</span><span class="o">),</span> <span class="n">li</span><span class="o">)</span>
+  <span class="o">}).</span><span class="n">collect</span><span class="o">({</span>
+    <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">TaskedWork</span> <span class="o">=&gt;</span> <span class="n">x</span>
+  <span class="o">})</span>
+  <span class="n">w</span><span class="o">.</span><span class="n">toList</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a case to the method <code class="docutils literal notranslate"><span class="pre">workRoutingKey</span></code></p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">workRoutingKey</span><span class="o">(</span><span class="n">work</span><span class="k">:</span> <span class="kt">WorkResult</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">work</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">SERVICE_CLASS_SUCCESS</span> <span class="o">=&gt;</span> <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.services.SERVICE_NAME_LOWERCASE.resultRoutingKey&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../example_service.html" class="btn btn-neutral float-right" title="5.1.6.1.2. Example Service: Hello World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="5.1.6.1. Services for Totem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1.3. Installation &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="5.1.4. Executing Tasks" href="../tasks/index.html" />
+    <link rel="prev" title="5.1.2. Architecture Overview" href="../architecture/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">5.1. Holmes Totem</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1.3. Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">5.1.3.1. Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">5.1.3.2. Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running">5.1.3.3. Running</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/index.html">5.1.5. Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../extending/index.html">5.1.6. Extending Holmes Totem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="../index.html">5.1. Holmes Totem</a> &raquo;</li>
+        
+      <li>5.1.3. Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/rst/components/holmes-totem/installation/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>5.1.3. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>5.1.3.1. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>In order to compile Holmes-Totem you have to install <code class="docutils literal notranslate"><span class="pre">sbt</span></code> (Scala Build Tool).
+See the official <a href="#id2"><span class="problematic" id="id3">`website &lt;sbt_&gt;`_</span></a> for more info.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;deb https://dl.bintray.com/sbt/debian /&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/sbt.list &gt; /dev/null
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+sudo apt-get update
+sudo apt-get install -y sbt
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>5.1.3.2. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>There’s two files of interest here:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config/docker-compose.yml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/totem.conf</span></code></p></li>
+</ul>
+<p>The docker-compose config file is responsible for service launch configuration.
+Each entry in the <code class="docutils literal notranslate"><span class="pre">services:</span></code> section is of the form:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;name&gt;</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
+    <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">../src/main/scala/org/holmesprocessing/totem/services/&lt;name&gt;</span>
+    <span class="nt">args</span><span class="p">:</span>
+      <span class="nt">conf</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${CONFSTORAGE_&lt;name_uppercase&gt;}service.conf</span>
+  <span class="nt">ports</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;&lt;port&gt;:8080&quot;</span>
+  <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+  <span class="nt">volumes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/tmp:/tmp:ro</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>&lt;name&gt;</p></td>
+<td><p>The name of the service, all lowercase usually and the same as the folder name.</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;name_uppercase&gt;</p></td>
+<td><p>The same as the &lt;name&gt;, but uppercase.</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;port&gt;</p></td>
+<td><p>The service port. Convention is 7700,7710,7720, … for the services processing
+files and 9700,9710,9720, … for the services that do not.</p>
+<p>The simple reason for this is, that scaling the service deployment using
+a solution like docker-compose requires some free ports.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The totem config file mainly tells Totem what services are available and where
+to find them. But you can also configure its request timeouts here.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>download_settings {
+  connection_pooling = true
+  connection_timeout = 1000
+  download_directory = &quot;/tmp/&quot;
+  thread_multiplier = 4
+  request_timeout = 1000
+}
+
+tasking_settings {
+  default_service_timeout = 180
+  prefetch = 3
+  retry_attempts = 3
+}
+
+rabbit_settings {
+  requeueKey = &quot;requeue.static.totem&quot;
+  host {
+    server = &quot;127.0.0.1&quot;
+    port = 5672
+    username = &quot;guest&quot;
+    password = &quot;guest&quot;
+    vhost = &quot;/&quot;
+  }
+
+  ...
+}
+
+services {
+  asnmeta {
+    uri = [&quot;http://127.0.0.1:9700/analyze/?obj=&quot;]
+    resultRoutingKey = &quot;asnmeta.result.static.totem&quot;
+  }
+
+  ...
+}
+</pre></div>
+</div>
+<p>The above is an excerpt of the default configuration file.
+It is important to note that the <code class="docutils literal notranslate"><span class="pre">connection_timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">request_timeout</span></code>
+are (counter-intuitively) not just associated with downloading samples. They
+apply to “downloading” results from services as well. If you
+experience a lot of service failures due to timeouts consider increasing these
+values. Additionally the <code class="docutils literal notranslate"><span class="pre">tasking_settings.default_service_timeout</span></code> may need
+changing, too. (The former two are given as milliseconds, the
+latter as seconds)</p>
+<p>Most settings regarding RabbitMQ are of no interest to a regular user. The only
+things that need to be adjusted are the credentials and the address.</p>
+<p>More interesting are the service entries. They offer the ability to configure
+multiple URIs for each service for automatic load balancing.
+The schema for the URIs and the routing key is always the same though.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;http://&lt;address&gt;/analyze/?obj=&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;servicename&gt;.result.stastic.totem&quot;</span>
+</pre></div>
+</div>
+<p>The suffix <code class="docutils literal notranslate"><span class="pre">result.static.totem</span></code> always corresponds to the suffix defined in
+the RabbitMQ settings.</p>
+</div>
+<div class="section" id="running">
+<h2>5.1.3.3. Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>After installing <code class="docutils literal notranslate"><span class="pre">sbt</span></code> clone Holmes-Totem from the GitHub repository and
+build it from source.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir -p /data/holmes-totem
+<span class="nb">cd</span> /data/holmes-totem
+git clone https://github.com/HolmesProcessing/Holmes-Totem.git .
+sbt assembly
+</pre></div>
+</div>
+<p>This will produce a jar-file. To start Totem, issue:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>java -jar target/scala-2.11/totem-assembly-1.0.jar config/totem.conf
+</pre></div>
+</div>
+<p>However, you’ll need to configure it first. (See the configuration documentation)</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tasks/index.html" class="btn btn-neutral float-right" title="5.1.4. Executing Tasks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../architecture/index.html" class="btn btn-neutral float-left" title="5.1.2. Architecture Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

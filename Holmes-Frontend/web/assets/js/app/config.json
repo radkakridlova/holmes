@@ -1,0 +1,7 @@
+{
+	"api_url": "http://localhost:8018/api/",
+	"debug": true,
+	"services": ["ASNMETA", "CUCKOO", "DNSMETA", "GOGADGET", "OBJDUMP", "PEID", "PEINFO", "VIRUSTOTAL", "YARA", "ZIPMETA"],
+	"gateway_url": "http://localhost:8090/task/",
+	"hide_fields": false
+}

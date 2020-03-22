@@ -1,0 +1,18 @@
+{
+	"CritsFileServer":  "",
+    "Directory":        "uploads/",
+    "Comment":          "comment",
+    "Source":           "src1",
+    "MimetypePattern":  "",
+    "Recursive":        false,
+    "Insecure":         true,
+
+    "FPath":            "",
+    "Tasks":            "",
+    "TagsStr":          "[\"tag1\",\"tag2\"]",
+    "GatewayURI":       "https://127.0.0.1:8090",
+    "Username":         "test",
+    "Password":         "test",
+    "Tasking":          false,
+    "Workers":          5,
+}

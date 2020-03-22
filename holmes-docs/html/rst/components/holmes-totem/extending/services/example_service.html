@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1.6.1.2. Example Service: Hello World &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="5.2. Holmes Totem Dynamic" href="../../../holmes-totem-dynamic/index.html" />
+    <link rel="prev" title="5.1.6.1.1. Writing a Service" href="writing_a_service/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">5.1. Holmes Totem</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/index.html">5.1.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../services/index.html">5.1.5. Services</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">5.1.6. Extending Holmes Totem</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="index.html">5.1.6.1. Writing Services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="../../index.html">5.1. Holmes Totem</a> &raquo;</li>
+        
+          <li><a href="../index.html">5.1.6. Extending Holmes Processing</a> &raquo;</li>
+        
+          <li><a href="index.html">5.1.6.1. Services for Totem</a> &raquo;</li>
+        
+      <li>5.1.6.1.2. Example Service: Hello World</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/rst/components/holmes-totem/extending/services/example_service.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-service-hello-world">
+<h1>5.1.6.1.2. Example Service: Hello World<a class="headerlink" href="#example-service-hello-world" title="Permalink to this headline">¶</a></h1>
+<p>Let’s implement a service as simple as possible: Hello World.</p>
+<ul class="simple">
+<li><p>totem.conf</p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>totem <span class="o">{</span>
+  <span class="nv">version</span> <span class="o">=</span> <span class="s2">&quot;0.5.0&quot;</span>
+
+  download_settings <span class="o">{</span>
+    <span class="nv">connection_pooling</span> <span class="o">=</span> <span class="nb">true</span>
+    <span class="nv">connection_timeout</span> <span class="o">=</span> <span class="m">1000</span>
+    <span class="nv">download_directory</span> <span class="o">=</span> <span class="s2">&quot;/tmp/&quot;</span>
+    <span class="nv">thread_multiplier</span> <span class="o">=</span> <span class="m">4</span>
+    <span class="nv">request_timeout</span> <span class="o">=</span> <span class="m">1000</span>
+    <span class="nv">validate_ssl_cert</span> <span class="o">=</span> <span class="nb">true</span>
+  <span class="o">}</span>
+
+  tasking_settings <span class="o">{</span>
+    <span class="nv">default_service_timeout</span> <span class="o">=</span> <span class="m">180</span>
+    <span class="nv">prefetch</span> <span class="o">=</span> <span class="m">3</span>
+    <span class="nv">retry_attempts</span> <span class="o">=</span> <span class="m">3</span>
+  <span class="o">}</span>
+
+  rabbit_settings <span class="o">{</span>
+    <span class="nv">requeueKey</span> <span class="o">=</span> <span class="s2">&quot;requeue.static.totem&quot;</span>
+    host <span class="o">{</span>
+      <span class="nv">server</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+      <span class="nv">port</span> <span class="o">=</span> <span class="m">5672</span>
+      <span class="nv">username</span> <span class="o">=</span> <span class="s2">&quot;guest&quot;</span>
+      <span class="nv">password</span> <span class="o">=</span> <span class="s2">&quot;guest&quot;</span>
+      <span class="nv">vhost</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+    <span class="o">}</span>
+    exchange <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;totem&quot;</span>
+      <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;topic&quot;</span>
+      <span class="nv">durable</span> <span class="o">=</span> <span class="nb">true</span>
+    <span class="o">}</span>
+    workqueue <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;totem_input&quot;</span>
+      <span class="nv">routing_key</span> <span class="o">=</span> <span class="s2">&quot;work.static.totem&quot;</span>
+      <span class="nv">durable</span> <span class="o">=</span> <span class="nb">true</span>
+      <span class="nv">exclusive</span> <span class="o">=</span> <span class="nb">false</span>
+      <span class="nv">autodelete</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="o">}</span>
+    resultsqueue <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;totem_output&quot;</span>
+      <span class="nv">routing_key</span> <span class="o">=</span> <span class="s2">&quot;*.result.static.totem&quot;</span>
+      <span class="nv">durable</span> <span class="o">=</span> <span class="nb">true</span>
+      <span class="nv">exclusive</span> <span class="o">=</span> <span class="nb">false</span>
+      <span class="nv">autodelete</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="o">}</span>
+    misbehavequeue <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;totem_misbehave&quot;</span>
+      <span class="nv">routing_key</span> <span class="o">=</span> <span class="s2">&quot;misbehave.static.totem&quot;</span>
+      <span class="nv">durable</span> <span class="o">=</span> <span class="nb">true</span>
+      <span class="nv">exclusive</span> <span class="o">=</span> <span class="nb">false</span>
+      <span class="nv">autodelete</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  services <span class="o">{</span>
+    helloworld <span class="o">{</span>
+      <span class="nv">uri</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;http://127.0.0.1:8888/analyze/?obj=&quot;</span><span class="o">]</span>
+      <span class="nv">resultRoutingKey</span> <span class="o">=</span> <span class="s2">&quot;helloworld.result.static.totem&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>driver.scala</p></li>
+</ul>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">org.holmesprocessing.totem.driver</span>
+
+<span class="k">import</span> <span class="nn">java.util.concurrent.</span><span class="o">{</span><span class="nc">Executors</span><span class="o">,</span> <span class="nc">ExecutorService</span><span class="o">}</span>
+
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span><span class="nc">ActorRef</span><span class="o">,</span> <span class="nc">ActorSystem</span><span class="o">,</span> <span class="nc">Props</span><span class="o">}</span>
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.actors._</span>
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.services.helloworld.</span><span class="o">{</span><span class="n">helloworldSuccess</span><span class="o">,</span> <span class="n">helloworldWork</span><span class="o">}</span>
+
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.types._</span>
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.util.DownloadSettings</span>
+
+<span class="k">import</span> <span class="nn">org.holmesprocessing.totem.util.Instrumented</span>
+
+<span class="k">import</span> <span class="nn">java.io.File</span>
+
+<span class="k">import</span> <span class="nn">com.typesafe.config.</span><span class="o">{</span><span class="nc">Config</span><span class="o">,</span> <span class="nc">ConfigFactory</span><span class="o">}</span>
+
+<span class="k">import</span> <span class="nn">scala.util.Random</span>
+
+<span class="k">object</span> <span class="nc">driver</span> <span class="k">extends</span> <span class="nc">App</span> <span class="k">with</span> <span class="nc">Instrumented</span> <span class="o">{</span>
+  <span class="c1">// Define constants</span>
+  <span class="k">val</span> <span class="nc">DefaultPathConfigFile</span> <span class="k">=</span> <span class="s">&quot;./config/totem.conf&quot;</span>
+
+  <span class="k">lazy</span> <span class="k">val</span> <span class="n">execServ</span><span class="k">:</span> <span class="kt">ExecutorService</span> <span class="o">=</span> <span class="nc">Executors</span><span class="o">.</span><span class="n">newFixedThreadPool</span><span class="o">(</span><span class="mi">4000</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">conf</span><span class="k">:</span> <span class="kt">Config</span> <span class="o">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Using manual config file: &quot;</span> <span class="o">+</span> <span class="n">args</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+    <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseFile</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">args</span><span class="o">(</span><span class="mi">0</span><span class="o">)))</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Using default config file: &quot;</span> <span class="o">+</span> <span class="nc">DefaultPathConfigFile</span><span class="o">)</span>
+    <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseFile</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="nc">DefaultPathConfigFile</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;totem&quot;</span><span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Configuring details for Totem Tasking&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">taskingConfig</span> <span class="k">=</span> <span class="nc">TaskingSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.tasking_settings.default_service_timeout&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.tasking_settings.prefetch&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.tasking_settings.retry_attempts&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Configuring details for downloading objects&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">downloadConfig</span> <span class="k">=</span> <span class="nc">DownloadSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.download_settings.connection_pooling&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.download_settings.connection_timeout&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.download_settings.download_directory&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.download_settings.thread_multiplier&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.download_settings.request_timeout&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.download_settings.validate_ssl_cert&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Configuring details for Rabbit queues&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">hostConfig</span> <span class="k">=</span> <span class="nc">HostSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.host.server&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.host.port&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.host.username&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.host.password&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.host.vhost&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">exchangeConfig</span> <span class="k">=</span> <span class="nc">ExchangeSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.exchange.name&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.exchange.type&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.exchange.durable&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">workqueueKeys</span> <span class="k">=</span> <span class="nc">List</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.workqueue.routing_key&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.requeueKey&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+  <span class="k">val</span> <span class="n">workqueueConfig</span> <span class="k">=</span> <span class="nc">QueueSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.workqueue.name&quot;</span><span class="o">),</span>
+    <span class="n">workqueueKeys</span><span class="o">,</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.workqueue.durable&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.workqueue.exclusive&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.workqueue.autodelete&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">resultQueueConfig</span> <span class="k">=</span> <span class="nc">QueueSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.resultsqueue.name&quot;</span><span class="o">),</span>
+    <span class="nc">List</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.resultsqueue.routing_key&quot;</span><span class="o">)),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.resultsqueue.durable&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.resultsqueue.exclusive&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.resultsqueue.autodelete&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">misbehaveQueueConfig</span> <span class="k">=</span> <span class="nc">QueueSettings</span><span class="o">(</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.misbehavequeue.name&quot;</span><span class="o">),</span>
+    <span class="nc">List</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.misbehavequeue.routing_key&quot;</span><span class="o">)),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.misbehavequeue.durable&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.misbehavequeue.exclusive&quot;</span><span class="o">),</span>
+    <span class="n">conf</span><span class="o">.</span><span class="n">getBoolean</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.misbehavequeue.autodelete&quot;</span><span class="o">)</span>
+  <span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Configuring setting for Services&quot;</span><span class="o">)</span>
+  <span class="k">class</span> <span class="nc">TotemicEncoding</span><span class="o">(</span><span class="n">conf</span><span class="k">:</span> <span class="kt">Config</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">ConfigTotemEncoding</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//this is a class, but we can probably make it an object. No big deal, but it helps on mem. pressure.</span>
+    <span class="k">def</span> <span class="nc">GeneratePartial</span><span class="o">(</span><span class="n">work</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="n">work</span> <span class="k">match</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="s">&quot;HELLOWORLD&quot;</span> <span class="k">=&gt;</span> <span class="nc">Random</span><span class="o">.</span><span class="n">shuffle</span><span class="o">(</span><span class="n">services</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;helloworld&quot;</span><span class="o">,</span> <span class="nc">List</span><span class="o">())).</span><span class="n">head</span>
+        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">&quot;&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="k">def</span> <span class="n">enumerateWork</span><span class="o">(</span><span class="n">key</span><span class="k">:</span> <span class="kt">Long</span><span class="o">,</span> <span class="n">orig_filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">uuid_filename</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">workToDo</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">TaskedWork</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">w</span> <span class="k">=</span> <span class="n">workToDo</span><span class="o">.</span><span class="n">map</span><span class="o">({</span>
+
+        <span class="k">case</span> <span class="o">(</span><span class="s">&quot;HELLOWORLD&quot;</span><span class="o">,</span> <span class="n">li</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=&gt;</span>
+          <span class="n">pdfparseWork</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">uuid_filename</span><span class="o">,</span> <span class="n">taskingConfig</span><span class="o">.</span><span class="n">default_service_timeout</span><span class="o">,</span> <span class="s">&quot;HELLOWORLD&quot;</span><span class="o">,</span> <span class="nc">GeneratePartial</span><span class="o">(</span><span class="s">&quot;HELLOWORLD&quot;</span><span class="o">),</span> <span class="n">li</span><span class="o">)</span>
+        <span class="k">case</span> <span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">li</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=&gt;</span>
+          <span class="nc">UnsupportedWork</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">orig_filename</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="n">s</span><span class="o">,</span> <span class="nc">GeneratePartial</span><span class="o">(</span><span class="n">s</span><span class="o">),</span> <span class="n">li</span><span class="o">)</span>
+        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nc">Unit</span> <span class="c1">//need to set this to a non Unit type.</span>
+      <span class="o">}).</span><span class="n">collect</span><span class="o">({</span>
+        <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">TaskedWork</span> <span class="o">=&gt;</span> <span class="n">x</span>
+      <span class="o">})</span>
+      <span class="n">w</span><span class="o">.</span><span class="n">toList</span>
+    <span class="o">}</span>
+
+    <span class="k">def</span> <span class="n">workRoutingKey</span><span class="o">(</span><span class="n">work</span><span class="k">:</span> <span class="kt">WorkResult</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="n">work</span> <span class="k">match</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">helloworldSuccess</span> <span class="o">=&gt;</span> <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.services.helloworld.resultRoutingKey&quot;</span><span class="o">)</span>
+        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">&quot;&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Completing configuration&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">encoding</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">TotemicEncoding</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Creating Totem Actors&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">myGetter</span><span class="k">:</span> <span class="kt">ActorRef</span> <span class="o">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">RabbitConsumerActor</span><span class="o">.</span><span class="n">props</span><span class="o">[</span><span class="kt">ZooWork</span><span class="o">](</span><span class="n">hostConfig</span><span class="o">,</span> <span class="n">exchangeConfig</span><span class="o">,</span> <span class="n">workqueueConfig</span><span class="o">,</span> <span class="n">encoding</span><span class="o">,</span> <span class="nc">Parsers</span><span class="o">.</span><span class="n">parseJ</span><span class="o">,</span> <span class="n">downloadConfig</span><span class="o">,</span> <span class="n">taskingConfig</span><span class="o">).</span><span class="n">withDispatcher</span><span class="o">(</span><span class="s">&quot;akka.actor.my-pinned-dispatcher&quot;</span><span class="o">),</span> <span class="s">&quot;consumer&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">mySender</span><span class="k">:</span> <span class="kt">ActorRef</span> <span class="o">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">RabbitProducerActor</span><span class="o">],</span> <span class="n">hostConfig</span><span class="o">,</span> <span class="n">exchangeConfig</span><span class="o">,</span> <span class="n">resultQueueConfig</span><span class="o">,</span> <span class="n">misbehaveQueueConfig</span><span class="o">,</span> <span class="n">encoding</span><span class="o">,</span> <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.rabbit_settings.requeueKey&quot;</span><span class="o">),</span> <span class="n">taskingConfig</span><span class="o">),</span> <span class="s">&quot;producer&quot;</span><span class="o">)</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Totem version &quot;</span> <span class="o">+</span> <span class="n">conf</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;totem.version&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="s">&quot; is running and ready to receive tasks&quot;</span><span class="o">)</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>helloworldREST.scala</p></li>
+</ul>
+<div class="section" id="in-golang">
+<h2>5.1.6.1.2.1. In Golang<a class="headerlink" href="#in-golang" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will show how to This tutorial will show how to utilize the <strong>Go Programming Language</strong>
+to write the actual service.</p>
+<div class="section" id="install-dependencies">
+<h3>5.1.6.1.2.1.1. Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>First of all, <strong>Go</strong> is required:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># for ubuntu</span>
+apt-get install golang
+<span class="c1"># for macOS</span>
+brew install golang
+</pre></div>
+</div>
+<p>Whilst <strong>Go</strong> natively has a very good webserver, it lacks a good
+router. More specific, the router lacks the ability to parse request URIs
+directly into variables.
+In our example we will use <code class="docutils literal notranslate"><span class="pre">httprouter</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>go get github.com/julienschmidt/httprouter
+</pre></div>
+</div>
+<p>Further, we need a way to parse a config file:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>go get gopkg.in/ini.v1
+</pre></div>
+</div>
+<p>If you have any further dependencies, they need to be installed in this step as well.
+(For example any additional frameworks)</p>
+</div>
+<div class="section" id="dockerfile">
+<h3>5.1.6.1.2.1.2. Dockerfile<a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose the operating system image to base of, refer to docker.com for available images</span>
+FROM golang:aplpine
+
+<span class="c1"># create a folder to contain your service&#39;s files</span>
+RUN mkdir -p /service
+WORKDIR /service
+
+<span class="c1"># add Go dependencies</span>
+RUN apk add --no-cache <span class="se">\</span>
+                    git <span class="se">\</span>
+                <span class="o">&amp;&amp;</span> go get github.com/julienschmidt/httprouter <span class="se">\</span>
+                <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/*
+
+<span class="c1"># add dependencies for helloworld</span>
+
+
+<span class="c1"># add all files relevant for running your service to your container</span>
+COPY helloworld.py /service
+COPY README.md /service
+
+
+<span class="c1"># build the service</span>
+RUN go build helloworld.go
+
+<span class="c1"># add the configuration file (possibly from a storage URI)</span>
+ARG <span class="nv">conf</span><span class="o">=</span>service.conf
+ADD <span class="nv">$conf</span> /service/service.conf
+
+CMD <span class="o">[</span><span class="s2">&quot;./helloworld&quot;</span>, <span class="s2">&quot;--config=service.conf&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>It is important to think about the ordering the commands have in the Dockerfile,
+as that can speed up or slow down the container build process heavily.
+Stuff that does not need to be done on every build should go to the front of the
+Dockerfile, stuff that changes should go towards the end of the file.</p>
+<p>(Docker caches previous build steps and if nothing changes, those build steps
+will be reused on the next build, speeding it up by a lot, especially when
+installing python like in this Dockerfile)</p>
+</div>
+<div class="section" id="helloworld-go">
+<h3>5.1.6.1.2.1.3. helloworld.go<a class="headerlink" href="#helloworld-go" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="c1">// These were all the imports required for this tutorial. If there are any</span>
+<span class="c1">// further dependencies those go inside this import section, too.</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;encoding/json&quot;</span>
+  <span class="s">&quot;flag&quot;</span>
+  <span class="s">&quot;github.com/julienschmidt/httprouter&quot;</span>
+  <span class="s">&quot;os&quot;</span>
+  <span class="s">&quot;net/http&quot;</span>
+  <span class="s">&quot;fmt&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="p">(</span>
+  <span class="nx">config</span>   <span class="o">*</span><span class="nx">Config</span>
+  <span class="nx">helloworld</span> <span class="kt">string</span>
+  <span class="nx">metadata</span> <span class="nx">Metadata</span> <span class="p">=</span> <span class="nx">Metadata</span><span class="p">{</span>
+    <span class="nx">Name</span><span class="p">:</span>        <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
+    <span class="nx">Version</span><span class="p">:</span>     <span class="s">&quot;0.1&quot;</span><span class="p">,</span>
+    <span class="nx">Description</span><span class="p">:</span> <span class="s">&quot;./README.md&quot;</span><span class="p">,</span>
+    <span class="nx">Copyright</span><span class="p">:</span>   <span class="s">&quot;Copyright 2017 Holmes Group LLC&quot;</span><span class="p">,</span>
+    <span class="nx">License</span><span class="p">:</span>     <span class="s">&quot;./LICENSE&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Config</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">HTTPBinding</span>        <span class="kt">string</span>
+  <span class="nx">MaxNumberOfObjects</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Metadata</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">Name</span>        <span class="kt">string</span>
+  <span class="nx">Version</span>     <span class="kt">string</span>
+  <span class="nx">Description</span> <span class="kt">string</span>
+  <span class="nx">Copyright</span>   <span class="kt">string</span>
+  <span class="nx">License</span>     <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Result</span> <span class="kd">struct</span> <span class="p">{</span>
+  <span class="nx">key</span> <span class="kt">string</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="kd">var</span> <span class="nx">configPath</span> <span class="kt">string</span>
+
+  <span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">configPath</span><span class="p">,</span> <span class="s">&quot;config&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;Path to the configuration file&quot;</span><span class="p">)</span>
+  <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+
+  <span class="c1">// reading configuration file.</span>
+  <span class="nx">config</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Config</span><span class="p">{}</span>
+  <span class="nx">cfile</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">configPath</span><span class="p">)</span>
+  <span class="nx">json</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">(</span><span class="nx">cfile</span><span class="p">).</span><span class="nx">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">config</span><span class="p">)</span>
+
+
+  <span class="nx">router</span> <span class="o">:=</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/analyze/&quot;</span><span class="p">,</span> <span class="nx">handler_analyze</span><span class="p">)</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">handler_info</span><span class="p">)</span>
+  <span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span> <span class="nx">router</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">handler_info</span><span class="p">(</span><span class="nx">f_response</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">ps</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// info-output</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintf</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">`&lt;p&gt;%s - %s&lt;/p&gt;</span>
+<span class="s">    &lt;hr&gt;</span>
+<span class="s">    &lt;p&gt;%s&lt;/p&gt;</span>
+<span class="s">    &lt;hr&gt;</span>
+<span class="s">    &lt;p&gt;%s&lt;/p&gt;</span>
+<span class="s">    `</span><span class="p">,</span>
+    <span class="nx">metadata</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+    <span class="nx">metadata</span><span class="p">.</span><span class="nx">Version</span><span class="p">,</span>
+    <span class="nx">metadata</span><span class="p">.</span><span class="nx">Description</span><span class="p">,</span>
+    <span class="nx">metadata</span><span class="p">.</span><span class="nx">License</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">handler_analyze</span><span class="p">(</span><span class="nx">f_response</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">request</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span> <span class="nx">params</span> <span class="nx">httprouter</span><span class="p">.</span><span class="nx">Params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">obj</span> <span class="o">:=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Query</span><span class="p">().</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;obj&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">obj</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">&quot;Missing argument &#39;obj&#39;&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="nx">sample_path</span> <span class="o">:=</span> <span class="s">&quot;/tmp/&quot;</span> <span class="o">+</span> <span class="nx">obj</span>
+  <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stat</span><span class="p">(</span><span class="nx">sample_path</span><span class="p">);</span> <span class="nx">os</span><span class="p">.</span><span class="nx">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">NotFound</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+
+  <span class="c1">//-----------------------------------------------------------------//</span>
+  <span class="c1">//                                                                 //</span>
+  <span class="c1">//                    Write your service logic.                    //</span>
+  <span class="c1">//                                                                 //</span>
+  <span class="c1">//-----------------------------------------------------------------//</span>
+  <span class="nx">result</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Result</span><span class="p">{</span>
+    <span class="nx">key</span> <span class="p">:</span> <span class="s">&quot;value&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="nx">f_response</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;text/json; charset=utf-8&quot;</span><span class="p">)</span>
+  <span class="nx">json2http</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">f_response</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json2http</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">f_response</span><span class="p">,</span> <span class="s">&quot;Generating JSON failed&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="in-python">
+<h2>5.1.6.1.2.2. In Python<a class="headerlink" href="#in-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>5.1.6.1.2.2.1. Install Dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>First of all, Python is required, as well as pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># for ubuntu</span>
+apt-get install python python-pip
+</pre></div>
+</div>
+<p>As already explained in the section <strong>Service logic</strong> the Service needs
+to act as a webserver, accepting requests from Totem.
+For details please read up in the corresponding section.</p>
+<p>One easy way of providing such a webserver is to use <a class="reference external" href="http://www.tornadoweb.org/en/stable/">Tornado</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install tornado
+</pre></div>
+</div>
+<p>That’s all dependencies we’ll need for a simple service that does basically nothing.
+If you have any further dependencies, they need to be installed in this step as well.
+(Like additional Python frameworks)</p>
+</div>
+<div class="section" id="id2">
+<h3>5.1.6.1.2.2.2. Dockerfile<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose the operating system image to base of, refer to docker.com for available images</span>
+FROM golang:apline
+
+ <span class="c1"># create a folder to contain your service&#39;s files</span>
+RUN mkdir -p /service
+WORKDIR /service
+
+<span class="c1"># add Tornado or Flask or any WSGI compliant wrapper</span>
+RUN pip install tornado
+
+<span class="c1"># add dependencies for helloworld</span>
+RUN pip3 install &lt;....&gt;
+
+<span class="c1"># add all files relevant for running your service to your container</span>
+COPY helloworld.py /service
+COPY LICENSE /service
+
+<span class="c1"># add the configuration file (possibly from a storage URI)</span>
+ARG <span class="nv">conf</span><span class="o">=</span>service.conf
+ADD <span class="nv">$conf</span> /service/service.conf
+
+CMD <span class="o">[</span><span class="s2">&quot;python3&quot;</span>, <span class="s2">&quot;helloworld.py&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="helloworld-py">
+<h3>5.1.6.1.2.2.3. helloworld.py<a class="headerlink" href="#helloworld-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">import</span> <span class="nn">tornado.httpserver</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+
+
+<span class="c1"># reading configuration file</span>
+<span class="n">configPath</span> <span class="o">=</span> <span class="s2">&quot;./service.conf&quot;</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">configPath</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># service logic</span>
+<span class="k">class</span> <span class="nc">Service</span> <span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+      <span class="c1"># Getting object submitteed through URL</span>
+      <span class="nb">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s1">&#39;obj&#39;</span><span class="p">,</span> <span class="n">strip</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World!&quot;</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+      <span class="c1"># return appropriate error codes</span>
+      <span class="k">raise</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="n">code</span><span class="p">,</span> <span class="n">log_message</span><span class="o">=</span><span class="n">custom_msg</span><span class="p">)</span>
+
+<span class="c1"># Generating info-output</span>
+<span class="k">class</span> <span class="nc">Info</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;p&gt;Copyright 2017 Holmes Processing</span>
+<span class="s2">            &lt;p&gt;Description: This is the HelloWorld Service for Totem.</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Application</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">Info</span><span class="p">),</span>
+            <span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/analyze/&#39;</span><span class="p">,</span> <span class="n">Service</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">template_path</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;templates&#39;</span><span class="p">),</span>
+            <span class="n">static_path</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;static&#39;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handlers</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">Application</span><span class="p">())</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The port in the main function needs to be adjusted as necessary and all the
+services work should go either into the Service class or should be called from
+there.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note, that while the Info class writes a string, the Service class must
+write a dictionary. (Totem communicates via JSON!)</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../holmes-totem-dynamic/index.html" class="btn btn-neutral float-right" title="5.2. Holmes Totem Dynamic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="writing_a_service/index.html" class="btn btn-neutral float-left" title="5.1.6.1.1. Writing a Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

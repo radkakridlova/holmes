@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1.5.3. Structure &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="5.1.5.4. Services-Output" href="../output/index.html" />
+    <link rel="prev" title="5.1.5.1. Overview" href="../overview/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">5.1. Holmes Totem</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/index.html">5.1.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">5.1.5. Services</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html">5.1.5.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html#analyser-library">5.1.5.2. Analyser Library</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">5.1.5.3. Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../output/index.html">5.1.5.4. Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../extending/index.html">5.1.6. Extending Holmes Totem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="../../index.html">5.1. Holmes Totem</a> &raquo;</li>
+        
+          <li><a href="../index.html">5.1.5. Services</a> &raquo;</li>
+        
+      <li>5.1.5.3. Structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/rst/components/holmes-totem/services/structure/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="structure">
+<h1>5.1.5.3. Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h1>
+<p>A Holmes Totem Service requires four files. These files are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Scala</span> <span class="pre">File</span></code> : Logic for communication with totem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">File</span></code> : Configuration settings which can be changed as needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Logic</span></code> : Web Server and Logic of the entire service.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> : To containerize and isolate the entire Service</p></li>
+</ul>
+<div class="section" id="configuration-file">
+<h2>5.1.5.3.1. Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>Let’s discuss how Holmes being a distributed system, uses configuration files. Configuration files configure initial settings for the Services. The settings of each of these Services will be stored in a configuration file.</p>
+<div class="section" id="service-configuration-for-holmes-totem">
+<h3>5.1.5.3.1.1. Service Configuration for Holmes Totem<a class="headerlink" href="#service-configuration-for-holmes-totem" title="Permalink to this headline">¶</a></h3>
+<p>The essential settings needed for starting Totem Service are located in configuration file. The file format of Holmes’ configuration files is <cite>.conf</cite>. The format of the text is JSON. A user can change these values to change the behavior of the Service.</p>
+<p>For each Service, The Service author should create a file called <cite>service.conf</cite> where the essential configuration settings for the service like HTTPBinding, Maximum number of objects etc. A type Totem Service configuration file will look like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;httpbinding&quot;</span><span class="p">:</span> <span class="mi">8080</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;&lt;service_name&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;&lt;Key&quot;</span><span class="p">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;&lt;key&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;Value&quot;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All the services by default should run on port 8080 so that docker compose can port forward it to a specified port</p>
+</div>
+</div>
+<div class="section" id="centralised-service-configuration-of-holmes-totem">
+<h3>5.1.5.3.1.2. Centralised Service configuration of Holmes Totem<a class="headerlink" href="#centralised-service-configuration-of-holmes-totem" title="Permalink to this headline">¶</a></h3>
+<p>Holmes system allows an admin to store the Totem Service configurations in a central location and make the system automatically load it from there upon upstart. This is useful when you start up multiple Totem at different locations all working with the same service configuration because copying of all the Services everywhere is quite tedious. Instead, you only have to modify the config file on one machine and upload it and then rebuilt the containers on all the machines. It makes distributed service configuration changes easier.</p>
+<p>Holmes Storage is extended to allow for storing configuration-files (uploaded over HTTP) into its database and query them (also over HTTP). The <a class="reference external" href="https://github.com/HolmesProcessing/Holmes-Totem/blob/master/config/upload_configs.sh/">upload_config.sh</a>. script can be used for uploading configuration to Storage. This script creates environment variables CONFSTORAGE which storage the URI where the configuration files are stored in Storage and configuration files are uploaded to storage. The <a class="reference external" href="https://github.com/HolmesProcessing/Holmes-Totem/blob/master/config/compose_download_conf.sh/">compose_download_conf.sh</a>. script creates the environment variable for each Service like for example CONFSTORAGE_ASNMETA which contains the URI of the configuration file for the Service</p>
+<p>The docker-compose.yml.example therefore takes a look at environment variables pointing to the running instance of Holmes Storage and sets these arguments correctly for each Service. By doing this, whenever the containers are built, the configuration-files are pulled from the server. As you can see in the docker-compose.yml.example, the Services always have a line like this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conf: <span class="si">${</span><span class="nv">CONFSTORAGE_ASNMETA</span><span class="si">}</span>service.conf
+</pre></div>
+</div>
+<p>Usually the environment variable <cite>CONFSTORAGE_ASNMETA</cite> (and all the others as well) are empty, so the Dockerfiles just get the local config version</p>
+<p>Also The following are the modifications done for Dockerfile to accept an argument specifying the location of the file service.conf</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># add the configuration file (possibly from a storage uri)</span>
+ARG <span class="nv">conf</span><span class="o">=</span>service.conf
+ADD <span class="nv">$conf</span> /service/service.conf
+</pre></div>
+</div>
+<p>If docker-compose did not set the conf-argument, it defaults to service.conf, otherwise it is left as it was. Docker’s ADD can also download the file via HTTP.</p>
+</div>
+<div class="section" id="reading-configuration-files-for-services">
+<h3>5.1.5.3.1.3. Reading Configuration files for Services.<a class="headerlink" href="#reading-configuration-files-for-services" title="Permalink to this headline">¶</a></h3>
+<p>Each Service runs independently in an isolated docker container. The configuration settings for the Service has to be provided in <cite>service.conf</cite>. When The service runs, it first looks for the configuration file, in order to read its settings, and applies them to the Service. The configuration file has to be in JSON format.</p>
+</div>
+</div>
+<div class="section" id="service-logic">
+<h2>5.1.5.3.2. Service Logic<a class="headerlink" href="#service-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="communication">
+<h3>5.1.5.3.2.1. Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
+<p>Currently Holmes Totem Services uses REST approach which leverages the HTTP protocol for communication. Totem requests a task to the Service by GET request. The format of url is</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>GET http://address:port/analyze/obj?<span class="o">=</span>sample-id
+</pre></div>
+</div>
+<p>When a request to /analyze route is made, totem looks for the sample in Holmes Storage, if the sample if found, that will be submitted for analysis to the Service and the Service responds with result. If TOTEM could not find the sample in Storage, It simply returns 404 HTTP error. The various endpoints through which a Service can be interacted with is written in API Endpoints</p>
+</div>
+<div class="section" id="api-endpoints">
+<h3>5.1.5.3.2.2. API Endpoints<a class="headerlink" href="#api-endpoints" title="Permalink to this headline">¶</a></h3>
+<p><strong>GET  /</strong></p>
+<p>Returns general documentation information about the Service.
+* Resource URL: <a class="reference external" href="http://address:port/">http://address:port/</a>
+* Parameters: None</p>
+<p><strong>GET /analyse</strong></p>
+<p>Returns the analysis result for a given sample</p>
+<ul class="simple">
+<li><p>Resource URL:   <code class="docutils literal notranslate"><span class="pre">http://address:port/analyze/?obj=sample-id</span></code></p></li>
+<li><p>Parameters: The name of the object to be analysed.</p></li>
+<li><p>Example Request : <code class="docutils literal notranslate"><span class="pre">http://address:port/analyze/?obj=sample-id</span></code></p></li>
+</ul>
+<p>Example Response : For example response, please refer to README.md of any Service</p>
+</div>
+<div class="section" id="scala-file">
+<h3>5.1.5.3.2.3. Scala File<a class="headerlink" href="#scala-file" title="Permalink to this headline">¶</a></h3>
+<p>Holmes-Totem schedules the execution of its Services. Holmes Totem Services are web servers that receive tasks via HTTP request. This file tells Service How to interact with Totem. Totem imports this file in <cite>driver.scala</cite> and schedules the task</p>
+</div>
+<div class="section" id="containerization">
+<h3>5.1.5.3.2.4. Containerization<a class="headerlink" href="#containerization" title="Permalink to this headline">¶</a></h3>
+<p>Since we are trying to analyse malware sample, there could be a risk that analysis could could damage a environment in which Service is running on. To minimize this risk, we should we use sandbox environment.</p>
+<p>For our purpose, we generally need a Virtual Machine. But only need virtualization for the sake of isolation. And we want them to be lightweight. So Docker is ideal for our requirements.
+To pack and isolate the above discussed parts (except Scala file), we need to do containerization. A typical Dockerfile of Holmes Totem Service will look like:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>FROM &lt;base-image&gt;
+
+<span class="c1"># Create folder</span>
+RUN mkdir -p /service
+WORKDIR /service
+
+<span class="c1"># Get Language dependencies</span>
+RUN apk add --no-cache <span class="se">\</span>
+        git <span class="se">\</span>
+        <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/*
+
+<span class="c1"># Get Analyzer Library dependencies</span>
+RUN apk add --no-cache <span class="se">\</span>
+           <span class="o">&amp;&amp;</span> rm -rf /var/cache/apk/*
+
+<span class="c1"># Clean Up</span>
+RUN apk del --purge <span class="se">\</span>
+        git
+
+<span class="c1"># Set environment variables.</span>
+
+<span class="c1"># Installing Analyzer library</span>
+
+<span class="c1"># add Service files to the container.</span>
+COPY LICENSE /service
+COPY README.md /service
+COPY service.<span class="o">{</span>go, py<span class="o">}</span> /service
+
+<span class="c1"># build the service file</span>
+
+<span class="c1"># add the configuration file (possibly from a storage uri)</span>
+ARG <span class="nv">conf</span><span class="o">=</span>service.conf
+ADD <span class="nv">$conf</span> /service/service.conf
+
+<span class="c1"># Run the Service</span>
+CMD <span class="o">[</span><span class="s2">&quot;./service&quot;</span>, <span class="s2">&quot;--config=service.conf&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p><strong>BASE IMAGE:</strong></p>
+<p>The FROM directive in dockerfile is used to mention the base image. To make the container light weight, we use Alpine Linux.</p>
+<p>You need to choose the docker image suitable for the task you are trying to achieve. That is choosing the right container for the language in which in you are writing Service.</p>
+<p>For Go:
+<code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">golang:alpine</span></code></p>
+<p>For Python:
+<code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">python:alpine</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../output/index.html" class="btn btn-neutral float-right" title="5.1.5.4. Services-Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../overview/index.html" class="btn btn-neutral float-left" title="5.1.5.1. Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

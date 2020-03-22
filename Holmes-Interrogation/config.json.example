@@ -1,0 +1,34 @@
+{
+    "Storage": "cassandra",
+    "Database": [{
+        "IP":       "192.168.0.103",
+        "Port":     9042,
+        "User":     "holmes",
+        "Password": "secure123456",
+        "Database": "holmes"
+        }
+    ],
+    "ObjStorage": "S3",
+    "ObjDatabase": [{
+        "IP":       "192.168.0.103",
+        "Port":     4567,
+        "Region":   "US",
+        "Key":      "SECRETKEY",
+        "Secret":   "SECRETSECRET==",
+        "Bucket":   "samples",
+        "DisableSSL":   true
+        }
+    ],
+
+    "LogFile": "",
+    "LogLevel": "debug",
+
+    "AMQP": "amqp://test:test@localhost:5672",
+    "Queue": "holmes_api",
+    "RoutingKey": "*.holmes.api",
+    "PrefetchCount": 10,
+
+    "HTTP": ":8018",
+    "SSLCert": "",
+    "SSLKey": ""
+}

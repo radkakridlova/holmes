@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Components &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.1. Holmes Totem" href="holmes-totem/index.html" />
+    <link rel="prev" title="4. Deployment Strategies" href="../depolyment_strategies/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/index.html">5.1. Holmes Totem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>5. Components</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/rst/components/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="components">
+<h1>5. Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="holmes-totem/index.html">5.1. Holmes Totem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/installation/index.html">5.1.3. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/installation/index.html#dependencies">5.1.3.1. Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/installation/index.html#configuration">5.1.3.2. Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/installation/index.html#running">5.1.3.3. Running</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/services/index.html">5.1.5. Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/services/overview/index.html">5.1.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/services/overview/index.html#analyser-library">5.1.5.2. Analyser Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/services/structure/index.html">5.1.5.3. Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem/services/structure/index.html#configuration-file">5.1.5.3.1. Configuration file</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#service-configuration-for-holmes-totem">5.1.5.3.1.1. Service Configuration for Holmes Totem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#centralised-service-configuration-of-holmes-totem">5.1.5.3.1.2. Centralised Service configuration of Holmes Totem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#reading-configuration-files-for-services">5.1.5.3.1.3. Reading Configuration files for Services.</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem/services/structure/index.html#service-logic">5.1.5.3.2. Service Logic</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#communication">5.1.5.3.2.1. Communication</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#api-endpoints">5.1.5.3.2.2. API Endpoints</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#scala-file">5.1.5.3.2.3. Scala File</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/structure/index.html#containerization">5.1.5.3.2.4. Containerization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/services/output/index.html">5.1.5.4. Output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem/services/output/index.html#http-error-codes">5.1.5.4.1. HTTP Error Codes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/services/output/index.html#json">5.1.5.4.1.1. JSON</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem/extending/index.html">5.1.6. Extending Holmes Totem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem/extending/services/index.html">5.1.6.1. Writing Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html">5.1.6.1.1. Writing a Service</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#overview">5.1.6.1.1.1. Overview</a></li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#details">5.1.6.1.1.2. Details</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#files-to-add">5.1.6.1.1.2.1. Files To Add</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#service-files">Service Files</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#dockerfile">Dockerfile</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#license">LICENSE</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#readme-md">README.md</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#acl-conf">acl.conf</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#service-conf-example">service.conf.example</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#watchdog-scala">watchdog.scala</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#yourservicerest-scala">YourServiceREST.scala</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#service-logic-file">Service-logic file</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#endpoint">Endpoint - ‘/’</a></li>
+<li class="toctree-l9"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#endpoint-analyze-obj">Endpoint ‘/analyze?obj=’</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#reading-configuration-file">Reading configuration file</a></li>
+<li class="toctree-l10"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#http-error-codes">HTTP Error Codes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#files-to-edit">5.1.6.1.1.2.2. Files to Edit</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#config-files">Config Files</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#totem-conf-example">totem.conf.example</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#docker-compose-yml-example">docker-compose.yml.example</a></li>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#compose-download-conf-sh">compose_download_conf.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#scala-files">Scala Files</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="holmes-totem/extending/services/writing_a_service/index.html#driver-scala">driver.scala</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem/extending/services/example_service.html">5.1.6.1.2. Example Service: Hello World</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#in-golang">5.1.6.1.2.1. In Golang</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#install-dependencies">5.1.6.1.2.1.1. Install Dependencies</a></li>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#dockerfile">5.1.6.1.2.1.2. Dockerfile</a></li>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#helloworld-go">5.1.6.1.2.1.3. helloworld.go</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#in-python">5.1.6.1.2.2. In Python</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#id1">5.1.6.1.2.2.1. Install Dependencies</a></li>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#id2">5.1.6.1.2.2.2. Dockerfile</a></li>
+<li class="toctree-l6"><a class="reference internal" href="holmes-totem/extending/services/example_service.html#helloworld-py">5.1.6.1.2.2.3. helloworld.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/totemdynamic.html">5.2.1. What is Totem-Dynamic?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/overview.html">5.2.2. Architecture overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/installation.html">5.2.3. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/installation.html#dependencies">5.2.3.1. Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/installation.html#configuration">5.2.3.2. Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/task.html">5.2.4. Executing Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-totem-dynamic/services/index.html">5.2.5. Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/services/overview/index.html">5.2.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/services/structure/index.html">5.2.5.2. Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/services/configuration/index.html">5.2.5.3. Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/configuration/index.html#configuration-file">5.2.5.3.1. Configuration file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/configuration/index.html#port-selection">5.2.5.3.2. Port Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html">5.2.5.4. API Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint">5.2.5.4.1. Endpoint - /</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint-analyze-obj">5.2.5.4.2. Endpoint - /analyze?obj=</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint-feed-obj">5.2.5.4.3. Endpoint - /feed?obj=</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint-check-taskid">5.2.5.4.4. Endpoint - /check?taskid=</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint-result-taskid">5.2.5.4.5. Endpoint - /result?taskid=</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/apiendpoints/index.html#endpoint-status">5.2.5.4.6. Endpoint - /status</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-totem-dynamic/services/output/index.html">5.2.5.5. Output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/output/index.html#http-error-codes">5.2.5.5.1. HTTP Error Codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-totem-dynamic/services/output/index.html#results">5.2.5.5.2. Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="holmes-storage/index.html">5.3. Holmes Storage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="holmes-storage/overview.html">5.3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-storage/installation.html">5.3.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-storage/installation.html#dependencies">5.3.2.1. Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#supported-databases">5.3.2.1.1. Supported Databases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#object-stores">5.3.2.1.2. Object Stores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#document-stores">5.3.2.1.3. Document Stores</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-storage/installation.html#configuration">5.3.2.2. Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#id1">5.3.2.2.1. RiakCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#fake-s3">5.3.2.2.2. Fake-S3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#id2">5.3.2.2.3. Cassandra</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-storage/installation.html#id3">5.3.2.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-storage/installation.html#best-practices">5.3.2.4. Best Practices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#nodetool">5.3.2.4.1. Nodetool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#nodetool-repair">5.3.2.4.2. Nodetool Repair</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#nodetool-compact">5.3.2.4.3. Nodetool Compact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holmes-storage/installation.html#indexing">5.3.2.4.4. Indexing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="holmes-gateway/index.html">5.4. Holmes Gateway</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/overview.html">5.4.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-gateway/overview.html#highlights">5.4.1.1. Highlights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/installation.html">5.4.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="holmes-gateway/installation.html#dependencies">5.4.2.1. Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-gateway/installation.html#configuration">5.4.2.2. Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holmes-gateway/installation.html#id1">5.4.2.3. Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/routing-services.html">5.4.3. Routing Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/uploading-samples.html">5.4.4. Uploading Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="holmes-gateway/requesting-tasks.html">5.4.5. Requesting Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport/index.html">5.7. Transport</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="holmes-totem/index.html" class="btn btn-neutral float-right" title="5.1. Holmes Totem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../depolyment_strategies/index.html" class="btn btn-neutral float-left" title="4. Deployment Strategies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

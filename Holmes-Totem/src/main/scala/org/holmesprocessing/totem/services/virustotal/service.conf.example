@@ -1,0 +1,11 @@
+{
+	"settings": {
+		"HTTPBinding": ":8080"
+	},
+
+	"virustotal": {
+		"ApiKey": "PutYourKeyHere",
+		"UploadUnknownSamples": false,
+		"RequestTimeout": 60
+	}
+}

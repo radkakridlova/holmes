@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1.5.4. Services-Output &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="5.1.6. Extending Holmes Processing" href="../../extending/index.html" />
+    <link rel="prev" title="5.1.5.3. Structure" href="../structure/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">5.1. Holmes Totem</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../totem/index.html">5.1.1. What is Totem?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../architecture/index.html">5.1.2. Architecture Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../installation/index.html">5.1.3. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tasks/index.html">5.1.4. Executing Tasks</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">5.1.5. Services</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html">5.1.5.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../overview/index.html#analyser-library">5.1.5.2. Analyser Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../structure/index.html">5.1.5.3. Structure</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">5.1.5.4. Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../extending/index.html">5.1.6. Extending Holmes Totem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-gateway/index.html">5.4. Holmes Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="../../index.html">5.1. Holmes Totem</a> &raquo;</li>
+        
+          <li><a href="../index.html">5.1.5. Services</a> &raquo;</li>
+        
+      <li>5.1.5.4. Services-Output</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/rst/components/holmes-totem/services/output/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="services-output">
+<h1>5.1.5.4. Services-Output<a class="headerlink" href="#services-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="http-error-codes">
+<h2>5.1.5.4.1. HTTP Error Codes<a class="headerlink" href="#http-error-codes" title="Permalink to this headline">¶</a></h2>
+<p>Holmes Services attempts to return appropriate HTTP error code when a requested for analysis. This codes will be used by the watchdog to manage results.</p>
+<p>The Error codes table follow this pattern:</p>
+<ul class="simple">
+<li><p>200 (OK) - Service returns analysis results in JSON format.</p></li>
+<li><p>4XX (client errors)</p></li>
+<li><p>5XX (server errors) from Service logic section</p></li>
+<li><p>6XX - Custom Errors</p></li>
+</ul>
+<p>These are general error codes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 30%" />
+<col style="width: 61%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Code</p></td>
+<td><p>Message</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>400</p></td>
+<td><p>Bad request</p></td>
+<td><p>Trying use new endpoint other than <cite>/`and `/analyse</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>401</p></td>
+<td><p>Unauthorised</p></td>
+<td><p>Invalid authentication</p></td>
+</tr>
+<tr class="row-even"><td><p>404</p></td>
+<td><p>Not Found</p></td>
+<td><p>The resource cannot be found.</p></td>
+</tr>
+<tr class="row-odd"><td><p>500</p></td>
+<td><p>Internal Server Error</p></td>
+<td><p>When there is problem in the service logic</p></td>
+</tr>
+<tr class="row-even"><td><p>503</p></td>
+<td><p>Cannot Create JSON</p></td>
+<td><p>JSON encoding error</p></td>
+</tr>
+</tbody>
+</table>
+<p>Apart from these, you can define your own custom error codes. We would suggest doing so starting with 600. (refer to PEMETA service which uses error codes to report error to TOTEM)</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 27%" />
+<col style="width: 63%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Code</p></td>
+<td><p>Message</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>601</p></td>
+<td><p>ALLOCATION FAILURE</p></td>
+<td><p>Cannot allocate memory to LIBPE function</p></td>
+</tr>
+</tbody>
+</table>
+<p>These error codes will notify watchdog about the behavior of the service and based on these error codes, watchdog can manage results more intelligently</p>
+<p>Based on the error codes, the behavior of TOTEM changes which will be discussed in Holmes-TOTEM sections.</p>
+<div class="section" id="json">
+<h3>5.1.5.4.1.1. JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<p>The mime type of the data returned by Totem Service is JSON. The output should be meaningful so that it it becomes easier for the interrogation planner to produce knowledge from the results.</p>
+<p>The output is a typical json (* part of output for returned by pemeta*)</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="nt">&quot;Exports&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="nt">&quot;Resources&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Imports&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                <span class="nt">&quot;DllName&quot;</span><span class="p">:</span> <span class="s2">&quot;SHELL32.dll&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;Functions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;ShellExecuteA&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;FindExecutableA&quot;</span>
+                        <span class="p">]</span>
+                <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the first level keys of the output JSON should be property of the file that the Service is supposed to analysed. If the a particular property is absent in the file, then the value for the key should empty.</p>
+</div>
+<p>In the above snippet, <strong>Imports</strong> is a property of PE file. Imports is a list of DLLs. Each item of the list contains Dll Name and functions present in that DLL</p>
+<p>Also, <strong>Exports</strong> value is an empty struct. This means that the service has analysed Exports, but could not find any results.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../extending/index.html" class="btn btn-neutral float-right" title="5.1.6. Extending Holmes Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../structure/index.html" class="btn btn-neutral float-left" title="5.1.5.3. Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

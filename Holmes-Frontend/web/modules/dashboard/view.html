@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="card panel-holmes">
+			<div class="card-header">Welcome to the Holmes Web Interface!</div>
+			<div class="card-body">
+				<p>This interface is currently in an early alpha stage, please be careful and don't expect everything to work flawlessly all the time.</p>
+				<p>Bugs and feature requests may be reported to the <a href="https://github.com/HolmesProcessing/Holmes-Frontend">GitHub page</a>.</p>
+			</div>
+			<form id="upload-form" enctype="multipart/form-data" action="/upload" method="post">
+				<input type="file" name="uploadFile">
+				<input type="hidden" name="token" value="{{.}}"/>
+				<input type="button" value="upload" onclick="submit_form()"/>
+			</form>
+
+			<form id="upload-form" enctype="multipart/form-data" action="/upload" method="post">
+				<input type="file" name="uploadFile">
+				<input type="hidden" name="token" value="{{.}}"/>
+				<input type="button" value="upload" onclick="submit_form()"/>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="modules/dashboard/view.js"></script>

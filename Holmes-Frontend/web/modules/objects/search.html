@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="card panel-holmes">
+		<div class="card-header">Search objects</div>
+			<div class="card-body">
+				<form class="form-horizontal" id="objects-search-form">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Hash</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="Hash">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Mime</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="MIME">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Limit</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="Limit" value="100">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<div class="checkbox">
+								<label><input type="checkbox" name="Filtering"> Allow filtering</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-holmes">Search</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="card panel-holmes">
+			<div class="card-header">Results</div>
+			<div class="card-body">
+			<button type="button" class="btn btn-holmes btn-block hidden" id="objects-search-analyze" data-toggle="modal" data-target="#analyze-modal">Analyze these samples</button>
+				<div class="table-responsive">
+					<table class="table table-striped" id="objects-search-results">
+						<thead>
+							<tr>
+								<th>SHA256</th>
+								<th>SHA1</th>
+								<th>MD5</th>
+								<th>MIME</th>
+								<th>ObjName</th>
+								<th>Source</th>
+								<th>Submission</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="modules/objects/search.js"></script>

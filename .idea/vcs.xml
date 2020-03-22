@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/Holmes-Frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Holmes-Gateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Holmes-Interrogation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Holmes-Storage" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Holmes-Toolbox" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Holmes-Totem-Dynamic" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,631 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.4.2. Installation &mdash; Holmes Processing 0.5.0 alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.4.3. Routing Services through Different queues" href="routing-services.html" />
+    <link rel="prev" title="5.4.1. Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Holmes Processing
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">2. Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">3. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../depolyment_strategies/index.html">4. Deployment Strategies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">5. Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../holmes-totem/index.html">5.1. Holmes Totem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holmes-totem-dynamic/index.html">5.2. Holmes Totem Dynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holmes-storage/index.html">5.3. Holmes Storage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5.4. Holmes Gateway</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="overview.html">5.4.1. Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.4.2. Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">5.4.2.1. Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">5.4.2.2. Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">5.4.2.3. Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="routing-services.html">5.4.3. Routing Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uploading-samples.html">5.4.4. Uploading Samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requesting-tasks.html">5.4.5. Requesting Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../holmes-interrogation/index.html">5.5. Holmes Interrogation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holmes-presentation/index.html">5.6. Holmes Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transport/index.html">5.7. Transport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolbox/index.html">6. Toolbox and Helper Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">7. FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Holmes Processing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">5. Components</a> &raquo;</li>
+        
+          <li><a href="index.html">5.4. Holmes Gateway</a> &raquo;</li>
+        
+      <li>5.4.2. Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/rst/components/holmes-gateway/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>5.4.2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>5.4.2.1. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Golang</p></li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<h2>5.4.2.2. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Before going into detail about configuration options for Holmes-Gateway, you
+need a good understanding how it works.
+Take a look at the following picture:</p>
+<img alt="../../../_images/holmes-gateway.png" class="align-center" src="../../../_images/holmes-gateway.png" />
+<p>As you can see, users interact with master gateways. When a user submits a task
+to a master gateway, it creates a ticket and sends it to the appropriate slave gateway.
+Which in turn pushes the task on the appropriate AMQP queue.
+The reason for this architecture is that it enables sharing of sources and services
+with other organizations, whilst enabling access control on two layers.</p>
+<p>Each organization:</p>
+<ul class="simple">
+<li><p>has full control which organizations can submit tickets, based on their slave gateway settings</p></li>
+<li><p>has full control which users can submit tasks, based on their master gateway settings</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following configuration options for Holmes-Gateway might have misleading
+names, if you are not aware of their functionality.
+Be sure to read the descriptions carefully and look at the examples.</p>
+</div>
+<p>Holmes-Gateway is configured by the files found in <code class="docutils literal notranslate"><span class="pre">config/</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">gateway-master.conf</span></code> configures master instances of Gateway, whilst the
+<code class="docutils literal notranslate"><span class="pre">gateway.conf</span></code> configures the slave instances.</p>
+<p>Configuration options for a Slave Gateway:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 37%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Config-Key</p></th>
+<th class="head"><p>Value-Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTTP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>HTTP address to listen to.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SourcesKeysPath</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><div class="line-block">
+<div class="line">The path to search for source public keys.</div>
+<div class="line">Keys in here must be in the PEM format and have <code class="docutils literal notranslate"><span class="pre">.pub</span></code> as their file extension.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>TicketKeysPath</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>The Slave Gateway holds the public key associated with the Master Gateways private
+key. It is used to verify that a ticket was really sent by the Master Gateway.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SampleStorageURI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Address of a Holmes-Storage instance, e.g.: <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8016/samples/</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>AllowedTasks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object{String-&gt;List[String]}</span></code></p></td>
+<td><p>JSON object mapping organization identifiers to lists of services that the respective
+organization may execute. Wildcard <code class="docutils literal notranslate"><span class="pre">*</span></code> means all services are allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RabbitURI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Address of the RabbitMQ (or other AMQP broker).</p></td>
+</tr>
+<tr class="row-even"><td><p>RabbitUser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Username to use for AMQP</p></td>
+</tr>
+<tr class="row-odd"><td><p>RabbitPassword</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Password to use for AMQP</p></td>
+</tr>
+<tr class="row-even"><td><p>RabbitDefault</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p></td>
+<td><p>JSON object with the following entries:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Queue</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP queue to use</p></td>
+</tr>
+<tr class="row-even"><td><p>Exchange</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP exchange to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>RoutingKey</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP routing key to use</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><p>Rabbit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object{String-&gt;Object}</span></code></p></td>
+<td><p>Routing settings per service. Key is the service name (uppercase), value a JSON object
+with the same key-value pairs as the RabbitDefault setting</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;HTTP&quot;</span><span class="p">:</span>               <span class="s2">&quot;:8080&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SourcesKeysPath&quot;</span><span class="p">:</span>    <span class="s2">&quot;config/keys/sources/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TicketKeysPath&quot;</span><span class="p">:</span>     <span class="s2">&quot;config/keys/tickets/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SampleStorageURI&quot;</span><span class="p">:</span>   <span class="s2">&quot;http://localhost:8016/samples/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;AllowedTasks&quot;</span><span class="p">:</span>       <span class="p">{</span><span class="nt">&quot;org1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span> <span class="nt">&quot;org2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;PEINFO&quot;</span><span class="p">]},</span>
+  <span class="nt">&quot;RabbitURI&quot;</span><span class="p">:</span>          <span class="s2">&quot;localhost:5672/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;RabbitUser&quot;</span><span class="p">:</span>         <span class="s2">&quot;guest&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;RabbitPassword&quot;</span><span class="p">:</span>     <span class="s2">&quot;guest&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;RabbitDefault&quot;</span><span class="p">:</span>      <span class="p">{</span><span class="nt">&quot;Queue&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_input&quot;</span><span class="p">,</span> <span class="nt">&quot;Exchange&quot;</span><span class="p">:</span> <span class="s2">&quot;totem&quot;</span><span class="p">,</span> <span class="nt">&quot;RoutingKey&quot;</span><span class="p">:</span> <span class="s2">&quot;work.static.totem&quot;</span><span class="p">},</span>
+  <span class="nt">&quot;Rabbit&quot;</span><span class="p">:</span>             <span class="p">{</span><span class="nt">&quot;CUCKOO&quot;</span><span class="p">:</span>     <span class="p">{</span><span class="nt">&quot;Queue&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic_input&quot;</span><span class="p">,</span> <span class="nt">&quot;Exchange&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic&quot;</span><span class="p">,</span> <span class="nt">&quot;RoutingKey&quot;</span><span class="p">:</span> <span class="s2">&quot;work.static.totem&quot;</span><span class="p">},</span>
+                           <span class="nt">&quot;DRAKVUF&quot;</span><span class="p">:</span>    <span class="p">{</span><span class="nt">&quot;Queue&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic_input&quot;</span><span class="p">,</span> <span class="nt">&quot;Exchange&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic&quot;</span><span class="p">,</span> <span class="nt">&quot;RoutingKey&quot;</span><span class="p">:</span> <span class="s2">&quot;work.static.totem&quot;</span><span class="p">},</span>
+                           <span class="nt">&quot;VIRUSTOTAL&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Queue&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic_input&quot;</span><span class="p">,</span> <span class="nt">&quot;Exchange&quot;</span><span class="p">:</span> <span class="s2">&quot;totem_dynamic&quot;</span><span class="p">,</span> <span class="nt">&quot;RoutingKey&quot;</span><span class="p">:</span> <span class="s2">&quot;work.static.totem&quot;</span><span class="p">}}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Configuration options for a Master Gateway:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 37%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Config-Key</p></th>
+<th class="head"><p>Value-Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HTTP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>HTTP address to listen to.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SourcesKeysPath</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><div class="line-block">
+<div class="line">The path to search for source public keys.</div>
+<div class="line">Keys in here must be in the PEM format and have <code class="docutils literal notranslate"><span class="pre">.pub</span></code> as their file extension.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>TicketSignKeyPath</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Path to the private key of the gateway used for signing tickets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>StorageURI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Address of a Holmes-Storage instance, e.g.: <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8016/samples/</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RabbitURI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Address of the RabbitMQ server (or other AMQP broker).</p></td>
+</tr>
+<tr class="row-odd"><td><p>RabbitUser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Username to use for AMQP</p></td>
+</tr>
+<tr class="row-even"><td><p>RabbitPassword</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>Password to use for AMQP</p></td>
+</tr>
+<tr class="row-odd"><td><p>RabbitDefault</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p></td>
+<td><p>JSON object with the following entries:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Queue</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP queue to use</p></td>
+</tr>
+<tr class="row-even"><td><p>Exchange</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP exchange to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>RoutingKey</p></td>
+<td><p>String</p></td>
+<td><p>Name of the AMQP routing key to use</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><p>Rabbit</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object{String-&gt;Object}</span></code></p></td>
+<td><p>Routing settings per service. Key is the service name (uppercase), value a JSON object
+with the same key-value pairs as the RabbitDefault setting</p></td>
+</tr>
+<tr class="row-odd"><td><p>AllowedUsers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List[Object]</span></code></p></td>
+<td><p>JSON list of JSON objects describing users and their logins. Each object is of the
+form:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>String</p></td>
+<td><p>Username</p></td>
+</tr>
+<tr class="row-even"><td><p>Pw</p></td>
+<td><p>String</p></td>
+<td><p>Password-Hash, Hashalgorithm: Blowfish.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ID</p></td>
+<td><p>Integer</p></td>
+<td><p>User-ID, must be unique.</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><p>OwnOrganization</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
+<td><p>The identifier of your own organization.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Organizations</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">List[Object]</span></code></p></td>
+<td><p>JSON list of JSON objects describing an organization. Each object is of the form:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Name</p></td>
+<td><p>String</p></td>
+<td><p>Organizations name</p></td>
+</tr>
+<tr class="row-even"><td><p>Uri</p></td>
+<td><p>String</p></td>
+<td><p>TODO</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sources</p></td>
+<td><p>List[String]</p></td>
+<td><p>Names of sources that this organization may
+access</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-even"><td><p>AutoTasks</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Object{String-&gt;Object{String-&gt;List[String]}}</span></code></p></td>
+<td><p>Maps automatic execution instructions to filetypes. It is basically
+Object[Filetype-&gt;Object[Servicename-&gt;Servicearguments]].</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;HTTP&quot;</span><span class="p">:</span>              <span class="s2">&quot;:8090&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SourcesKeysPath&quot;</span><span class="p">:</span>   <span class="s2">&quot;config/keys/sources/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TicketSignKeyPath&quot;</span><span class="p">:</span> <span class="s2">&quot;config/keys/tickets/org1.priv&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Organizations&quot;</span><span class="p">:</span>     <span class="p">[{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Org1&quot;</span><span class="p">,</span> <span class="nt">&quot;Uri&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8080/task/&quot;</span><span class="p">,</span> <span class="nt">&quot;Sources&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;src1&quot;</span><span class="p">,</span><span class="s2">&quot;src2&quot;</span><span class="p">]},</span>
+                        <span class="p">{</span><span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Org2&quot;</span><span class="p">,</span> <span class="nt">&quot;Uri&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8081/task/&quot;</span><span class="p">,</span> <span class="nt">&quot;Sources&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;src3&quot;</span><span class="p">]}],</span>
+  <span class="nt">&quot;OwnOrganization&quot;</span><span class="p">:</span>   <span class="s2">&quot;Org1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;AllowedUsers&quot;</span><span class="p">:</span>      <span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="nt">&quot;pw&quot;</span><span class="p">:</span><span class="s2">&quot;$2a$06$fLcXyZd6xs60iPj8sBXf8exGfcIMnxZWHH5Eyf1.fwkSnuNq0h6Aa&quot;</span><span class="p">,</span> <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
+                        <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test2&quot;</span><span class="p">,</span> <span class="nt">&quot;pw&quot;</span><span class="p">:</span><span class="s2">&quot;$2a$06$fLcXyZd6xs60iPj8sBXf8exGfcIMnxZWHH5Eyf1.fwkSnuNq0h6Aa&quot;</span><span class="p">,</span> <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}],</span>
+  <span class="nt">&quot;StorageURI&quot;</span><span class="p">:</span>        <span class="s2">&quot;http://localhost:8016/samples/&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;AutoTasks&quot;</span><span class="p">:</span>         <span class="p">{</span><span class="nt">&quot;PE32&quot;</span><span class="p">:{</span><span class="nt">&quot;PEINFO&quot;</span><span class="p">:[],</span><span class="nt">&quot;PEID&quot;</span><span class="p">:[]},</span> <span class="nt">&quot;&quot;</span><span class="p">:{</span><span class="nt">&quot;YARA&quot;</span><span class="p">:[]}},</span>
+  <span class="nt">&quot;CertificateKeyPath&quot;</span><span class="p">:</span><span class="s2">&quot;cert-key.pem&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;CertificatePath&quot;</span><span class="p">:</span>   <span class="s2">&quot;cert.pem&quot;</span>
+  <span class="s2">&quot;MaxUploadSize&quot;</span><span class="p">:</span>     <span class="mi">200</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to the regular config files, Holmes-Gateway requires RSA keys to
+provide its services. The structure explained above requires these for security
+reasons.</p>
+<p>Two rules apply:</p>
+<ul class="simple">
+<li><p>Each sample source is assigned a key pair</p></li>
+<li><p>Each master gateway is assigned a key pair</p></li>
+</ul>
+<p>The procedure when a master gateway receives a tasking request is as follows:</p>
+<ol class="arabic simple">
+<li><p>It checks if the user is allowed</p></li>
+<li><p>It checks if it possesses the public key associated with the requested source</p></li>
+<li><p>It creates a ticket</p></li>
+<li><p>It encrypts the task in the ticket using the public key of the source</p></li>
+<li><p>It signs the ticket using its private key</p></li>
+<li><p>It sends the ticket to the target slave gateway</p></li>
+</ol>
+<p>The receiving slave gateway follows these steps:</p>
+<ol class="arabic simple">
+<li><p>It checks if it possesses the public key of the master gateway</p></li>
+<li><p>It verifies the signature of the request using that public key</p></li>
+<li><p>It checks if it possesses the private key of the source</p></li>
+<li><p>It decrypts the task</p></li>
+<li><p>It relays the task to the transport (AMQP)</p></li>
+</ol>
+<p>As a result, these rules apply:</p>
+<ul class="simple">
+<li><p>A master gateway will reject creation of tickets if the user is not allowed or
+if it misses the appropriate public key (key of the source)</p></li>
+<li><p>A slave gateway will reject tickets that it cannot verify or decrypt</p></li>
+<li><p>Keys must be named accurately
+- source keys must be named exactly as the corresponding source
+- organization keys must be named exactly like the corresponding organization
+- all keys must have the appropriate <code class="docutils literal notranslate"><span class="pre">.priv</span></code> or <code class="docutils literal notranslate"><span class="pre">.pub</span></code> suffix</p></li>
+</ul>
+<p>In summary, a master gateway requires:</p>
+<ul class="simple">
+<li><p>A keypair for signing requests</p></li>
+<li><p>The public keys of all sources it should have access to</p></li>
+</ul>
+<p>A slave gateway requires:</p>
+<ul class="simple">
+<li><p>The public keys of all master gateways that are allowed to send tickets</p></li>
+<li><p>The private keys of all sources it should have access to</p></li>
+</ul>
+<p>All the required keys can be created using e.g. the OpenSSL libraries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only unencrypted RSA keys in the PEM format are supported.</p>
+</div>
+<p>For ease of use, we distribute a small convenience program that creates 2048-bit keys for
+you. After git cloning <code class="docutils literal notranslate"><span class="pre">https://github.com/HolmesProcessing/Holmes-Gateway.git</span></code>
+open the repository folder in a terminal and do:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> config/keys
+go build
+</pre></div>
+</div>
+<p>Now you can use <code class="docutils literal notranslate"><span class="pre">./keys</span> <span class="pre">&lt;path&gt;</span></code> to create said keys.
+For example, to create the master gateway key use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./keys tickets/org_holmesprocessing
+</pre></div>
+</div>
+<p>This will create a keypair (<code class="docutils literal notranslate"><span class="pre">org_holmesprocessing.priv</span></code> and <code class="docutils literal notranslate"><span class="pre">org_holmesprocessing.pub</span></code>)
+in <code class="docutils literal notranslate"><span class="pre">config/keys/tickets</span></code>.</p>
+<p>Similarly, if you execute:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./keys sources/source_holmesprocessing
+</pre></div>
+</div>
+<p>You will get the files <code class="docutils literal notranslate"><span class="pre">source_holmesprocessing.priv</span></code> and <code class="docutils literal notranslate"><span class="pre">source_holmesprocessing.pub</span></code>
+saved to <code class="docutils literal notranslate"><span class="pre">config/keys/sources</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Key changes are recognized at runtime, allowing for removal or addition of
+keys without system downtime.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>5.4.2.3. Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Holmes-Gateway is the endpoint that users interact with when creating tasks for
+Holmes-Totem or Holmes-Totem-Dynamic.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mkdir -p /data/holmes-gateway
+<span class="nb">cd</span> /data/holmes-gateway
+git clone https://github.com/HolmesProcessing/Holmes-Gateway.git .
+go build .
+</pre></div>
+</div>
+<p>The framework requires one Holmes-Gateway running in Master mode and the Master
+Gateway needs an SSL certificate to function. If you don’t have an SSL certificate
+at hand, you can simply create a self-signed one by using the provided shell
+script:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./mkcert.sh
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="routing-services.html" class="btn btn-neutral float-right" title="5.4.3. Routing Services through Different queues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="5.4.1. Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Holmes Processing
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

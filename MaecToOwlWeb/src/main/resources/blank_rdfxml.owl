@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://dp/malware_ontology#"
+     xml:base="http://dp/malware_ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:feimaec="http://feistu/maec/">
+    <owl:Ontology rdf:about="http://dp/malware_ontology">
+        <rdfs:comment>This is ontology created for diploma thesis Automatic decision making system using ontology by Bc. Tibor Galko. Based on previous work by Lukáš Hurtiš in his thesis Ontologický model pre bezpečnostnú doménu.</rdfs:comment>
+        <rdfs:label>Ontology for malware classification</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- urn:absolute:feistu/maec/child_reference -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/child_reference">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="urn:absolute:feistu/maec/parrent_reference"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/contains -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/contains">
+        <owl:inverseOf rdf:resource="urn:absolute:feistu/maec/is_in_directory"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/directory"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/count -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/count">
+        <owl:inverseOf rdf:resource="urn:absolute:feistu/maec/is_counted_by"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/counter"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Malware_Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/do -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/do">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="urn:absolute:feistu/maec/is_done_by"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/process"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/counter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/input -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/input">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Malware_Action"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/instance-process -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/instance-process">
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Malware_Instance"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/is -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/is">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Malware_Instance"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/is_counted_by -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/is_counted_by">
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Malware_Action"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/counter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/is_done_by -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/is_done_by">
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/counter"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/is_in_directory -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/is_in_directory">
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/directory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/output -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/output">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Malware_Action"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/parrent_reference -->
+
+    <owl:ObjectProperty rdf:about="urn:absolute:feistu/maec/parrent_reference">
+        <rdfs:domain rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+        <rdfs:range rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- urn:absolute:feistu/maec/commandLine -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/commandLine">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/key -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/key">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/md5 -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/md5">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/mimeType -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/mimeType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/name -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/path -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/path">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/sha1 -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/sha1">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/sha256 -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/sha256">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/sha512 -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/sha512">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/size -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/size">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/times_executed -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/times_executed">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/value -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/value">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/vendor -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/vendor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute:feistu/maec/version -->
+
+    <owl:DatatypeProperty rdf:about="urn:absolute:feistu/maec/version">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- urn:absolute:feistu/maec/Maec_Top_Level_Object -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/Maec_Top_Level_Object"/>
+    
+
+
+    <!-- urn:absolute:feistu/maec/Malware_Action -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/Malware_Action">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Maec_Top_Level_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/Malware_Instance -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/Malware_Instance">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Maec_Top_Level_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/Observable_Object -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/Observable_Object"/>
+    
+
+
+    <!-- urn:absolute:feistu/maec/artifact -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/artifact">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/autonomous-system -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/autonomous-system">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/counter -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/counter">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/directory -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/directory">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/domain-name -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/domain-name">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/email-addr -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/email-addr">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/email-message -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/email-message">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/file -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/file">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/ipv4-addr -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/ipv4-addr">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/ipv6-addr -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/ipv6-addr">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/mac-addr -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/mac-addr">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/mutex -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/mutex">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/network-traffic -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/network-traffic">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/process -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/process">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/software -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/software">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/url -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/url">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/user-account -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/user-account">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/windows-registry-key -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/windows-registry-key">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute:feistu/maec/x509-certificate -->
+
+    <owl:Class rdf:about="urn:absolute:feistu/maec/x509-certificate">
+        <rdfs:subClassOf rdf:resource="urn:absolute:feistu/maec/Observable_Object"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
