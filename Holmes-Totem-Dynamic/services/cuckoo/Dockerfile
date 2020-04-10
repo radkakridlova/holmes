@@ -17,4 +17,4 @@ ADD . /go/src/cuckoo/
 RUN go build -o bin
 
 # add the configuration file (possibly from a storage uri)
-CMD "/go/src/cuckoo/bin" 
+CMD "/go/src/cuckoo/bin"

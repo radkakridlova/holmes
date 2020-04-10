@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"holmes-dp/Holmes-Interrogation/context"
+	"holmes-dp/Holmes-Frontend/interrogation/context"
 
 	"github.com/gocql/gocql"
 )

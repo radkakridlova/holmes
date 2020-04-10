@@ -42,7 +42,7 @@ function get_all_objects(){
                         $('#objects-get-form p[name="submissions"]').append('<a href="#module=submissions&action=get&id='+v+'">'+v+'</a>');
                     });*/
                 })
-
+                // TODO ANALYZOVANIE OBJEKTOV
                 /*analyze_modal_build([[r.result.Object.sha256, r.result.Object.obj_name, r.result.Object.source]]);*/
             }
         },
@@ -61,7 +61,7 @@ function download_object(sha256){
             parameters: {"sha256":sha256}
         }),
         success: function(r) {
-            if(r.error != ""){
+            if(r.error !== ""){
                 $.growl.warning({ title: "An error occured!", message: r.error, size: 'large' });
             } else {
                 var link = document.createElement("a");

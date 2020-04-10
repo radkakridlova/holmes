@@ -230,6 +230,8 @@ func HTTPResults(w http.ResponseWriter, r *http.Request) {
 		// behavior
 		resStructs = append(resStructs, processReportBehavior(report.Behavior)...)
 
+		resp.Results = resStructs
+
 		// dropped files
 		/*
 			// support for dropped files will be added later
@@ -254,16 +256,23 @@ func HTTPResults(w http.ResponseWriter, r *http.Request) {
 		///
 
 		// build result
-		resStructs := []*CrtResult{}
+//		resStructs := &CrtResult{"report", "data", report}
+//		#resStructs.Data = report
 
 		// info
-		resStructs = processReportInfo(report.Info)
+//		resStructs = append(resStructs, &CrtResult{"id", report.Id, nil,})
+
+		//resStructs = append(resStructs, processMAECObjects(report.MAECObjects)...)
+
+		resp.Results = report
+		
+//		resStructs = append(resStructs,
 
 		// signatures
-		resStructs = append(resStructs, processReportSignatures(report.Signatures)...)
+		//resStructs = append(resStructs, processReportSignatures(report.Signatures)...)
 
 		// behavior
-		resStructs = append(resStructs, processReportBehavior(report.Behavior)...)
+		//resStructs = append(resStructs, processReportBehavior(report.Behavior)...)
 
 		// dropped files
 		/*

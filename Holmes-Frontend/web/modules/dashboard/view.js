@@ -9,7 +9,7 @@ $("form#upload-form").submit(function(e) {
 	    type: 'POST',
 	    data: formData,
 	    success: function (data) {
-		console.log(data);
+			//console.log(data);
 	    },
 	    cache: false,
 	    contentType: false,
@@ -18,6 +18,6 @@ $("form#upload-form").submit(function(e) {
 });
 
 function submit_form(){
-    console.log("submit_form called");
+    //console.log("submit_form called");
     $("form#upload-form").submit();
 }

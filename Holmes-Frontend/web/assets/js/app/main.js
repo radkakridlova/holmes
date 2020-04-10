@@ -48,6 +48,8 @@ function load_config(){
 		current_env.set('services', data['services']);
 		current_env.set('gateway_url', data['gateway_url']);
 		current_env.set('hide_fields', data['hide_fields']);
+		current_env.set('username', data['username']);
+		current_env.set('password', data['password']);
 	});
 }
 

@@ -1,4 +1,4 @@
-package main
+package push_to_holmes
 
 import (
 	"bufio"
@@ -82,6 +82,7 @@ var (
 	wg         sync.WaitGroup
 	c          chan string
 	logC       chan string
+	errorStatus int
 
 	conf *config
 
@@ -98,6 +99,9 @@ func worker() {
 		debug.Printf("Working on %s\n", sample)
 		name, retCode := copySample(sample)
 		logC <- name + "\t" + strconv.Itoa(retCode) + "\n"
+		if retCode != 200 {
+			errorStatus = retCode
+		}
 	}
 }
 
@@ -201,8 +205,9 @@ config
 
 	flag.Parse()
 */
-func push_to_holmes() {
+func PushToHolmes() int {
 	log.Println("Preparing...")
+	errorStatus = 200
 
 	var confPath string
 	confPath, _ = filepath.Abs(filepath.Dir(os.Args[0]))
@@ -243,16 +248,16 @@ func push_to_holmes() {
 	client = &http.Client{Transport: tr}
 
 	if conf.FtpServer != "" {
-		c, err := ftp.Dial(conf.FtpServer, ftp.DialWithTimeout(5*time.Second)) //"192.168.0.103:21"
+		ftpConn, err := ftp.Dial(conf.FtpServer, ftp.DialWithTimeout(5*time.Second)) //"192.168.0.103:21"
 		if err != nil {
 			log.Fatal(err.Error())
 		}
 
-		err = c.Login(conf.FtpUsername, conf.FtpPassword)
+		err = ftpConn.Login(conf.FtpUsername, conf.FtpPassword)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
-		err = c.ChangeDir(conf.FtpDirectory) // directory from root of server e.g. samples
+		err = ftpConn.ChangeDir(conf.FtpDirectory) // directory from root of server e.g. samples
 		if err != nil {
 			fmt.Println(err.Error())
 		}
@@ -265,12 +270,16 @@ func push_to_holmes() {
 		main_object()
 	}
 
-	if err := ftpConn.Quit(); err != nil {
-		log.Fatal(err)
-	}
+	//if ftpConn != nil {
+	//	if err := ftpConn.Quit(); err != nil {
+	//		log.Fatal(err)
+	//	}
+	//}
 
 	info.Println("==================")
 	info.Println("Finished execution")
+
+	return errorStatus
 }
 
 func main_tasking() {
@@ -371,8 +380,12 @@ func main_object() {
 
 	if conf.LocalUpload {
 		if conf.Directory != "" {
-			magicmime.Open(magicmime.MAGIC_MIME_TYPE | magicmime.MAGIC_SYMLINK | magicmime.MAGIC_ERROR)
-			defer magicmime.Close()
+			err := magicmime.Open(magicmime.MAGIC_MIME_TYPE | magicmime.MAGIC_SYMLINK | magicmime.MAGIC_ERROR)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				defer magicmime.Close()
+			}
 
 			fullPath, err := filepath.Abs(conf.Directory)
 
@@ -392,8 +405,12 @@ func main_object() {
 	// Load file from ftp server
 	if conf.FtpServer != "" {
 		if conf.FtpDirectory != "" {
-			magicmime.Open(magicmime.MAGIC_MIME_TYPE | magicmime.MAGIC_SYMLINK | magicmime.MAGIC_ERROR)
-			defer magicmime.Close()
+			err := magicmime.Open(magicmime.MAGIC_MIME_TYPE | magicmime.MAGIC_SYMLINK | magicmime.MAGIC_ERROR)
+			if err != nil {
+				fmt.Println(err)
+			} else {
+				defer magicmime.Close()
+			}
 
 			entries, err := ftpConn.List("")
 			if err != nil {
@@ -494,12 +511,12 @@ func walkFnFtp(path string, fi ftp.EntryType) error {
 				panic(err)
 			}
 
-			err = ioutil.WriteFile("downloads/" + path, buf, 0644)
+			err = ioutil.WriteFile("push_to_holmes/downloads/" + path, buf, 0644)
 			if err != nil {
 				warning.Println(err.Error())
 			}
 
-			c <- "downloads/" + path
+			c <- "push_to_holmes/downloads/" + path
 			return nil
 		} else {
 			info.Println("Skipping " + path + " (" + mimetype + ")")
@@ -580,15 +597,14 @@ func buildRequest(uri string, params url.Values, hash string) (*http.Request, er
 		if err != nil {
 			return nil, err
 		}
-		defer SafeResponseClose(resp)
-
 		// return if file does not exist
 		if resp.StatusCode != 200 {
 			return nil, errors.New("Couldn't download file")
 		}
-
 		r = resp.Body
 		// For files coming from CRITs: TODO: find real name somehow
+
+		defer SafeResponseClose(resp)
 	}
 	// build Holmes-Storage PUT request
 	body := &bytes.Buffer{}

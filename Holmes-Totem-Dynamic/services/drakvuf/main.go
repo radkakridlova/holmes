@@ -77,11 +77,11 @@ func main() {
 		panic(err.Error())
 	}
 
-	cuckoo, err := drakvuf.New(ctx.Config.DrakvufURL, ctx.Config.VerifySSL)
+	drakvuf, err := drakvuf.New(ctx.Config.DrakvufURL, ctx.Config.VerifySSL)
 	if err != nil {
 		panic(err.Error())
 	}
-	ctx.Drakvuf = cuckoo
+	ctx.Drakvuf = drakvuf
 
 	// prepare routing
 	r := http.NewServeMux()

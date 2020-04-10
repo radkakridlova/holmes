@@ -13,10 +13,10 @@ import (
 )
 
 type Cuckoo struct {
-	URL    	string
-	APIkey	string
-	MAEC	bool
-	Client 	*http.Client
+	URL    string
+	APIkey string
+	MAEC   bool
+	Client *http.Client
 }
 
 type Status struct {
@@ -130,11 +130,11 @@ type FilesViewSample struct {
 
 // Structs for MAEC report
 type TasksReportMAEC struct {
-	Id					string						`json:"id"`
-	Type				string						`json:"type"`
-	SchemaVersion   	string    					`json:"schema_version"`
-	MAECObjects			[]*TasksMAECObjects			`json:"maec_objects"`
-	ObservableObjects 	map[string]interface{} 	`json:"observable_objects"`
+	Id                string                 `json:"id"`
+	Type              string                 `json:"type"`
+	SchemaVersion     string                 `json:"schema_version"`
+	MAECObjects       []*TasksMAECObjects    `json:"maec_objects"`
+	ObservableObjects map[string]interface{} `json:"observable_objects"`
 }
 
 type TasksMAECObjects struct {
@@ -176,9 +176,8 @@ type TasksTriggeredSignatures struct {
 }
 
 type TasksStaticFeatures struct {
-	Strings []string `json:"instance_object_refs"`
+	Strings []string `json:"strings"`
 }
-
 
 func New(URL string, APIkey string, verifySSL bool) (*Cuckoo, error) {
 	tr := &http.Transport{}
@@ -243,7 +242,7 @@ func (c *Cuckoo) NewTask(fileBytes []byte, fileName string, params map[string]st
 		return 0, err
 	}
 	request.Header.Add("Content-Type", writer.FormDataContentType())
-	request.Header.Add("Authorization","Bearer " + c.APIkey)
+	request.Header.Add("Authorization", "Bearer "+c.APIkey)
 
 	// perform request
 	resp, err := c.Client.Do(request)
@@ -385,11 +384,11 @@ func (c *Cuckoo) DeleteTask(id int) error {
 // the important data from the request and makes sure
 // everyting is closed properly.
 func (c *Cuckoo) fastGet(url string, structPointer interface{}) ([]byte, int, error) {
-	request, err := http.NewRequest("GET", c.URL + url, nil)
+	request, err := http.NewRequest("GET", c.URL+url, nil)
 	if err != nil {
-	    return nil, 0, err
+		return nil, 0, err
 	}
-	request.Header.Add("Authorization","Bearer " + c.APIkey)
+	request.Header.Add("Authorization", "Bearer "+c.APIkey)
 
 	resp, err := c.Client.Do(request)
 	if err != nil {

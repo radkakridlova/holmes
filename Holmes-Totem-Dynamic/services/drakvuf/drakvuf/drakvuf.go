@@ -779,7 +779,7 @@ type Wmimon struct {
 }
 
 
-func New(URL string, APIkey string, verifySSL bool) (*Drakvuf, error) {
+func New(URL string, verifySSL bool) (*Drakvuf, error) {
 	tr := &http.Transport{}
 	if !verifySSL {
 		tr = &http.Transport{
@@ -795,7 +795,7 @@ func New(URL string, APIkey string, verifySSL bool) (*Drakvuf, error) {
 
 func (c *Drakvuf) GetStatus() (*Status, error) {
 	r := &Status{}
-	resp, status, err := c.fastGet("/cuckoo/status", r)
+	resp, status, err := c.fastGet("/list", r)
 	if err != nil || status != 200 {
 		if err == nil {
 			err = errors.New("no-200 ret")
@@ -836,7 +836,7 @@ func (c *Drakvuf) NewTask(fileBytes []byte, fileName string, params map[string]s
 	}
 
 	// finalize request
-	request, err := http.NewRequest("POST", c.URL+"/tasks/create/file", body)
+	request, err := http.NewRequest("POST", c.URL+"/upload", body)
 	if err != nil {
 		return 0, err
 	}
@@ -869,7 +869,7 @@ func (c *Drakvuf) NewTask(fileBytes []byte, fileName string, params map[string]s
 
 func (c *Drakvuf) TaskStatus(id int) (string, error) {
 	r := &TasksViewResp{}
-	resp, status, err := c.fastGet(fmt.Sprintf("/tasks/view/%d", id), r)
+	resp, status, err := c.fastGet(fmt.Sprintf("/status/%d", id), r)
 	if err != nil || status != 200 {
 		if err == nil {
 			err = errors.New("no-200 ret")
@@ -891,7 +891,8 @@ func (c *Drakvuf) TaskStatus(id int) (string, error) {
 
 func (c *Drakvuf) TaskReport(id int) (*TasksReport, error) {
 	r := &TasksReport{}
-	resp, status, err := c.fastGet(fmt.Sprintf("/tasks/report/%d", id), r)
+	// @app.route("/logs/<task_uid>/<log_type>")
+	resp, status, err := c.fastGet(fmt.Sprintf("/logs/%d/drakvuf", id), r)
 	if err != nil || status != 200 {
 		if err == nil {
 			err = errors.New("no-200 ret")
@@ -907,6 +908,7 @@ func (c *Drakvuf) TaskReport(id int) (*TasksReport, error) {
 	return r, nil
 }
 
+// not implemented
 func (c *Drakvuf) GetFileInfoByMD5(md5 string) (*FilesViewSample, error) {
 	r := &FilesView{}
 	resp, status, err := c.fastGet("/files/view/md5/"+md5, r)
@@ -925,6 +927,7 @@ func (c *Drakvuf) GetFileInfoByMD5(md5 string) (*FilesViewSample, error) {
 	return r.Sample, nil
 }
 
+// not implemented
 func (c *Drakvuf) GetFileInfoByID(id string) (*FilesViewSample, error) {
 	r := &FilesView{}
 	resp, status, err := c.fastGet("/files/view/id/"+id, r)
@@ -943,6 +946,7 @@ func (c *Drakvuf) GetFileInfoByID(id string) (*FilesViewSample, error) {
 	return r.Sample, nil
 }
 
+// Not implemented
 func (c *Drakvuf) DeleteTask(id int) error {
 	resp, status, err := c.fastGet(fmt.Sprintf("/tasks/delete/%d", id), nil)
 	if err != nil {

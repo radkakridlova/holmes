@@ -2,6 +2,8 @@
 	"api_url": "http://localhost:8018/api/",
 	"debug": true,
 	"services": ["ASNMETA", "CUCKOO", "DNSMETA", "GOGADGET", "OBJDUMP", "PEID", "PEINFO", "VIRUSTOTAL", "YARA", "ZIPMETA"],
-	"gateway_url": "http://localhost:8090/task/",
-	"hide_fields": false
+	"gateway_url": "http://192.168.0.101:8090/task/",
+	"hide_fields": false,
+	"username": "test",
+	"password": "test"
 }

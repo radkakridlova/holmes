@@ -28,7 +28,7 @@ function get_submissions(){
 						if (k === "id") {
 							id = v; // this is here so we can view detail of submission
 						}
-						if (k === "sha256" || k === "user_id" || k === "source" || k === "date_time" || k === "obj_name") {
+						if (k === "sha256" || k === "date_time" || k === "obj_name") {
 							if (k === "sha256") {
 								sha256 = v;
 							}

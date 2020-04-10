@@ -157,6 +157,127 @@ func processReportBehavior(behavior *cuckoo.TasksReportBehavior) []*CrtResult {
 	return res
 }
 
+// Process MAECobjects from report
+func processMAECObjects(maecObjects []*cuckoo.TasksMAECObjects) []*CrtResult {
+	if maecObjects == nil {
+		return []*CrtResult{}
+	}
+
+	l := len(maecObjects)
+	res := make([]*CrtResult, l, l)
+	resMap := make(map[string]interface{})
+
+	for k, obj := range maecObjects {
+		resMap["id"] = obj.Id
+		resMap["type"] = obj.Type
+		resMap["name"] = obj.Name
+		resMap["timestamp"] = obj.Timestamp
+		resMap["output_object_refs"] = obj.OutputObjectRefs
+//		resMap["input_object_refs"] = obj.InputObjectRefs
+//		resMap["instance_object_refs"] = obj.InstanceObjectRefs
+//		resMap["strings"] = obj.StaticFeatures.Strings
+
+		resMap["static_features"] = obj.StaticFeatures
+//		resMap["analysis_metadata"] = obj.AnalysisMetadata
+		resMap["triggered_signatures"] = obj.TriggeredSignatures
+
+/*		if obj.OutputObjectRefs != nil {
+			for _, b := range obj.OutputObjectRefs {
+				res = append(res, &CrtResult{
+					"output_object_ref",
+					b,
+					nil,
+				})
+			}		
+		}
+
+		if obj.InputObjectRefs != nil {
+			for _, b := range obj.InputObjectRefs {
+				res = append(res, &CrtResult{
+					"input_object_ref",
+					b,
+					nil,
+				})
+			}		
+		}
+
+		if obj.InstanceObjectRefs != nil {
+			for _, b := range obj.InstanceObjectRefs {
+				res = append(res, &CrtResult{
+					"instance_object_ref",
+					b,
+					nil,
+				})
+			}		
+		}
+
+		if obj.StaticFeatures != nil && obj.String != nil {
+			for _, b := range obj.StaticFeatures.Strings {
+				res = append(res, &CrtResult{
+					"string",
+					b,
+					nil,
+				})
+			}		
+		}
+
+		if obj.DynamicFeatures != nil && obj.DynamicFeatures.ProcessTree != nil {
+			resMap2 := make(map[string]interface{})
+
+			for _, b := range obj.DynamicFeatures.ProcessTree {
+				resMap2["ordinal_position"] = b.OrdinalPosition
+				resMap2["process_ref"] = b.ProcessRef
+				resMap2["initiated_action_refs"] = b.InitiatedActionRefs
+
+		
+				res = append(res, &CrtResult{
+					"process",
+					b.ProcessRef,
+					resMap2,
+				})
+			}		
+		}*/
+
+		res[k] = &CrtResult{
+			"maec_object",
+			obj.Id,
+			resMap,
+		}
+	}	
+//TODO
+/*
+type TasksDynamicFeatures struct {
+	ProcessTree []*TasksProcessTree `json:"process_tree"`
+}
+
+type TasksProcessTree struct {
+	OrdinalPosition     string   `json:"ordinal_position"`
+	ProcessRef          string   `json:"process_ref"`
+	InitiatedActionRefs []string `json:"initiated_action_refs"`
+}
+
+type TasksAnalysisMetadata struct {
+	IsAutomated  string   `json:"is_automated"`
+	AnalysisType string   `json:"analysis_type"`
+	VmRef        string   `json:"vm_ref"`
+	ToolRefs     []string `json:"tool_refs"`
+	Description  string   `json:"description"`
+}
+
+type TasksTriggeredSignatures struct {
+	SignatureType string `json:"signature_type"`
+	Description   string `json:"description"`
+	Severity      string `json:"severity"`
+}
+
+type TasksStaticFeatures struct {
+	Strings []string `json:"strings"`
+}
+*/
+
+	return res	
+}
+
 /*
 // support for dropped files will be added later
 func processDropped(m *lib.CheckResultsReq, cuckoo *lib.CuckooConn, crits *lib.CritsConn, upload bool) ([]*CrtResult, error) {

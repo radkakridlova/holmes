@@ -4,21 +4,26 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	router2 "holmes-dp/Holmes-Frontend/interrogation/router"
+	"log"
 	"net/http"
 
-	"holmes-dp/Holmes-Interrogation/context"
-	"holmes-dp/Holmes-Interrogation/router"
+	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes-dp/Holmes-Frontend/push_to_holmes"
 )
 
 var (
 	ctx *context.Ctx
 )
 
-func Start(c *context.Ctx, httpBinding, SSLCert, SSLKey string) {
+func Start(c *context.Ctx, httpBinding, serverRoot, SSLCert, SSLKey string) {
 	ctx = c
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", httpGenericRequestHandler)
+	fs := http.FileServer(http.Dir(serverRoot))
+	mux.Handle("/", http.StripPrefix("/", fs))
+	mux.HandleFunc("/api/", httpGenericRequestHandler)
+	mux.HandleFunc("/upload", push_to_holmes.UploadFile)
 
 	if SSLCert != "" && SSLKey != "" {
 
@@ -41,13 +46,14 @@ func Start(c *context.Ctx, httpBinding, SSLCert, SSLKey string) {
 			TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),
 		}
 
-		srv.ListenAndServeTLS(SSLCert, SSLKey)
-
+		log.Fatal(srv.ListenAndServeTLS(SSLCert, SSLKey))
 	} else {
+		srv := &http.Server{
+			Addr:         httpBinding,
+			Handler:      mux,
+		}
 
-		http.HandleFunc("/", httpGenericRequestHandler)
-		http.ListenAndServe(httpBinding, nil)
-
+		log.Fatal(srv.ListenAndServe())
 	}
 }
 
@@ -61,6 +67,8 @@ func httpGenericRequestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println("Handling interrogation request")
+
 	decoder := json.NewDecoder(r.Body)
 	var cReq context.Request
 	err := decoder.Decode(&cReq)
@@ -71,7 +79,7 @@ func httpGenericRequestHandler(w http.ResponseWriter, r *http.Request) {
 
 	ctx.Debug.Printf("Request: %+v\n", cReq)
 
-	j, err := json.Marshal(router.Route(ctx, &cReq))
+	j, err := json.Marshal(router2.Route(ctx, &cReq))
 	if err != nil {
 		err500(w, r, err)
 		return

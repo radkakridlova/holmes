@@ -21,24 +21,15 @@ function analyze_modal_build(obj_list){
 		});
 
 		analyze_samples(
-			$('#analyze-modal-username').val(),
-			$('#analyze-modal-password').val(),
 			obj_list,
-			tasks,
-			$('#analyze-modal-tags').val().split(","),
-			$('#analyze-modal-comment').val()
+			tasks
 		);
 	});
 }
 
-function analyze_samples(username, password, obj_list, tasks, tags, comment){
+function analyze_samples(obj_list, tasks){
 	if(current_env.get('gateway_url') === ""){
 		$.growl.warning({ title: "Warning", message: "No gateway set in your config file!" });
-		return;
-	}
-
-	if(username === "" || password === ""){
-		$.growl.warning({ title: "Warning", message: "Please supply username and password!" });
 		return;
 	}
 
@@ -59,10 +50,10 @@ function analyze_samples(username, password, obj_list, tasks, tags, comment){
 			"secondaryURI": "",
 			"filename": v[1][0], //take only the first known name
 			"tasks": tasks_prepared,
-			"tags": tags,
-			"comment": comment,
+			"tags": "test",
+			"comment": "test",
 			"download": true,
-			"source": v[2][0], //TODO: allow the user to specify the source
+			"source": "src1", //TODO: allow the user to specify the source
 			"attempts": 0
 		});
 	});
@@ -70,7 +61,7 @@ function analyze_samples(username, password, obj_list, tasks, tags, comment){
 	$.ajax({
 		type: "POST",
 		url:  current_env.get('gateway_url'),
-		data: "task="+JSON.stringify(task_list)+"&username="+username+"&password="+password,
+		data: "task="+JSON.stringify(task_list)+"&username="+current_env.get('username')+"&password="+current_env.get('password'),
 		success: function(result,status,xhr) {
 			$.growl.notice({ title: "Done", message: "All tasks have been send to the gateway.<br/>" + result});
 		},

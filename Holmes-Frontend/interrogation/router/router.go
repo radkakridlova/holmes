@@ -2,11 +2,10 @@ package router
 
 import (
 	"encoding/json"
-
-	"holmes-dp/Holmes-Interrogation/context"
-	"holmes-dp/Holmes-Interrogation/modules/objects"
-	"holmes-dp/Holmes-Interrogation/modules/results"
-	"holmes-dp/Holmes-Interrogation/modules/submissions"
+	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes-dp/Holmes-Frontend/interrogation/modules/objects"
+	"holmes-dp/Holmes-Frontend/interrogation/modules/results"
+	"holmes-dp/Holmes-Frontend/interrogation/modules/submissions"
 )
 
 var (

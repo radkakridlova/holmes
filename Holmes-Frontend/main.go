@@ -1,98 +1,160 @@
 package main
 
 import (
+	"encoding/json"
+	"errors"
+	"flag"
 	"fmt"
-	"io"
-	"log"
-	"mime/multipart"
-	"net/http"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/gocql/gocql"
+	"path/filepath"
+
+	//"net/http"
 	"os"
+	"strconv"
+	"time"
+
+	//"github.com/HolmesProcessing/Holmes-Interrogation/context"
+	//"github.com/HolmesProcessing/Holmes-Interrogation/listners/http"
+	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes-dp/Holmes-Frontend/interrogation/listners/http"
 )
 
+type DBConnector struct {
+	IP       string
+	Port     int
+	User     string
+	Password string
+	Database string
+}
+
+type ObjDBConnector struct {
+	IP         string
+	Port       int
+	Region     string
+	Key        string
+	Secret     string
+	Bucket     string
+	DisableSSL bool
+}
+
+type InterrogationConfig struct {
+	Storage     string
+	Database    []*DBConnector
+	ObjStorage  string
+	ObjDatabase []*ObjDBConnector
+	LogFile     string
+	LogLevel    string
+
+	AMQP          string
+	Queue         string
+	RoutingKey    string
+	PrefetchCount int
+
+	HTTP    string
+	ServerRoot string
+	SSLCert string
+	SSLKey  string
+}
+
 func main() {
-	serverPort := ":8017"
-	serverRoot := "web"
+	var (
+		confPath string
+		err      error
+	)
 
-	mux := http.NewServeMux()
+	ctx := &context.Ctx{}
+	ctx.SetLogging("", "debug")
 
-	fs := http.FileServer(http.Dir(serverRoot))
-	mux.Handle("/", http.StripPrefix("/", fs))
-	mux.HandleFunc("/upload", uploadFile)
+	// load config
+	flag.StringVar(&confPath, "config", "", "Path to the config file")
+	flag.Parse()
 
-	/*cfg := &tls.Config{
-		MinVersion:               tls.VersionTLS12,
-		CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
-		PreferServerCipherSuites: true,
-		CipherSuites: []uint16{
-			tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-			tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
-			tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
-			tls.TLS_RSA_WITH_AES_256_CBC_SHA,
-		},
-	}*/
-
-	srv := &http.Server{
-		Addr:         serverPort,
-		Handler:      mux,
-		/*TLSConfig:    cfg,
-		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),*/
+	if confPath == "" {
+		confPath, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+		confPath += "config/interrogation_config.json"
 	}
 
+	conf := &InterrogationConfig{}
+	cfile, _ := os.Open(confPath)
+	if err = json.NewDecoder(cfile).Decode(&conf); err != nil {
+		ctx.Warning.Panicln("Couldn't decode config file without errors!", err.Error())
+	}
 
-	fmt.Println("Starting HTTP server on port " + serverPort + " with root dir " + serverRoot)
-	log.Fatal(srv.ListenAndServe())
+	// reload logging with parameters from config
+	ctx.SetLogging(conf.LogFile, conf.LogLevel)
+
+	// connect to Cassandra
+	ctx.C, err = initCassandra(conf.Database)
+	if err != nil {
+		ctx.Warning.Panicln("Cassandra initialization failed!", err.Error())
+	}
+	ctx.Info.Println("Connected to Cassandra:", conf.Storage)
+
+	// connect to S3
+	ctx.S3, ctx.Bucket, err = initS3(conf.ObjDatabase)
+	if err != nil {
+		ctx.Warning.Panicln("S3 initialization failed!", err.Error())
+	}
+	ctx.Info.Println("Connected to S3:", conf.ObjStorage)
+
+	// start HTTP server
+	fmt.Println("Starting HTTP server on port " + conf.HTTP + " with root dir " + conf.ServerRoot)
+	http.Start(ctx, conf.HTTP, conf.ServerRoot, conf.SSLCert, conf.SSLKey)
+
+	// start to listen via AMQP
+	//initAMQP(conf.AMQP, conf.Queue, conf.RoutingKey, conf.PrefetchCount)
 }
 
-func uploadFile(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Redirect(w, r, "/", http.StatusSeeOther) // vrati spat na root stranku ak request nieje POST
-		return
+func initCassandra(c []*DBConnector) (*gocql.Session, error) {
+	if len(c) < 1 {
+		return nil, errors.New("Supply at least one node to connect to!")
 	}
 
-	file, handle, err := r.FormFile("uploadFile")
-	if err != nil {
-		fmt.Println(w, "%v", err)
-		return
+	connStrings := make([]string, len(c))
+	for i, elem := range c {
+		connStrings[i] = fmt.Sprintf("%s:%d", elem.IP, elem.Port)
 	}
-	defer file.Close()
 
-	err = saveFile(w, file, handle) // Ulozenie suboru
+	if c[0].Database == "" {
+		return nil, errors.New("Please supply a database/keyspace to use!")
+	}
 
-	/*if err != nil {
-		http.Redirect(w, r, "/", http.StatusCreated) // vrati spat na root stranku ak request nieje POST
-	} else {
-		http.Redirect(w, r, "/", http.StatusInternalServerError) // vrati spat na root stranku ak request nieje POST
-	}*/
-
-	/*mimeType := handle.Header.Get("Content-Type")
-	switch mimeType {
-	case "image/jpeg":
-		saveFile(w, file, handle)
-	case "image/png":
-		saveFile(w, file, handle)
-	default:
-		jsonResponse(w, http.StatusBadRequest, "The format file is not valid.")
-	}*/
+	cluster := gocql.NewCluster(connStrings...)
+	cluster.Authenticator = gocql.PasswordAuthenticator{
+		Username: c[0].User,
+		Password: c[0].Password,
+	}
+	cluster.ProtoVersion = 4
+	cluster.Timeout = time.Minute * 5
+	cluster.Keyspace = c[0].Database
+	cluster.Consistency = gocql.Quorum
+	return cluster.CreateSession()
 }
 
-func saveFile(w http.ResponseWriter, file multipart.File, handle *multipart.FileHeader) error {
-	var saveFileDir = "uploads/"
-
-	fmt.Println("Writing file")
-	fmt.Println(w, "%v", handle.Header)
-	// create new file
-	f, err := os.OpenFile(saveFileDir + handle.Filename, os.O_WRONLY|os.O_CREATE, 0666)
-	if err != nil {
-		fmt.Println(err)
-		return err
+func initS3(c []*ObjDBConnector) (*s3.S3, string, error) {
+	if len(c) < 1 {
+		return nil, "", errors.New("Supply at least one node to connect to!")
 	}
-	defer f.Close()
 
-	// copy uploaded file to new file
-	io.Copy(f, file)
+	conn := s3.New(session.New(&aws.Config{
+		Credentials: credentials.NewStaticCredentials(
+			c[0].Key,
+			c[0].Secret,
+			""),
+		Endpoint:         aws.String(c[0].IP + ":" + strconv.Itoa(c[0].Port)),
+		Region:           aws.String(c[0].Region),
+		S3ForcePathStyle: aws.Bool(true),
+		DisableSSL:       aws.Bool(c[0].DisableSSL),
+	}))
 
-	push_to_holmes() // push file to ObjectStorage
+	// since there is no definit way to test the connection
+	// we are just doint a dummy request here to see if the
+	// connection is stable
+	_, err := conn.ListBuckets(&s3.ListBucketsInput{})
 
-	fmt.Println(w, "File uploaded successfully!.")
-	return nil
+	return conn, c[0].Bucket, err
 }

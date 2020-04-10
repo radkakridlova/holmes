@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"holmes-dp/Holmes-Interrogation/context"
+	"holmes-dp/Holmes-Frontend/interrogation/context"
 
 	"github.com/aws/aws-sdk-go/service/s3"
 )
@@ -17,7 +17,6 @@ type Object struct {
 	SHA1        string   `json:"sha1"`
 	MD5         string   `json:"md5"`
 	MIME        string   `json:"mime"`
-	Source      []string `json:"source"`
 	ObjName     []string `json:"obj_name"`
 	Submissions []string `json:"submissions"`
 }
@@ -69,8 +68,7 @@ type GetParameters struct {
 func GetAll(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 	fmt.Print("GetAll objects called")
 
-	// TODO: fix results, make everything lower case and revisit this statement
-	iter := c.C.Query(`SELECT sha256, md5, file_mime, file_name, sha1, source, submissions FROM objects`).Iter()
+	iter := c.C.Query(`SELECT sha256, md5, file_mime, file_name, sha1, submissions FROM objects`).Iter()
 
 	fmt.Println("Found ? rows", iter.NumRows())
 	var resultSlice []*Object
@@ -83,7 +81,6 @@ func GetAll(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 				&object.MIME,
 				&object.ObjName,
 				&object.SHA1,
-				&object.Source,
 				&object.Submissions,
 			)
 			if err != true {
@@ -115,14 +112,12 @@ func Get(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 
 	object := &Object{}
 
-	// TODO: fix results, make everything lower case and revisit this statement
-	err = c.C.Query(`SELECT sha256, md5, file_mime, file_name, sha1, source, submissions FROM objects WHERE sha256 = ?`, p.SHA256).Scan(
+	err = c.C.Query(`SELECT sha256, md5, file_mime, file_name, sha1, submissions FROM objects WHERE sha256 = ?`, p.SHA256).Scan(
 		&object.SHA256,
 		&object.MD5,
 		&object.MIME,
 		&object.ObjName,
 		&object.SHA1,
-		&object.Source,
 		&object.Submissions,
 	)
 
@@ -230,7 +225,7 @@ func Search(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 		where += " ALLOW FILTERING"
 	}
 
-	q := c.C.Query("SELECT sha256, md5, file_mime, file_name, sha1, source, submissions FROM objects"+where, whereStmtValues...)
+	q := c.C.Query("SELECT sha256, md5, file_mime, file_name, sha1, submissions FROM objects"+where, whereStmtValues...)
 
 	iter := q.Iter()
 	for iter.Scan(
@@ -239,7 +234,6 @@ func Search(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 		&object.MIME,
 		&object.ObjName,
 		&object.SHA1,
-		&object.Source,
 		&object.Submissions,
 	) {
 		objects = append(objects, object)
