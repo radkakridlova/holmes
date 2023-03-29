@@ -101,12 +101,6 @@ func Get(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 		return &context.Response{Error: err.Error()}
 	}
 
-
-	type GetParameters struct {
-		Id string `json:"id"`
-		Sha256 string `json:"sha256"`
-	}
-	...
 	err = c.C.Query(`SELECT id, sha256, user_id, source, date_time, obj_name, tags, comment FROM submissions WHERE id = ? AND sha256 = ? LIMIT 1`, uuid, sha256).Scan(
 		&submission.Id,
 		&submission.SHA256,
