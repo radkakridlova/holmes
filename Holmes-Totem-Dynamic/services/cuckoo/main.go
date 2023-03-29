@@ -252,41 +252,7 @@ func HTTPResults(w http.ResponseWriter, r *http.Request) {
 			HTTP500(w, r, resp)
 			return
 		}
-
-		///
-
-		// build result
-//		resStructs := &CrtResult{"report", "data", report}
-//		#resStructs.Data = report
-
-		// info
-//		resStructs = append(resStructs, &CrtResult{"id", report.Id, nil,})
-
-		//resStructs = append(resStructs, processMAECObjects(report.MAECObjects)...)
-
 		resp.Results = report
-		
-//		resStructs = append(resStructs,
-
-		// signatures
-		//resStructs = append(resStructs, processReportSignatures(report.Signatures)...)
-
-		// behavior
-		//resStructs = append(resStructs, processReportBehavior(report.Behavior)...)
-
-		// dropped files
-		/*
-			// support for dropped files will be added later
-			dResStructs, err := processDropped(m, cuckoo, nil, false)
-			//if c.NackOnError(err, "processDropped failed", msg) {
-			//	return
-			//}
-			if err != nil {
-				c.Warning.Println("processDropped () exited with", err, "after dropping", len(dResStructs))
-			}
-			resStructs = append(resStructs, dResStructs...)
-		*/
-
 	}
 
 	if err := ctx.Cuckoo.DeleteTask(taskID); err != nil {

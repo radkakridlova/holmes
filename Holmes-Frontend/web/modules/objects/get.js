@@ -1,7 +1,6 @@
 'use strict';
 
 function get_object(sha256){
-	console.log("get_object called " + sha256);
 	$.ajax({
 		type: 'POST',
 		url: current_env.get('api_url'),
@@ -14,14 +13,11 @@ function get_object(sha256){
 		}),
 		success: function(r) {
 			if(r.error != ""){
-				console.log("success but error");
 				$.growl.warning({ title: "An error occured!", message: r.error, size: 'large' });
 			} else {
 				$.each(r.result.Object, function(k, v){
 					$('#objects-get-form input[name="'+k+'"]').val(v);
 				});
-
-				console.log(r.result.Object);
 
 				$.each(r.result.Object.submissions, function(k, v){
 					$('#objects-get-form p[id="submissions"]').append('<a href="#module=submissions&action=get&id=' + v + '&sha256='+ r.result.Object.sha256 +'">' + v + '</a><br/>');

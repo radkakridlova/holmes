@@ -2,14 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71c5aee9-6fcd-474d-874c-21ae61bc8003" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/cuckoo/cuckoo.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/cuckoo/cuckoo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/interrogation/modules/results/results.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/interrogation/modules/results/results.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/interrogation/modules/submissions/submissions.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/interrogation/modules/submissions/submissions.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/push_to_holmes/push_to_holmes.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/push_to_holmes/push_to_holmes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/objects/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/objects/get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/objects/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/objects/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/get.html" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/get.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/get.js" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/get.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Frontend/web/modules/results/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Gateway/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Gateway/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/processing.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo/processing.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/drakvuf/drakvuf.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/drakvuf/drakvuf.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/drakvuf/drakvuf.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/drakvuf/processing.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem/config/totem.conf" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem/config/totem.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Holmes-Totem/src/main/scala/org/holmesprocessing/totem/driver/driver.scala" beforeDir="false" afterPath="$PROJECT_DIR$/Holmes-Totem/src/main/scala/org/holmesprocessing/totem/driver/driver.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/nb-configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/Action.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/Executer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/Instance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/MaecToOwl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/Observable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/lxo/Scan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/TotemResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportBhvPcs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportBhvPcsCall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportBhvSummary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportMachine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/cuckoo/CuckooReportSignature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/pojo/drakvuf/DrakvufReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/service/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/java/service/MaecToOwlResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/resources/blank_rdfxml.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/resources/config/config.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/webapp/META-INF/context.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MaecToOwlWeb/src/main/webapp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maec module for cuckoo/maec_api_call_mappings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maec module for cuckoo/maecreport.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maec module for cuckoo/maecreport_old.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +86,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Holmes-Totem-Dynamic/services/cuckoo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">

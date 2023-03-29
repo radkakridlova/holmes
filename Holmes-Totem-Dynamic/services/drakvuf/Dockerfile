@@ -1,20 +1,19 @@
-FROM golang:alpine
+FROM python:3.8-slim
+
+# add tornado
+RUN pip3 install tornado
+RUN pip3 install requests
+RUN pip3 install ijson
 
 # create folder
-RUN mkdir -p /go/src/drakvuf
-WORKDIR /go/src/drakvuf
-
-# get go dependencies
-RUN apk add --no-cache \
-		git \
-	&& go get github.com/julienschmidt/httprouter \
-	&& rm -rf /var/cache/apk/*
+RUN mkdir -p /service
+WORKDIR /service
 
 # add the files to the container
-ADD . /go/src/drakvuf/
-
-# build vtsample
-RUN go build -o bin
+ADD . /service
 
 # add the configuration file (possibly from a storage uri)
-CMD "/go/src/drakvuf/bin"
+ARG conf=service.conf
+ADD $conf /service/service.conf
+
+CMD ["python3", "/service/main.py"]

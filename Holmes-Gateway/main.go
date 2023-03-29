@@ -88,12 +88,18 @@ func initHTTP() {
 	srv := &http.Server{
 		Addr:         conf.HTTP,
 		Handler:      mux,
-		TLSConfig:    cfg,
-		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),
 	}
 
 	log.Printf("Listening on %s\n", conf.HTTP)
-	log.Fatal(srv.ListenAndServeTLS(conf.CertificatePath, conf.CertificateKeyPath))
+	if conf.CertificatePath != "" && conf.CertificateKeyPath != "" {
+		log.Printf("Using HTTPS\n")
+		srv.TLSConfig = cfg
+		srv.TLSNextProto = make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0)
+		log.Fatal(srv.ListenAndServeTLS(conf.CertificatePath, conf.CertificateKeyPath))
+	} else {
+		log.Printf("Using HTTP\n")
+		log.Fatal(srv.ListenAndServe())
+	}
 }
 
 func initUsers() {

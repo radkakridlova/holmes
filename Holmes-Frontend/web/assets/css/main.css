@@ -335,6 +335,12 @@ nav .logo {
 	background-color: #0f3c4b;
 }
 
+#results-get-form p {
+	max-height: 500px;
+	overflow: scroll;
+	text-align: left;
+}
+
 
 /* JSON formatting */
 .JSONstring { color: green; }

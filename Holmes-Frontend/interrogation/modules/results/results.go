@@ -3,35 +3,21 @@ package results
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 	"time"
+	"compress/gzip"
+	"bytes"
+//	"path/filepath"
+//	"io"
+	//"os"
 
 	"holmes-dp/Holmes-Frontend/interrogation/context"
 
 	"github.com/gocql/gocql"
 )
 
-type Result struct {
-	Id                string    `json:"id"`
-	SHA256            string    `json:"sha256"`
-	SchemaVersion     string    `json:"schema_version"`
-	UserId            string    `json:"user_id"`
-	SourceId          []string  `json:"source_id"`
-	SourceTag         []string  `json:"source_tag"`
-	ServiceName       string    `json:"service_name"`
-	ServiceVersion    string    `json:"service_version"`
-	ServiceConfig     string    `json:"service_config"`
-	ObjectCategory    []string  `json:"object_category"`
-	ObjectType        string    `json:"object_type"`
-	Results           string    `json:"results"`
-	Tags              []string  `json:"tags"`
-	ExecutionTime	  time.Time `json:"execution_time"`
-	WatchguardStatus  string    `json:"watchguard_status"`
-	WatchguardLog     []string  `json:"watchguard_log"`
-	WatchguardVersion string    `json:"watchguard_version"`
-	Comment 		  string    `json:"comment"`
-}
 /*
 id timeuuid,
         sha256 text,
@@ -52,12 +38,33 @@ id timeuuid,
         watchguard_version text,
         comment text,
  */
+type Result struct {
+	Id                string    `json:"id"`
+	SHA256            string    `json:"sha256"`
+	SchemaVersion     string    `json:"schema_version"`
+	UserId            string    `json:"user_id"`
+	SourceId          []string  `json:"source_id"`
+	SourceTag         []string  `json:"source_tag"`
+	ServiceName       string    `json:"service_name"`
+	ServiceVersion    string    `json:"service_version"`
+	ServiceConfig     string    `json:"service_config"`
+	ObjectCategory    []string  `json:"object_category"`
+	ObjectType        string    `json:"object_type"`
+	Results           []byte    `json:"results"`
+	Tags              []string  `json:"tags"`
+	ExecutionTime	  time.Time `json:"execution_time"`
+	WatchguardStatus  string    `json:"watchguard_status"`
+	WatchguardLog     []string  `json:"watchguard_log"`
+	WatchguardVersion string    `json:"watchguard_version"`
+	Comment 		  string    `json:"comment"`
+}
 
 func GetRoutes() map[string]func(*context.Ctx, *json.RawMessage) *context.Response {
 	r := make(map[string]func(*context.Ctx, *json.RawMessage) *context.Response)
 
 	r["getAll"] = GetAll
 	r["get"] = Get
+	r["download"] = Download
 	r["search"] = Search
 
 	return r
@@ -72,7 +79,6 @@ type GetParameters struct {
 func GetAll(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 	fmt.Println("GetAll results called")
 
-	// TODO: fix results, make everything lower case and revisit this statement
 	iter := c.C.Query(`SELECT id, sha256, source_id, service_name, object_type, service_version, execution_time FROM results`).Iter()
 	fmt.Println("Found ? rows", iter.NumRows())
 	var resultSlice []*Result
@@ -125,7 +131,6 @@ func Get(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 	service_name := p.ServiceName
 	object_type := p.ObjectType
 
-	// TODO: fix results, make everything lower case and revisit this statement
 	err = c.C.Query(`SELECT id, sha256, schema_version, user_id, source_id, source_tag, service_name, service_version, service_config, object_category, object_type, results, tags, watchguard_status, watchguard_log, watchguard_version FROM results WHERE service_name = ? AND object_type = ? AND id = ?`, service_name, object_type, uuid).Scan(
 		&result.Id,
 		&result.SHA256,
@@ -149,10 +154,83 @@ func Get(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
 		return &context.Response{Error: err.Error()}
 	}
 
+	r := bytes.NewReader(result.Results)
+	archive, err := gzip.NewReader(r)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+	defer archive.Close()
+
+	results_decompressed, err := ioutil.ReadAll(archive)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+	s := string(results_decompressed)
+	s = strings.Replace(s, "\\n", "<br/>", -1)
+	s = strings.Replace(s, "\\", "", -1)
+
 	return &context.Response{Result: struct {
 		Result *Result
+		RawResults string
 	}{
 		result,
+		s,
+	},
+	}
+}
+
+type DownloadParameters struct {
+	Id string `json:"id"`
+	ServiceName string `json:"service_name"`
+	ObjectType string `json:"object_type"`
+}
+
+func Download(c *context.Ctx, parametersRaw *json.RawMessage) *context.Response {
+	p := &DownloadParameters{}
+	err := json.Unmarshal(*parametersRaw, p)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+
+	result := &Result{}
+
+	uuid, err := gocql.ParseUUID(p.Id)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+
+	service_name := p.ServiceName
+	object_type := p.ObjectType
+
+	err = c.C.Query(`SELECT results FROM results WHERE service_name = ? AND object_type = ? AND id = ?`, service_name, object_type, uuid).Scan(
+		&result.Results,
+	)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+
+	r := bytes.NewReader(result.Results)
+	archive, err := gzip.NewReader(r)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+	defer archive.Close()
+
+	results_decompressed, err := ioutil.ReadAll(archive)
+	if err != nil {
+		return &context.Response{Error: err.Error()}
+	}
+	
+	s := string(results_decompressed)
+
+	s = strings.Replace(s, "\\n", "\\\n\\\r", -1)
+	s = strings.Replace(s, "\\", "", -1)
+
+	
+	return &context.Response{Result: struct {
+		Results string
+	}{
+		s,
 	},
 	}
 }

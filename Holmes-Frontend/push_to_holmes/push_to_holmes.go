@@ -383,9 +383,8 @@ func main_object() {
 			err := magicmime.Open(magicmime.MAGIC_MIME_TYPE | magicmime.MAGIC_SYMLINK | magicmime.MAGIC_ERROR)
 			if err != nil {
 				fmt.Println(err)
-			} else {
-				defer magicmime.Close()
 			}
+			defer magicmime.Close()
 
 			fullPath, err := filepath.Abs(conf.Directory)
 
