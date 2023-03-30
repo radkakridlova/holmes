@@ -1,6 +1,9 @@
 #!/bin/sh
 
-echo "Installing project"
+
+echo "Instalujem Holmes"
 go install
+echo "Building Holmes-Totem"
+cd Holmes-Totem/
 sbt assembly
-echo "Install finished, next update configuration files."
+echo "Instalacia skoncila, dalej upravte konfiguracie a spustite cez run.sh."
