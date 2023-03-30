@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Reprezentacia vysledkov ziskanych z Holmes systemu
  * @author Tibor Galko
  */
 
@@ -38,7 +38,7 @@ type Result struct {
 public class TotemResult {
     
     private String filename;
-    private String data;
+    private String data; // data musia byt citatelny string, nie marshallnuty
     private String md5;
     private String sha1;
     private String sha256;
@@ -145,6 +145,6 @@ public class TotemResult {
 
     @Override
     public String toString() {
-        return "TotemRequest{" + "filename=" + filename + ", data=" + data + ", md5=" + md5 + ", sha1=" + sha1 + ", sha256=" + sha256 + ", service_name=" + service_name + ", tags=" + tags + ", comment=" + comment + ", started_date_time=" + started_date_time + ", finished_date_time=" + finished_date_time + '}';
+        return "TotemRequest{" + "filename=" + filename + ", data=" + data + ", md5=" + md5 + ", sha1=" + sha1 + ", sha256=" + sha256 + ", service_name=" + service_name + ", comment=" + comment + ", started_date_time=" + started_date_time + ", finished_date_time=" + finished_date_time + '}';
     }
 }

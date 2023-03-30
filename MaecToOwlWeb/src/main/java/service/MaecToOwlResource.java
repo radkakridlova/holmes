@@ -1,12 +1,12 @@
 package service;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -16,29 +16,29 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.apache.jena.query.QueryExecution;
-import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.ResultSetFormatter;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFNode;
 import pojo.TotemResult;
-import lxo.MaecToOwl;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import java.net.*;
 import java.util.ResourceBundle;
-import org.apache.jena.rdfconnection.RDFConnectionFuseki;
-import org.apache.jena.rdfconnection.RDFConnectionRemoteBuilder;
+import javax.ws.rs.GET;
+import lxo.OWLWriter;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import pojo.maec.MAECDocument;
 
 /**
  * REST Web Service
  *
- * @author h
+ * @author Tibor Galko
  */
-@Path("generic")
+@Path("convert")
 public class MaecToOwlResource {
 
     @Context
@@ -51,11 +51,9 @@ public class MaecToOwlResource {
     }
 
     /**
-     * Retrieves representation of an instance of sk.service.MaecToOwlResource
-     * credits:
-     * https://stackoverflow.com/questions/15262965/send-file-as-a-parameter-to-a-rest-service-from-a-client
+     * Retrieves representation of an instance of service.MaecToOwlResource
      *
-     * @param req json request
+     * @param req json request REQUIRED filename a data
      * @return an instance of java.lang.String
      */
     @POST
@@ -66,47 +64,43 @@ public class MaecToOwlResource {
             System.out.println("Must supply a valid request");
             return Response.status(Status.BAD_REQUEST).entity("Must supply a valid request").build();
         }
+        if (req.getFilename() == null || "".equals(req.getFilename())
+                || req.getData() == null || "".equals(req.getData())) {
+            System.out.println("Data or filename are empty");
+            return Response.status(Status.BAD_REQUEST).entity("Data or filename are empty.").build();
+        }
+
+        MAECDocument maecData;
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            maecData = gson.fromJson(req.getData(), MAECDocument.class);
+        } catch (JsonSyntaxException e) {
+            System.out.println("Error while parsing request data: " + e.getLocalizedMessage());
+            return Response.status(Status.BAD_REQUEST).entity("Error while parsing request data: " + e.getLocalizedMessage()).build();
+        }
+        
+        if (!maecData.isValid()) {
+            System.out.println("MAEC request is not valid.");
+            return Response.status(Status.BAD_REQUEST).entity("Request has invalid MAEC data.").build();
+        }
 
         ResourceBundle config = ResourceBundle.getBundle("config.config");
 
         System.out.println(config.getString("fusekiURL"));
         System.out.println(config.getString("datasetName"));
         System.out.println(config.getString("downloadsFolder"));
-        
+
         // Create download folder if it doesnt exists
         new File(config.getString("downloadsFolder") + File.separator + "tmp").mkdirs();
-
-        System.out.println(req.getFilename());
-        String inputFilePath = config.getString("downloadsFolder") + File.separator + "tmp" + File.separator + req.getFilename() + ".json";
-        File inFile = new File(inputFilePath);
-        try {
-            System.out.println("Creating new file for request. " + inputFilePath);
-            inFile.createNewFile();
-        } catch (IOException e) {
-            System.out.println(e.getLocalizedMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getLocalizedMessage()).build();
-        }
-        System.out.println("Saving request to downloads folder.");
-
-        try (PrintWriter pw = new PrintWriter(inFile, "UTF-8")) {
-            //System.out.println(req.getData());
-            pw.print(req.getData());
-//            Gson gson = new Gson();
-//            CuckooReport report = gson.fromJson(req.getData(), CuckooReport.class);
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getLocalizedMessage()).build();
-        }
 
         // This is default clean owl ontology file in rdf/xml format. Maec report is added to this file,
         // rdf/xml format is extracted from it.
         URL blank_dataset_url = Thread.currentThread().getContextClassLoader().getResource("blank_rdfxml.owl");
-        System.out.println(blank_dataset_url.toString());
 
         File blankOntologyFile = new File(blank_dataset_url.getFile());
         if (!blankOntologyFile.exists()) {
             System.out.println("Blank ontology file wasn't found. " + blankOntologyFile.getAbsolutePath());
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Blank ontology file wasn't found. " + blankOntologyFile.getAbsolutePath()).build();
+            return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Blank ontology file wasn't found.").build();
         }
 
         File outFile = new File(config.getString("downloadsFolder") + File.separator + "tmp" + File.separator + "dataset_" + req.getFilename() + ".owl");
@@ -117,49 +111,90 @@ public class MaecToOwlResource {
             System.out.println(e.getLocalizedMessage());
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getLocalizedMessage()).build();
         }
-
+        // Copy blank ontology to outfile
         if (!copyFile(blankOntologyFile, outFile)) {
-            System.out.println("Error while copying black ontology.");
+            System.out.println("Error while copying blank ontology.");
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Error while copying black ontology.").build();
         }
 
-        // load dataset from fuseki server
+        // load data from config
         String url = config.getString("fusekiURL"); // url to tomcat running fuseki
         String query = config.getString("datasetName"); // name of dataset
 
         try {
-            MaecToOwl converter = new MaecToOwl(inFile, outFile);
             System.out.println("Converting maec result to owl.");
-            converter.convert();
+
+            OWLWriter w = new OWLWriter(maecData);
+            boolean completed = w.writeFile(outFile);
+            if (completed) {
+                System.out.println("DONE");
+            } else {
+                System.out.println("ERROR");
+            }
+
         } catch (OWLOntologyCreationException | OWLOntologyStorageException | IllegalArgumentException e) {
             System.out.println(e.getLocalizedMessage());
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getLocalizedMessage()).build();
         }
-        
-        boolean err = false;
 
-        //loadDatasetFromFuseki(url+query, outFile);
-        if (!uploadOntologyToFuseki(url + query, outFile)) {
+        boolean err;
+        try {
+            // Send file to update Fuseki dataset
+            err = !postFileToFuseki(url + query, outFile);
+        } catch (IOException ex) {
+            System.out.println("Error " + ex.getLocalizedMessage());
             err = true;
         }
-        
+
         System.out.println("Cleaning...");
-        
-        if (! inFile.delete()) {
-            System.out.println("File couldnt be deleted " + inFile.getAbsolutePath());
-        }
         if (!outFile.delete()) {
-            System.out.println("File couldnt be deleted " + outFile.getAbsolutePath());            
+            System.out.println("File couldnt be deleted " + outFile.getAbsolutePath());
         }
-        
+
         if (err) {
             return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Could not upload result to fuseki server.").build();
         }
-        
         System.out.println("Conversion finished. Ontology uploaded to fuseki at " + config.getString("fusekiURL") + config.getString("datasetName"));
 
         return Response.status(Status.ACCEPTED)
-                .entity("Conversion finished succesfully. Ontology uploaded to fuseki at " + config.getString("fusekiURL") + config.getString("datasetName")).build();
+                .entity("Conversion finished succesfully.").build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response status() {
+        return Response.status(Status.ACCEPTED).entity("{\"status\": \"OK\"}").build();
+    }
+
+    private static boolean postFileToFuseki(String url, final File ontology) throws IOException {
+
+        // Close is called automatically to dealocate resources
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+            // Create POST request to update ontology dataset on fuseki server
+            HttpPost httppost = new HttpPost(url + "/upload");
+
+            FileBody bin = new FileBody(ontology);
+            HttpEntity reqEntity = MultipartEntityBuilder.create()
+                    .addPart("bin", bin)
+                    // Charset has to be set otherwise fuseki will throw nullptr exception
+                    .setMimeSubtype("RDF/XML") 
+                    .build();
+
+            httppost.setEntity(reqEntity);
+
+            System.out.println("executing request " + httppost.getRequestLine());
+            try (CloseableHttpResponse response = httpclient.execute(httppost)) {
+                System.out.println("----------------------------------------");
+                System.out.println(response.getStatusLine());
+                HttpEntity resEntity = response.getEntity();
+                if (resEntity != null) {
+                    System.out.println("Response content length: " + resEntity.getContentLength());
+                }
+                // All results must be consumed to properly close connection
+                EntityUtils.consume(resEntity);
+            }
+        }
+        return true;
     }
 
     // credits: https://beginnersbook.com/2014/05/how-to-copy-a-file-to-another-file-in-java/
@@ -185,96 +220,5 @@ public class MaecToOwlResource {
             return false;
         }
         return true;
-    }
-
-    private static boolean uploadOntologyToFuseki(String url, final File ontology) {
-        System.out.println("Uploading dataset to fuseki. " + url);
-
-        Model model = ModelFactory.createDefaultModel();
-        model.read(ontology.getAbsolutePath(), "RDF/XML");
-
-        RDFConnectionRemoteBuilder builder = RDFConnectionFuseki.create()
-                .destination(url);
-
-        System.out.println("trying to upload ontology to fuseki");
-        // In this variation, a connection is built each time. 
-        try (RDFConnectionFuseki conn = (RDFConnectionFuseki) builder.build()) {
-            System.out.println("Putting ontology from " + ontology.getAbsolutePath());
-            conn.put(model);
-
-            System.out.println("Comitting");
-            conn.commit();
-
-            System.out.println("Closing RDF connection");
-            //conn.abort();
-            conn.end();
-        }
-        return true;
-    }
-
-    private static boolean loadDatasetFromFuseki(String url, File outFile) {
-        System.out.println("Loading dataset from fuseki. " + url);
-
-        // credits: https://stackoverflow.com/questions/921262/how-to-download-and-save-a-file-from-internet-using-java
-        URLConnection connection;
-        BufferedInputStream response = null;
-        try {
-            System.out.println("Trying to connect.");
-            connection = new URL(url).openConnection();
-            //connection.setRequestProperty("Accept-Charset", "UTF-8");
-            response = new BufferedInputStream(connection.getInputStream());
-            try (FileOutputStream fos = new FileOutputStream(outFile)) {
-                byte[] buff = new byte[1024];
-                while (response.read(buff, 0, 1024) != -1) {
-                    System.out.println("reading response");
-                    fos.write(buff); // save loaded dataset to file
-                }
-            } catch (IOException e) {
-                System.out.println(e.getLocalizedMessage());
-                return false;
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getLocalizedMessage());
-            return false;
-        } finally {
-            if (response != null) {
-                try {
-                    response.close(); // close buffered input reader if not null
-                } catch (IOException e) {
-                    System.out.println(e.getLocalizedMessage());
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private static void execSelectAndPrint(String serviceURI, String query) {
-        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI,
-                query);
-        ResultSet results = q.execSelect();
-
-        // write to a ByteArrayOutputStream
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        //convert to JSON format
-        ResultSetFormatter.outputAsJSON(outputStream, results);
-        //turn json to string
-        String json = new String(outputStream.toByteArray());
-        //print json string
-        System.out.println(json);
-
-    }
-
-    private static void execSelectAndProcess(String serviceURI, String query) {
-        QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI,
-                query);
-        ResultSet results = q.execSelect();
-
-        while (results.hasNext()) {
-            QuerySolution soln = results.nextSolution();
-            // assumes that you have an "?x" in your query
-            RDFNode x = soln.get("x");
-            System.out.println(x);
-        }
     }
 }
