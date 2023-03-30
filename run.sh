@@ -1,6 +1,11 @@
 #!/bin/sh
 
-#fakes3 -r /mnt/fakes3_root -p 4567 --license 3285516909
+# pustit fakes3 z konkretnej ruby verzie cez rbenv
+#sudo ~/.rbenv/versions/2.7.7/bin/fakes3 -r /mnt/fakes3_root -p 4567 --license 3285516909
+
+# pustit cassandru
+# cd ~/apache-cassandra-3.11.14/
+# ./bin/cassandra
 
 gnome-terminal -- /bin/sh -c "cd ~/go/src/holmes-dp/ && ./Holmes-Gateway/Holmes-Gateway --config Holmes-Gateway/config/gateway.conf"
 
