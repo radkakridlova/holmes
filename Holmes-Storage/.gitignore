@@ -31,7 +31,7 @@ _testmain.go
 ###
 
 # Configuration files
-*.conf
+# *.conf
 
 # Executables
 Holmes-Storage

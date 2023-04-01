@@ -1,23 +1,25 @@
 {
 	"Amqp"         : "amqp://USER:PASSWORD@HOST:PORT",
-	"QueueSuffix"  : "",
+	"QueueSuffix"  : "1",
 	"ConsumeQueue" : "totem_dynamic_input",
 	"ResultsQueue" : "totem_results",
 	"FailedQueue"  : "totem_dynamic_failed",
 
 	"LogFile"   : "/leave/empty/for/no/log/or/path/to/file.txt",
 	"LogLevel"  : "info",
-	"VerifySSL" : true,
+	"VerifySSL" : false,
 
 	"Services" : {
-		"virustotal": [],
-		"cuckoo": []
+		"CUCKOO": ["http://127.0.0.1:7200"],
+		"DRAKVUF": ["http://127.0.0.1:7210"]
 	},
 
-	"FeedPrefetchCount": 1,
+	"FeedPrefetchCount": 30,
 
 	"CheckPrefetchCount": 100,
 	"WaitBetweenRequests": 30,
 
-	"SubmitPrefetchCount": 5
+	"SubmitPrefetchCount": 30,
+
+	"MaecToOwlWebServiceURL": "http://localhost:8081/maectoowlweb/ws/convert"
 }

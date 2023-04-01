@@ -25,7 +25,7 @@ _testmain.go
 *.test
 *.prof
 
-config/interrogation_config.json
+# config/interrogation_config.json
 
-assets/js/app/config.json
-config/frontend.conf
+# assets/js/app/config.json
+# config/frontend.conf

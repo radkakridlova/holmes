@@ -3,5 +3,7 @@
 	"debug": false,
 	"services": ["ASNMETA", "CUCKOO", "DNSMETA", "GOGADGET", "OBJDUMP", "PEID", "PEINFO", "VIRUSTOTAL", "YARA", "ZIPMETA"],
 	"gateway_url": "http://my.mastergateway.server:8090/task/",
-	"hide_fields": true
+	"hide_fields": true,
+	"username": "test",
+	"password": "test"
 }
