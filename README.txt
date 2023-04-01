@@ -1,5 +1,7 @@
 Zalozene na projekte https://github.com/HolmesProcessing
 
+Vela veci ku konfiguracii a fungovaniu je popisane v diplomovej praci v v dp/ priecinku
+
 
 Zbuildovat cez sh build.sh
 Zmenit licencny kluc pre fakes3 v run.sh
