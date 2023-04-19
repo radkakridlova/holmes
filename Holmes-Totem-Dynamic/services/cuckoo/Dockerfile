@@ -4,14 +4,14 @@ FROM golang:alpine
 RUN mkdir -p /go/src/cuckoo
 WORKDIR /go/src/cuckoo
 
+# add the file to the container first
+ADD . /go/src/cuckoo/
+
 # get go dependencies
 RUN apk add --no-cache \
 		git \
 	&& go get github.com/julienschmidt/httprouter \
 	&& rm -rf /var/cache/apk/*
-
-# add the files to the container
-ADD . /go/src/cuckoo/
 
 # build vtsample
 RUN go build -o bin

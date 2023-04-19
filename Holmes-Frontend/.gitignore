@@ -4,6 +4,7 @@
 *.so
 Holmes-Presentation
 Holmes-Interrogation
+Holmes-Frontend
 
 # Folders
 _obj
