@@ -75,10 +75,12 @@ V postupe na konci je to spravne.
 
 Upravit v  ~/.cuckoo/conf/reporting.conf a pridat riadky
 
-\[maecreport\]
+```
+[maecreport]
 enabled = yes
+```
 
-Potom skopirovat subory maecreport a maec_api_call_mappings z "holmes/maec module for cuckoo" 
+Potom skopirovat subory maecreport.py a maec_api_call_mappings.json z "holmes/maec module for cuckoo" 
 do priecinku vo virtual enviromente ~/cuckoo/lib/python2.7/site-packages/cuckoo/reporting/
 Z prace tiez nie je jasne co treba kopirovat, tak pisem aspon sem.
 
