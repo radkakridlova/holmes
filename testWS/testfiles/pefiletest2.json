@@ -1,0 +1,169 @@
+{
+    "type": "package",
+    "id": "package--4b18b93d-51c5-4d79-ae55-8ae3dfd0b508",
+    "schema_version": "5.0",
+    "maec_objects": [
+        {
+            "id": "malware-instance--2d7b533e-e811-4823-ba7e-952cd8208122",
+            "type": "malware-instance",
+            "instance_object_refs": [
+                "0"
+            ],
+            "static_features": {
+                "file_headers": [
+                    "2"
+                ]
+            },
+            "analysis_metadata": [
+                {
+                    "is_automated": true,
+                    "analysis_type": "static",
+                    "tool_refs": [
+                        "1"
+                    ],
+                    "description": "Automated static analysis by pefile Python package created by Ero Carrera."
+                }
+            ]
+        }
+    ],
+    "observable_objects": {
+        "0": {
+            "type": "file",
+            "name": "not_packed_sample.exe",
+            "hashes": {
+                "MD5": "8fc188e953bc6ed9330bde592fb4a760",
+                "SHA-1": "a4979018a4c7e1ba8c570f122c197cec2cabb877",
+                "SHA-256": "7e0e8dbec2a976264a89f571e20cd0cb9c5626bc0d8efb54394d06979d96e8b8",
+                "SHA-512": "e335057593476882ad5022257bc5a222c63dd43ccd98c51fcda2fae0530c1b869257846a83147acc6c1d4d34bc3410e061212d5c0d5cbdcfd37326d1037c6f64"
+            },
+            "size": 14848,
+            "mime_type": "FileObjectType"
+        },
+        "1": {
+            "type": "software",
+            "name": "pefile"
+        },
+        "2": {
+            "type": "file",
+            "hashes": {
+                "MD5": "8fc188e953bc6ed9330bde592fb4a760",
+                "SHA-1": "a4979018a4c7e1ba8c570f122c197cec2cabb877",
+                "SHA-256": "7e0e8dbec2a976264a89f571e20cd0cb9c5626bc0d8efb54394d06979d96e8b8",
+                "SHA-512": "e335057593476882ad5022257bc5a222c63dd43ccd98c51fcda2fae0530c1b869257846a83147acc6c1d4d34bc3410e061212d5c0d5cbdcfd37326d1037c6f64"
+            },
+            "mime_type": "vnd.microsoft.portable-executable",
+            "extensions": {
+                "windows-pebinary-ext": {
+                    "pe_type": "exe",
+                    "machine_hex": "0x14c",
+                    "number_of_sections": 6,
+                    "time_date_stamp": "0x4E051115 [Fri Jun 24 22:35:01 2011 UTC]",
+                    "pointer_to_symbol_table_hex": "0x0",
+                    "number_of_symbols": 0,
+                    "size_of_optional_header": 224,
+                    "characteristics_hex": "0x30f",
+                    "optional_header": {
+                        "magic_hex": "0x10b",
+                        "major_linker_version": 2,
+                        "minor_linker_version": 56,
+                        "size_of_code": 4608,
+                        "size_of_initialized_data": 13824,
+                        "size_of_unintialized_data": 67072,
+                        "address_of_entry_point": 4768,
+                        "base_of_code": 4096,
+                        "base_of_data": 12288,
+                        "image_base": 4194304,
+                        "section_alignment": 4096,
+                        "file_alignment": 512,
+                        "major_os_system_version": 4,
+                        "minor_os_system_version": 0,
+                        "major_image_version": 1,
+                        "minor_image_version": 0,
+                        "major_subsystem_version": 4,
+                        "minor_subsystem_version": 0,
+                        "win32_version_value_hex": "0x0",
+                        "size_of_image": 102400,
+                        "size_of_headers": 1024,
+                        "checksum_hex": "0xbaa4",
+                        "subsystem_hex": "0x2",
+                        "dll_characteristics_hex": "0x0",
+                        "size_of_stack_reserve": 2097152,
+                        "size_of_stack_commit": 4096,
+                        "size_of_heap_reserve": 1048576,
+                        "size_of_heap_commit": 4096,
+                        "loader_flags_hex": "0x0",
+                        "number_of_rva_and_sizes": 16
+                    },
+                    "sections": [
+                        {
+                            "name": ".text",
+                            "size": 4608,
+                            "entropy": 5.597526910865009,
+                            "hashes": [
+                                "15abdd1d465b95700c8e0edd31821175",
+                                "b638dd0e1806c54a5a17e40b0aac9c3675ade725",
+                                "9a1030d38845e91382f2862b6d35ebbe88a1f0423cd840730110e360cad720d1",
+                                "adb8571f5381981cc1a72cd39f5aa5d8e340fb2f492a339154284329ad7c3320446d0a5ce116eae29d9e83fffe53912f88cb7e21ca597d42dd8086a125567aab"
+                            ]
+                        },
+                        {
+                            "name": ".data",
+                            "size": 1536,
+                            "entropy": 0.8124695413530033,
+                            "hashes": [
+                                "4f40f2f7aad6bb7b75ea1e4d5bbb6151",
+                                "077fc7ec00aa1f785c89fb28a157884a77804efc",
+                                "07f4ba91480fdd6713d504da3790f9d639fd02ed9cfdc465e4de222c8a09432b",
+                                "ddcf4c5fde442743694cf04b338d47700957390261e6189ba967fb5cb6e12f2971ac58f6c18c980994fb16e7845a997f6753499d2afa13bfd158106bfe125f9c"
+                            ]
+                        },
+                        {
+                            "name": ".rdata",
+                            "size": 1024,
+                            "entropy": 4.464504339791759,
+                            "hashes": [
+                                "039cb49525006fd622d49e0e1b483496",
+                                "a9ca15f71b89c65106110150fe5be7bc9c9be047",
+                                "0af2087ee3c8edaabf26a1bd264043681b39e286394c1dcbf91a77e7bf5da6ee",
+                                "b3c438c72fefb123f497b087d4c07a43369b3652de7485677e0d9fe6b32f781cf83c4b0f26d3f537027897f819229fb18f25af5b00b2cb08d5c7088c5a8202e3"
+                            ]
+                        },
+                        {
+                            "name": ".bss",
+                            "size": 0,
+                            "entropy": 0.0,
+                            "hashes": [
+                                "d41d8cd98f00b204e9800998ecf8427e",
+                                "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                                "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                                "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+                            ]
+                        },
+                        {
+                            "name": ".idata",
+                            "size": 2048,
+                            "entropy": 4.177820248490856,
+                            "hashes": [
+                                "71984c209bfb03d67fcded53e219f102",
+                                "6101a20cd76829ad293ab3bc9d6379990c848ce3",
+                                "ff32b65902890a718584603fc718fa3b61dcb64e672bc37a66294a73f0bd713e",
+                                "741a27805eb44f8a7218bad60d967337af21f2c0ce794216a2ab64ccc853cdd9fb18167bea2d6a1e45f55637473d97d406933f2ff824fea27c229fc72d28085d"
+                            ]
+                        },
+                        {
+                            "name": ".rsrc",
+                            "size": 4608,
+                            "entropy": 4.626222097183641,
+                            "hashes": [
+                                "bdf835b4d8f72baf9ca2019e62da2084",
+                                "f11e7039a94c623ef4699d7be69b1998c7e8eee4",
+                                "471b3cf149f0439a567048878fad37f152fdf91e36c709d6d7c2db7c20340bf3",
+                                "963ac296b6f8b7dad84c254f50179fba939771e0446b69564f13570bb5d24f2de2747700e9c674fa3ce0b2057b7200a83e8db3a39a92baac01024709406c7c0e"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

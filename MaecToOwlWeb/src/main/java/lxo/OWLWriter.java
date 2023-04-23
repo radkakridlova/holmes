@@ -406,6 +406,7 @@ public class OWLWriter {
         // Kazdy instance moze vytvorit ine procesy
         for (MAECObject instance : this.instances) {
             instanceObjRef = instance.getInstance_object_refs().get(0);
+            // TODO hashe su optional. Treba check
             instanceOntologyId = maecDocument.getObservable_objects().get(instanceObjRef).getHashes().getMD5();
             OWLNamedIndividual instanceInd = dataFactory.getOWLNamedIndividual(":" + instanceOntologyId, pm);
 

@@ -1,0 +1,158 @@
+{
+    "type": "package",
+    "id": "package--46cf7113-9049-4929-b317-1f76fbcf8093",
+    "schema_version": "5.0",
+    "maec_objects": [
+        {
+            "id": "malware-instance--979ff412-9e91-43c0-a996-ba1728f421b5",
+            "type": "malware-instance",
+            "instance_object_refs": [
+                "0"
+            ],
+            "static_features": {
+                "file_headers": [
+                    "2"
+                ]
+            },
+            "analysis_metadata": [
+                {
+                    "is_automated": true,
+                    "analysis_type": "static",
+                    "tool_refs": [
+                        "1"
+                    ],
+                    "description": "Automated static analysis by pefile Python package created by Ero Carrera."
+                }
+            ]
+        }
+    ],
+    "observable_objects": {
+        "0": {
+            "type": "file",
+            "name": "DropboxExt.37.0.dll",
+            "hashes": {
+                "MD5": "49cac70ee5b27e3e322dba1434d43ab6",
+                "SHA-1": "bf9413afc8882cc04f2c88c849c8f96a2359d77c",
+                "SHA-256": "5ca8a10092635c91f5472dc5af1df12396c3c8c4ff381e4d87244a48fc2db087",
+                "SHA-512": "2d4bff41fdb86c00951e7c9fa3a83886d4c75c1ae959fc180fd99f2363b06a9fe8021af1fc4aeeee66a92d76f6a8bece2a969d3686cf0b524acfdcfd0196190d"
+            },
+            "size": 489480,
+            "mime_type": "FileObjectType"
+        },
+        "1": {
+            "type": "software",
+            "name": "pefile"
+        },
+        "2": {
+            "type": "file",
+            "hashes": {
+                "MD5": "49cac70ee5b27e3e322dba1434d43ab6",
+                "SHA-1": "bf9413afc8882cc04f2c88c849c8f96a2359d77c",
+                "SHA-256": "5ca8a10092635c91f5472dc5af1df12396c3c8c4ff381e4d87244a48fc2db087",
+                "SHA-512": "2d4bff41fdb86c00951e7c9fa3a83886d4c75c1ae959fc180fd99f2363b06a9fe8021af1fc4aeeee66a92d76f6a8bece2a969d3686cf0b524acfdcfd0196190d"
+            },
+            "mime_type": "vnd.microsoft.portable-executable",
+            "extensions": {
+                "windows-pebinary-ext": {
+                    "pe_type": "37",
+                    "machine_hex": "0x14c",
+                    "number_of_sections": 5,
+                    "time_date_stamp": "0x5E95AA72 [Tue Apr 14 12:20:02 2020 UTC]",
+                    "pointer_to_symbol_table_hex": "0x0",
+                    "number_of_symbols": 0,
+                    "size_of_optional_header": 224,
+                    "characteristics_hex": "0x2102",
+                    "optional_header": {
+                        "magic_hex": "0x10b",
+                        "major_linker_version": 14,
+                        "minor_linker_version": 16,
+                        "size_of_code": 154624,
+                        "size_of_initialized_data": 330240,
+                        "size_of_unintialized_data": 0,
+                        "address_of_entry_point": 82459,
+                        "base_of_code": 4096,
+                        "base_of_data": 159744,
+                        "image_base": 268435456,
+                        "section_alignment": 4096,
+                        "file_alignment": 512,
+                        "major_os_system_version": 6,
+                        "minor_os_system_version": 1,
+                        "major_image_version": 0,
+                        "minor_image_version": 0,
+                        "major_subsystem_version": 6,
+                        "minor_subsystem_version": 1,
+                        "win32_version_value_hex": "0x0",
+                        "size_of_image": 495616,
+                        "size_of_headers": 1024,
+                        "checksum_hex": "0x81027",
+                        "subsystem_hex": "0x2",
+                        "dll_characteristics_hex": "0x140",
+                        "size_of_stack_reserve": 1048576,
+                        "size_of_stack_commit": 4096,
+                        "size_of_heap_reserve": 1048576,
+                        "size_of_heap_commit": 4096,
+                        "loader_flags_hex": "0x0",
+                        "number_of_rva_and_sizes": 16
+                    },
+                    "sections": [
+                        {
+                            "name": ".text",
+                            "size": 154624,
+                            "entropy": 6.571042536278824,
+                            "hashes": [
+                                "30ac19dfb86bda1343fb6d94b537e5f4",
+                                "37ad7504515bad31a83bac37030aa39c824abd6d",
+                                "09ea59471b8dc02aae0522fba9b7030bbbfbd0087656aafeb02d8daaaf556936",
+                                "f7528daad38fa7a4bd2baf39445ea97a838febc8fc9d783f780e3816ce3fffd47452fd73281fb35ea2aeb90fb022138ffe75e9ef38e88e8271e3a251c76a839e"
+                            ]
+                        },
+                        {
+                            "name": ".rdata",
+                            "size": 49152,
+                            "entropy": 5.114234461822868,
+                            "hashes": [
+                                "47ce9d60599b2d88c2cfe27c3800febc",
+                                "15044bacdb23acec132a385d85758fa9318dfe29",
+                                "c473336bb9f8f1e0e06d149f459c5ed9713f0ec30b921eef558ecfcdf54a7330",
+                                "d26364863e73ad72be708858e0f93fd93de52796ee6695446c704d149950ab7ac6f8c6f8ca27edbf57b28d4a998c529ac82dcb6d4f96c65b6f9eeae8182c5443"
+                            ]
+                        },
+                        {
+                            "name": ".data",
+                            "size": 5120,
+                            "entropy": 4.146578691194861,
+                            "hashes": [
+                                "8905cd9b085ff15ee76d35d0d6e52e17",
+                                "35ed21d27ebbc4715fae4f935112db2265ba4f56",
+                                "073c3cd9dbf35952418519c1b7269de549fd9f9d9a676803feda0e3d6ab7edbd",
+                                "d58998c5faa19bd22e5f9040e0811b018c6c998d574bac651d63d4f97ed3fa560485c150fc6ca5f43a407887f71ac4427844c63c6faaceb3804cd2508602f783"
+                            ]
+                        },
+                        {
+                            "name": ".rsrc",
+                            "size": 262144,
+                            "entropy": 5.239854575069731,
+                            "hashes": [
+                                "99b08e9dd2c5178534bccbc9708cf4d8",
+                                "9925a98f5748651646d0a5251751a1efe450021d",
+                                "ef10c8eb54d08d1a9e3e31f140bc111f2ff29a0b069deaf249375f37cab15391",
+                                "686b251ea3b0c89039655f492e7a74d5380cae436f78671413ff1314e906f19b29aee72c9a6cf0e0b5e5df9d379ffc20ba56045fe69c9829ed9c93022242b951"
+                            ]
+                        },
+                        {
+                            "name": ".reloc",
+                            "size": 10240,
+                            "entropy": 6.6159652170056695,
+                            "hashes": [
+                                "ae2f41e4fb43c128609a0bef838c97c0",
+                                "f601951f4d0cee57d55f54b64204d40e45aff432",
+                                "04f6ede853f4e4800081ba66a5e9e9c1de7a5691393a62f8c8184b38b435ca11",
+                                "17ef75d42c59b3b146f1881a62e8ef18c6e4a215ddf1ccaf1fca79b43bd04b7e3fa84673ff0141035ff4a2d6ad51d65c0fd78f150406cc22c762cee7e642f1ec"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
