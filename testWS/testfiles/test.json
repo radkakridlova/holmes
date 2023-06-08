@@ -1,0 +1,867 @@
+{
+    "file": {
+        "type": "FileObjectType",
+        "file_name": "tcmd951x32.exe",
+        "file_path": "C:\\tmp\\tcmd951x32.exe",
+        "size_in_bytes": 4664352
+    },
+    "pe": {
+        "xsi:type": "WindowsExecutableFileObjectType",
+        "headers": {
+            "dos_header": {
+                "e_magic": 23117,
+                "e_cblp": 144,
+                "e_cp": 3,
+                "e_crlc": 0,
+                "e_cparhdr": 4,
+                "e_minalloc": 0,
+                "e_maxalloc": 65535,
+                "e_ss": 0,
+                "e_sp": 184,
+                "e_csum": 0,
+                "e_ip": 0,
+                "e_cs": 0,
+                "e_lfarlc": 64,
+                "e_ovro": 0,
+                "e_res": "",
+                "e_oemid": 0,
+                "e_oeminfo": 0,
+                "reserved2": "",
+                "e_lfanew": 248
+            },
+            "file_header": {
+                "machine": 332,
+                "number_of_sections": 4,
+                "time_date_stamp": "0x5E71CAF5 [Wed Mar 18 07:17:09 2020 UTC]",
+                "pointer_to_symbol_table": 0,
+                "number_of_symbols": 0,
+                "size_of_optional_header": 224,
+                "characteristics": 271
+            },
+            "optional_header": {
+                "magic": 267,
+                "major_linker_version": 6,
+                "minor_linker_version": 0,
+                "size_of_code": 98304,
+                "size_of_initialized_data": 61440,
+                "size_of_unintialized_data": 0,
+                "address_of_entry_point": 79117,
+                "base_of_code": 4096,
+                "base_of_data": 102400,
+                "image_base": 4194304,
+                "section_alignment": 4096,
+                "file_alignment": 4096,
+                "major_os_version": 4,
+                "minor_os_version": 0,
+                "major_image_version": 0,
+                "minor_image_version": 0,
+                "major_subsystem_version": 4,
+                "minor_subsystem_version": 0,
+                "win32_version_value": 0,
+                "size_of_image": 163840,
+                "size_of_headers": 4096,
+                "checksum": 4673758,
+                "subsystem": 2,
+                "dll_characteristics": 0,
+                "size_of_stack_reserve": 1048576,
+                "size_of_stack_commit": 4096,
+                "size_of_heap_reserve": 1048576,
+                "size_of_heap_commit": 4096,
+                "loader_flags": 0,
+                "number_of_rva_and_sizes": 16
+            }
+        },
+        "sections": [
+            {
+                "section_header": {
+                    "name": ".text",
+                    "virtual_size": 97456,
+                    "virtual_address": 4096,
+                    "size_of_raw_data": 98304,
+                    "pointer_to_raw_data": 4096,
+                    "pointer_to_relocations": 0,
+                    "pointer_to_linenumbers": 0,
+                    "number_of_relocations": 0,
+                    "number_of_linenumbers": 0,
+                    "characteristics": 1610612768
+                },
+                "data_hashes": [
+                    "d0784e279389774d2ba7e3857011958b",
+                    "cc24dd21fa24cf0d70203b41fa100ed05d7914db",
+                    "3fb26df8b191adb9258cc8812c12c5cf36fef3d6e015986a8e0c71a4581978ee",
+                    "f483e1d103d8a743427615caa2ff3448ab1becaf72a78021891b4e3fea8c27036c34cd5954a97828d7c92e2452cb911470224bb3ef0a1df462921fc1dafee626"
+                ],
+                "entropy": {
+                    "value": 6.581942182936413
+                }
+            },
+            {
+                "section_header": {
+                    "name": ".rdata",
+                    "virtual_size": 7066,
+                    "virtual_address": 102400,
+                    "size_of_raw_data": 8192,
+                    "pointer_to_raw_data": 102400,
+                    "pointer_to_relocations": 0,
+                    "pointer_to_linenumbers": 0,
+                    "number_of_relocations": 0,
+                    "number_of_linenumbers": 0,
+                    "characteristics": 1073741888
+                },
+                "data_hashes": [
+                    "3ddfb0cb52a3e27ccde4c6455755368d",
+                    "dd52726cfb5722546f28b6df9745caa7ea824b37",
+                    "373757b455f6a9dd48a476c23379c6c8871b67eaf42bc143b4e5754f40cee99f",
+                    "288cb4c0a8d7bdc41e8be6a9fddf08dda4fd07a16450e4941b4605055b76fb2892e0a09a6107426167bb0c36862531493c2b64b8df6b3ed9d3f8cb9b094a5eb3"
+                ],
+                "entropy": {
+                    "value": 5.210410933709092
+                }
+            },
+            {
+                "section_header": {
+                    "name": ".data",
+                    "virtual_size": 39228,
+                    "virtual_address": 110592,
+                    "size_of_raw_data": 20480,
+                    "pointer_to_raw_data": 110592,
+                    "pointer_to_relocations": 0,
+                    "pointer_to_linenumbers": 0,
+                    "number_of_relocations": 0,
+                    "number_of_linenumbers": 0,
+                    "characteristics": 3221225536
+                },
+                "data_hashes": [
+                    "0d9d53989ba3b423f8fb83ca9df6879d",
+                    "e6bb4105c6b73f92a0c376ab43b01b06c7ddbd23",
+                    "64a77069897d0fb58b83f397df10f8b44ebe761a5073c40caa593c3b59fda51e",
+                    "815098f61db0088a799d17f5153436008229f809c91982158e017b63fb71ed647950c2bafbc945399bad9daed6470b78637fa4368b677bbc2637e0d66cf1ed48"
+                ],
+                "entropy": {
+                    "value": 2.9337948714395856
+                }
+            },
+            {
+                "section_header": {
+                    "name": ".rsrc",
+                    "virtual_size": 10160,
+                    "virtual_address": 151552,
+                    "size_of_raw_data": 12288,
+                    "pointer_to_raw_data": 131072,
+                    "pointer_to_relocations": 0,
+                    "pointer_to_linenumbers": 0,
+                    "number_of_relocations": 0,
+                    "number_of_linenumbers": 0,
+                    "characteristics": 1073741888
+                },
+                "data_hashes": [
+                    "1be0cd1cb88f0fa10a8974ce1fb50874",
+                    "0840ce67385c582a6a1ece3abf2ef60d2868c408",
+                    "c901e44889cf4f5994a429f8dd934c6b4052d44b27cb8879da9f0c60db1ee08b",
+                    "b0f4b2d5ae9b0eb9316d476e505a9a8c5f63ca261beb2d02d1299f2e18acb15bc8e119f88df1dac4b50f4b50e3d51307a2b65ffc1a2610a29aa623729eb654c0"
+                ],
+                "entropy": {
+                    "value": 3.8133287237913662
+                }
+            }
+        ],
+        "imports": [
+            {
+                "file_name": "KERNEL32.dll",
+                "imported_functions": [
+                    {
+                        "function_name": "GetSystemDirectoryA"
+                    },
+                    {
+                        "function_name": "GetFileSize"
+                    },
+                    {
+                        "function_name": "IsValidCodePage"
+                    },
+                    {
+                        "function_name": "SetNamedPipeHandleState"
+                    },
+                    {
+                        "function_name": "GetCurrentProcessId"
+                    },
+                    {
+                        "function_name": "WideCharToMultiByte"
+                    },
+                    {
+                        "function_name": "TransactNamedPipe"
+                    },
+                    {
+                        "function_name": "SetLastError"
+                    },
+                    {
+                        "function_name": "LocalAlloc"
+                    },
+                    {
+                        "function_name": "LocalFree"
+                    },
+                    {
+                        "function_name": "CreateNamedPipeW"
+                    },
+                    {
+                        "function_name": "DisconnectNamedPipe"
+                    },
+                    {
+                        "function_name": "WaitNamedPipeA"
+                    },
+                    {
+                        "function_name": "DuplicateHandle"
+                    },
+                    {
+                        "function_name": "RemoveDirectoryW"
+                    },
+                    {
+                        "function_name": "CopyFileW"
+                    },
+                    {
+                        "function_name": "ConnectNamedPipe"
+                    },
+                    {
+                        "function_name": "CreateThread"
+                    },
+                    {
+                        "function_name": "GetWindowsDirectoryW"
+                    },
+                    {
+                        "function_name": "LoadLibraryExW"
+                    },
+                    {
+                        "function_name": "GetSystemDirectoryW"
+                    },
+                    {
+                        "function_name": "LoadLibraryExA"
+                    },
+                    {
+                        "function_name": "FindNextFileW"
+                    },
+                    {
+                        "function_name": "SetEnvironmentVariableA"
+                    },
+                    {
+                        "function_name": "GetOEMCP"
+                    },
+                    {
+                        "function_name": "FindFirstFileW"
+                    },
+                    {
+                        "function_name": "CompareStringW"
+                    },
+                    {
+                        "function_name": "CompareStringA"
+                    },
+                    {
+                        "function_name": "GetCPInfo"
+                    },
+                    {
+                        "function_name": "GetStringTypeW"
+                    },
+                    {
+                        "function_name": "GetStringTypeA"
+                    },
+                    {
+                        "function_name": "GetFileType"
+                    },
+                    {
+                        "function_name": "GetStdHandle"
+                    },
+                    {
+                        "function_name": "SetHandleCount"
+                    },
+                    {
+                        "function_name": "GetEnvironmentStringsW"
+                    },
+                    {
+                        "function_name": "GetEnvironmentStrings"
+                    },
+                    {
+                        "function_name": "FreeEnvironmentStringsW"
+                    },
+                    {
+                        "function_name": "FreeEnvironmentStringsA"
+                    },
+                    {
+                        "function_name": "UnhandledExceptionFilter"
+                    },
+                    {
+                        "function_name": "LCMapStringW"
+                    },
+                    {
+                        "function_name": "LCMapStringA"
+                    },
+                    {
+                        "function_name": "HeapReAlloc"
+                    },
+                    {
+                        "function_name": "VirtualAlloc"
+                    },
+                    {
+                        "function_name": "VirtualFree"
+                    },
+                    {
+                        "function_name": "HeapCreate"
+                    },
+                    {
+                        "function_name": "HeapDestroy"
+                    },
+                    {
+                        "function_name": "GetVersion"
+                    },
+                    {
+                        "function_name": "GetStartupInfoA"
+                    },
+                    {
+                        "function_name": "TerminateProcess"
+                    },
+                    {
+                        "function_name": "ExitProcess"
+                    },
+                    {
+                        "function_name": "HeapAlloc"
+                    },
+                    {
+                        "function_name": "HeapFree"
+                    },
+                    {
+                        "function_name": "RtlUnwind"
+                    },
+                    {
+                        "function_name": "GetDriveTypeA"
+                    },
+                    {
+                        "function_name": "GetVersionExA"
+                    },
+                    {
+                        "function_name": "SetErrorMode"
+                    },
+                    {
+                        "function_name": "GetCommandLineA"
+                    },
+                    {
+                        "function_name": "GetCommandLineW"
+                    },
+                    {
+                        "function_name": "GetModuleFileNameW"
+                    },
+                    {
+                        "function_name": "GetModuleFileNameA"
+                    },
+                    {
+                        "function_name": "GlobalAlloc"
+                    },
+                    {
+                        "function_name": "GlobalFree"
+                    },
+                    {
+                        "function_name": "LoadLibraryA"
+                    },
+                    {
+                        "function_name": "GetUserDefaultLCID"
+                    },
+                    {
+                        "function_name": "WinExec"
+                    },
+                    {
+                        "function_name": "CopyFileA"
+                    },
+                    {
+                        "function_name": "GetPrivateProfileStringA"
+                    },
+                    {
+                        "function_name": "GetWindowsDirectoryA"
+                    },
+                    {
+                        "function_name": "GetEnvironmentVariableW"
+                    },
+                    {
+                        "function_name": "GetEnvironmentVariableA"
+                    },
+                    {
+                        "function_name": "DosDateTimeToFileTime"
+                    },
+                    {
+                        "function_name": "LocalFileTimeToFileTime"
+                    },
+                    {
+                        "function_name": "CreateFileA"
+                    },
+                    {
+                        "function_name": "CreateFileW"
+                    },
+                    {
+                        "function_name": "SetFilePointer"
+                    },
+                    {
+                        "function_name": "ReadFile"
+                    },
+                    {
+                        "function_name": "WriteFile"
+                    },
+                    {
+                        "function_name": "SetFileTime"
+                    },
+                    {
+                        "function_name": "DeleteFileA"
+                    },
+                    {
+                        "function_name": "WritePrivateProfileStringA"
+                    },
+                    {
+                        "function_name": "CreateDirectoryW"
+                    },
+                    {
+                        "function_name": "CreateDirectoryA"
+                    },
+                    {
+                        "function_name": "GetTickCount"
+                    },
+                    {
+                        "function_name": "Sleep"
+                    },
+                    {
+                        "function_name": "GetCurrentProcess"
+                    },
+                    {
+                        "function_name": "OpenProcess"
+                    },
+                    {
+                        "function_name": "GetModuleHandleA"
+                    },
+                    {
+                        "function_name": "CloseHandle"
+                    },
+                    {
+                        "function_name": "GetProcAddress"
+                    },
+                    {
+                        "function_name": "GetLastError"
+                    },
+                    {
+                        "function_name": "FindFirstFileA"
+                    },
+                    {
+                        "function_name": "FindNextFileA"
+                    },
+                    {
+                        "function_name": "FindClose"
+                    },
+                    {
+                        "function_name": "MultiByteToWideChar"
+                    },
+                    {
+                        "function_name": "GetFileAttributesA"
+                    },
+                    {
+                        "function_name": "GetACP"
+                    },
+                    {
+                        "function_name": "SetFileAttributesA"
+                    }
+                ]
+            },
+            {
+                "file_name": "USER32.dll",
+                "imported_functions": [
+                    {
+                        "function_name": "OemToCharA"
+                    },
+                    {
+                        "function_name": "CharPrevW"
+                    },
+                    {
+                        "function_name": "LoadIconA"
+                    },
+                    {
+                        "function_name": "RegisterClassA"
+                    },
+                    {
+                        "function_name": "CreateWindowExA"
+                    },
+                    {
+                        "function_name": "GetMessageA"
+                    },
+                    {
+                        "function_name": "FindWindowA"
+                    },
+                    {
+                        "function_name": "GetUserObjectSecurity"
+                    },
+                    {
+                        "function_name": "CharLowerA"
+                    },
+                    {
+                        "function_name": "BeginPaint"
+                    },
+                    {
+                        "function_name": "EndPaint"
+                    },
+                    {
+                        "function_name": "PostQuitMessage"
+                    },
+                    {
+                        "function_name": "DefWindowProcA"
+                    },
+                    {
+                        "function_name": "GetSystemMetrics"
+                    },
+                    {
+                        "function_name": "DrawTextW"
+                    },
+                    {
+                        "function_name": "BringWindowToTop"
+                    },
+                    {
+                        "function_name": "SetForegroundWindow"
+                    },
+                    {
+                        "function_name": "LoadCursorA"
+                    },
+                    {
+                        "function_name": "IsWindowUnicode"
+                    },
+                    {
+                        "function_name": "CharPrevA"
+                    },
+                    {
+                        "function_name": "MessageBoxA"
+                    },
+                    {
+                        "function_name": "UpdateWindow"
+                    },
+                    {
+                        "function_name": "CharUpperA"
+                    },
+                    {
+                        "function_name": "PostMessageA"
+                    },
+                    {
+                        "function_name": "MessageBoxW"
+                    },
+                    {
+                        "function_name": "EnumWindows"
+                    },
+                    {
+                        "function_name": "GetClassNameA"
+                    },
+                    {
+                        "function_name": "GetWindowTextA"
+                    },
+                    {
+                        "function_name": "GetClassLongA"
+                    },
+                    {
+                        "function_name": "GetWindowThreadProcessId"
+                    },
+                    {
+                        "function_name": "EnableWindow"
+                    },
+                    {
+                        "function_name": "CheckRadioButton"
+                    },
+                    {
+                        "function_name": "GetKeyState"
+                    },
+                    {
+                        "function_name": "IsDlgButtonChecked"
+                    },
+                    {
+                        "function_name": "CheckDlgButton"
+                    },
+                    {
+                        "function_name": "SetFocus"
+                    },
+                    {
+                        "function_name": "DialogBoxParamW"
+                    },
+                    {
+                        "function_name": "SetCursor"
+                    },
+                    {
+                        "function_name": "DialogBoxParamA"
+                    },
+                    {
+                        "function_name": "MessageBeep"
+                    },
+                    {
+                        "function_name": "SendDlgItemMessageW"
+                    },
+                    {
+                        "function_name": "EndDialog"
+                    },
+                    {
+                        "function_name": "SendMessageW"
+                    },
+                    {
+                        "function_name": "SendMessageA"
+                    },
+                    {
+                        "function_name": "GetDlgItemTextA"
+                    },
+                    {
+                        "function_name": "DestroyWindow"
+                    },
+                    {
+                        "function_name": "CreateDialogParamW"
+                    },
+                    {
+                        "function_name": "CreateDialogParamA"
+                    },
+                    {
+                        "function_name": "GetDlgItem"
+                    },
+                    {
+                        "function_name": "ShowWindow"
+                    },
+                    {
+                        "function_name": "IsIconic"
+                    },
+                    {
+                        "function_name": "GetSystemMenu"
+                    },
+                    {
+                        "function_name": "DeleteMenu"
+                    },
+                    {
+                        "function_name": "GetDC"
+                    },
+                    {
+                        "function_name": "GetClientRect"
+                    },
+                    {
+                        "function_name": "FillRect"
+                    },
+                    {
+                        "function_name": "wsprintfA"
+                    },
+                    {
+                        "function_name": "GetSysColor"
+                    },
+                    {
+                        "function_name": "DrawTextA"
+                    },
+                    {
+                        "function_name": "ReleaseDC"
+                    },
+                    {
+                        "function_name": "SendDlgItemMessageA"
+                    },
+                    {
+                        "function_name": "SetWindowTextA"
+                    },
+                    {
+                        "function_name": "SetDlgItemTextW"
+                    },
+                    {
+                        "function_name": "SetDlgItemTextA"
+                    },
+                    {
+                        "function_name": "GetWindowRect"
+                    },
+                    {
+                        "function_name": "GetParent"
+                    },
+                    {
+                        "function_name": "MoveWindow"
+                    },
+                    {
+                        "function_name": "PeekMessageA"
+                    },
+                    {
+                        "function_name": "IsDialogMessageA"
+                    },
+                    {
+                        "function_name": "TranslateMessage"
+                    },
+                    {
+                        "function_name": "DispatchMessageA"
+                    },
+                    {
+                        "function_name": "GetDlgItemTextW"
+                    }
+                ]
+            },
+            {
+                "file_name": "GDI32.dll",
+                "imported_functions": [
+                    {
+                        "function_name": "CreateFontA"
+                    },
+                    {
+                        "function_name": "SelectObject"
+                    },
+                    {
+                        "function_name": "GetStockObject"
+                    },
+                    {
+                        "function_name": "DeleteObject"
+                    },
+                    {
+                        "function_name": "CreateSolidBrush"
+                    },
+                    {
+                        "function_name": "SetBkColor"
+                    },
+                    {
+                        "function_name": "SetBkMode"
+                    },
+                    {
+                        "function_name": "SetTextColor"
+                    },
+                    {
+                        "function_name": "IntersectClipRect"
+                    }
+                ]
+            },
+            {
+                "file_name": "ADVAPI32.dll",
+                "imported_functions": [
+                    {
+                        "function_name": "RegOpenKeyA"
+                    },
+                    {
+                        "function_name": "AddAccessAllowedAce"
+                    },
+                    {
+                        "function_name": "RegCreateKeyExW"
+                    },
+                    {
+                        "function_name": "InitializeSecurityDescriptor"
+                    },
+                    {
+                        "function_name": "SetSecurityDescriptorOwner"
+                    },
+                    {
+                        "function_name": "SetSecurityDescriptorDacl"
+                    },
+                    {
+                        "function_name": "IsValidSecurityDescriptor"
+                    },
+                    {
+                        "function_name": "GetLengthSid"
+                    },
+                    {
+                        "function_name": "RegCloseKey"
+                    },
+                    {
+                        "function_name": "RegQueryValueExA"
+                    },
+                    {
+                        "function_name": "RegOpenKeyExA"
+                    },
+                    {
+                        "function_name": "GetUserNameA"
+                    },
+                    {
+                        "function_name": "AdjustTokenPrivileges"
+                    },
+                    {
+                        "function_name": "LookupPrivilegeValueA"
+                    },
+                    {
+                        "function_name": "OpenProcessToken"
+                    },
+                    {
+                        "function_name": "RegQueryValueExW"
+                    },
+                    {
+                        "function_name": "RegOpenKeyExW"
+                    },
+                    {
+                        "function_name": "LookupAccountNameW"
+                    },
+                    {
+                        "function_name": "RegSetValueExA"
+                    },
+                    {
+                        "function_name": "RegDeleteKeyA"
+                    },
+                    {
+                        "function_name": "GetSecurityDescriptorOwner"
+                    },
+                    {
+                        "function_name": "RegCreateKeyExA"
+                    },
+                    {
+                        "function_name": "RegCreateKeyA"
+                    },
+                    {
+                        "function_name": "FreeSid"
+                    },
+                    {
+                        "function_name": "LookupAccountSidA"
+                    },
+                    {
+                        "function_name": "AllocateAndInitializeSid"
+                    },
+                    {
+                        "function_name": "GetTokenInformation"
+                    },
+                    {
+                        "function_name": "GetUserNameW"
+                    },
+                    {
+                        "function_name": "LookupAccountSidW"
+                    },
+                    {
+                        "function_name": "InitializeAcl"
+                    }
+                ]
+            },
+            {
+                "file_name": "SHELL32.dll",
+                "imported_functions": [
+                    {
+                        "function_name": "ShellExecuteW"
+                    }
+                ]
+            },
+            {
+                "file_name": "COMCTL32.dll",
+                "imported_functions": []
+            }
+        ],
+        "resources": [
+            {
+                "type": "RT_ICON",
+                "language": "LANG_GERMAN",
+                "sub_language": "SUBLANG_SYS_DEFAULT",
+                "size": 1384
+            },
+            {
+                "type": "RT_DIALOG",
+                "name": "WANTSETLOCATION",
+                "language": "LANG_GERMAN",
+                "sub_language": "SUBLANG_SYS_DEFAULT",
+                "size": 310
+            },
+            {
+                "type": "RT_GROUP_ICON",
+                "name": "WINDOWSCMD",
+                "language": "LANG_GERMAN",
+                "sub_language": "SUBLANG_SYS_DEFAULT",
+                "size": 48
+            },
+            {
+                "type": "RT_VERSION",
+                "language": "LANG_GERMAN",
+                "sub_language": "SUBLANG_SYS_DEFAULT",
+                "size": 928
+            },
+            {
+                "type": "RT_MANIFEST",
+                "language": "LANG_GERMAN",
+                "sub_language": "SUBLANG_SYS_DEFAULT",
+                "size": 1646
+            }
+        ]
+    },
+    "hashes": {
+        "MD5": "c971e699678832afaeefe152f5fa121d",
+        "SHA-1": "448b886efe8fd453f5a7d04d84025129269c4857",
+        "SHA-256": "e80a6c363ac9c62c5849dc4301190c2b2275e2d745baf6390c7826081f2b77bf",
+        "SHA-512": "3df571438873d7e6e4de4651d96afd4c34e181f1a07ba2bb573e9645bb07401c54110e0691a3a4dcac051900ea314de22c5c99810a6fc63a81b556e963b6fda7"
+    }
+}
