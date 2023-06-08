@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes/Holmes-Frontend/interrogation/context"
 )
 
 type Submission struct {

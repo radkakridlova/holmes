@@ -23,7 +23,7 @@
     "LogFile": "",
     "LogLevel": "debug",
 
-    "AMQP": "amqp://guest:guest@192.168.0.31:5672",
+    "AMQP": "amqp://guest:guest@localhost:5672",
     "Queue": "holmes_api",
     "RoutingKey": "*.holmes.api",
     "PrefetchCount": 10,

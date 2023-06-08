@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 
-	"holmes-dp/Holmes-Totem-Dynamic/check"
-	"holmes-dp/Holmes-Totem-Dynamic/feed"
-	"holmes-dp/Holmes-Totem-Dynamic/lib"
-	"holmes-dp/Holmes-Totem-Dynamic/submit"
+	"holmes/Holmes-Totem-Dynamic/check"
+	"holmes/Holmes-Totem-Dynamic/feed"
+	"holmes/Holmes-Totem-Dynamic/lib"
+	"holmes/Holmes-Totem-Dynamic/submit"
 )
 
 func main() {

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Vendor: net.databinder.dispatch
+Implementation-Title: dispatch-core
+Implementation-Version: 0.11.3
+Implementation-Vendor-Id: net.databinder.dispatch
+Specification-Vendor: net.databinder.dispatch
+Specification-Title: dispatch-core
+Implementation-URL: http://dispatch.databinder.net/
+Specification-Version: 0.11.3
+

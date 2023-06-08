@@ -1,0 +1,43 @@
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: commons-io-2.4.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: paranamer-2.6.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: joda-convert-1.7.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: amqp-client-3.4.2.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: metrics-core-3.1.0.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: jackson-annotations-2.4.0.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: metrics-healthchecks-3.1.0.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: dispatch-core_2.11-0.11.3.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: json4s-jackson_2.11-3.2.11.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-parser-combinators_2.11-1.0.2.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scalap-2.11.4.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: metrics-json-3.1.0.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: metrics-scala_2.11-3.3.0_a2.3.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: async-http-client-1.9.11.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: json4s-ast_2.11-3.2.11.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: jackson-core-2.4.2.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-logging_2.11-3.1.0.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: netty-3.10.0.Final.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: slf4j-api-1.7.7.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: config-1.2.1.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: json4s-core_2.11-3.2.11.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: akka-testkit_2.11-2.3.7.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: joda-time-2.6.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-xml_2.11-1.0.2.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: jackson-databind-2.4.2.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: akka-actor_2.11-2.3.7.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-reflect-2.11.4.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-library-2.11.4.jar[0m
+[0m[[0m[0minfo[0m] [0m[0mIncluding from cache: scala-compiler-2.11.4.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mCalculate mappings...[0m
+[0m[[0m[0minfo[0m] [0m[0mChecking every *.class/*.jar file's SHA-1.[0m
+[0m[[0m[0minfo[0m] [0m[0mMerging files...[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/LICENSE' with strategy 'first'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/LICENSE.txt' with strategy 'first'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/MANIFEST.MF' with strategy 'discard'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/NOTICE' with strategy 'first'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/NOTICE.txt' with strategy 'first'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'reference.conf' with strategy 'concat'[0m
+[0m[[0m[33mwarn[0m] [0m[0mMerging 'rootdoc.txt' with strategy 'first'[0m
+[0m[[0m[33mwarn[0m] [0m[0mStrategy 'concat' was applied to a file[0m
+[0m[[0m[33mwarn[0m] [0m[0mStrategy 'discard' was applied to a file[0m
+[0m[[0m[33mwarn[0m] [0m[0mStrategy 'first' was applied to 5 files[0m
+[0m[[0m[0minfo[0m] [0m[0mAssembly up to date: /usr/local/go/src/holmes/Holmes-Totem/target/scala-2.11/totem-assembly-0.5.0.jar[0m

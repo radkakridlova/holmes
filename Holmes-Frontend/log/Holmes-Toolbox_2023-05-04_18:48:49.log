@@ -1,0 +1,2 @@
+{"CritsFileServer":"","LocalUpload":true,"Directory":"push_to_holmes/uploads/","Comment":"comment","Source":"src1","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://localhost:8090","Username":"test","Password":"test","Tasking":false,"Workers":5,"FtpServer":"","FtpDirectory":"","FtpUsername":"","FtpPassword":""}
+/usr/local/go/src/holmes/Holmes-Frontend/push_to_holmes/uploads/81cdbe905392155a1ba8b687a02e65d611b60aac938e470a76ef518e8cffd74d	200

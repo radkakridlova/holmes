@@ -1,0 +1,4 @@
+{"CritsFileServer":"","Directory":"/home/csirt/Downloads/testFolder","Comment":"mycomment","Source":"virusshare","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://127.0.0.1:8090","Username":"test","Password":"test","Tasking":false}
+/home/csirt/Downloads/testFolder/wsendto.exe	200
+/home/csirt/Downloads/testFolder/4vsperfcmd.exe	200
+/home/csirt/Downloads/testFolder/program.exe	200

@@ -1,0 +1,3 @@
+{"CritsFileServer":"","LocalUpload":true,"Directory":"push_to_holmes/uploads/","Comment":"comment","Source":"src1","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://192.168.100.103:8090","Username":"test","Password":"test","Tasking":false,"Workers":5,"FtpServer":"","FtpDirectory":"","FtpUsername":"","FtpPassword":""}
+/usr/local/go/src/holmes/Holmes-Frontend/push_to_holmes/uploads/cbdb0c58cc4dbb1806422242dd391246712357fd3f55cadde076372d1b144064.exe	200
+/usr/local/go/src/holmes/Holmes-Frontend/push_to_holmes/uploads/InstallBC201401.exe	200

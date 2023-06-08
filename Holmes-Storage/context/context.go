@@ -7,8 +7,8 @@ import (
 	"log"
 	"os"
 
-	data "holmes-dp/Holmes-Storage/dataStorage"
-	objects "holmes-dp/Holmes-Storage/objectStorage"
+	data "holmes/Holmes-Storage/dataStorage"
+	objects "holmes/Holmes-Storage/objectStorage"
 )
 
 type config struct {

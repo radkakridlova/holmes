@@ -1,0 +1,6 @@
+{"CritsFileServer":"","Directory":"./testFolder","Comment":"mycomment","Source":"virusshare","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://127.0.0.1:8090","Username":"test","Password":"test","Tasking":false}
+/usr/local/go/src/holmes/testFolder/0c0b5ef6dae04fad249c025bea2bd85ea8e8879d55a7528da693c92027fab6ba.exe	200
+/usr/local/go/src/holmes/testFolder/06f81c06545059c2560fc917dbd7758eb878afcb91884aea4bea61cd09c7773e.exe	200
+/usr/local/go/src/holmes/testFolder/f4526f742ae31d6336c2556a2bc354c769313032801b4d3453548289000c91aa.exe	200
+/usr/local/go/src/holmes/testFolder/a541fd11e0c13500d353621d88ada29fd10ac3a56c3bb330bb4c77fdc700a97d.exe	200
+/usr/local/go/src/holmes/testFolder/0b8ab310d5aab2abf7e7955757e6ef4cabd58515eb4db28542ef7976e4151e21.exe	200

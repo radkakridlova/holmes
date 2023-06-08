@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes/Holmes-Frontend/interrogation/context"
 
 	"github.com/aws/aws-sdk-go/service/s3"
 )

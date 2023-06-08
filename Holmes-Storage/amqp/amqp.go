@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"holmes-dp/Holmes-Storage/context"
-	"holmes-dp/Holmes-Storage/dataStorage"
+	"holmes/Holmes-Storage/context"
+	"holmes/Holmes-Storage/dataStorage"
 
 	"github.com/streadway/amqp"
 )

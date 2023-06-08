@@ -19,8 +19,8 @@ import (
 
 	//"github.com/HolmesProcessing/Holmes-Interrogation/context"
 	//"github.com/HolmesProcessing/Holmes-Interrogation/listners/http"
-	"holmes-dp/Holmes-Frontend/interrogation/context"
-	"holmes-dp/Holmes-Frontend/interrogation/listners/http"
+	"holmes/Holmes-Frontend/interrogation/context"
+	"holmes/Holmes-Frontend/interrogation/listners/http"
 )
 
 type DBConnector struct {

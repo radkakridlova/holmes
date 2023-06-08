@@ -1,0 +1,3 @@
+{"CritsFileServer":"","LocalUpload":true,"Directory":"push_to_holmes/uploads/","Comment":"comment","Source":"src1","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://localhost:8090","Username":"test","Password":"test","Tasking":false,"Workers":5,"FtpServer":"","FtpDirectory":"","FtpUsername":"","FtpPassword":""}
+/usr/local/go/src/holmes/Holmes-Frontend/push_to_holmes/uploads/rootkit.ex1	200
+/usr/local/go/src/holmes/Holmes-Frontend/push_to_holmes/uploads/HDSetup.exe.vir	200

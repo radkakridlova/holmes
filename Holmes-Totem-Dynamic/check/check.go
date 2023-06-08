@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"holmes-dp/Holmes-Totem-Dynamic/lib"
+	"holmes/Holmes-Totem-Dynamic/lib"
 
 	"github.com/streadway/amqp"
 )

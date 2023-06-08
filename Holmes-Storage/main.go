@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"holmes-dp/Holmes-Storage/amqp"
-	"holmes-dp/Holmes-Storage/context"
-	"holmes-dp/Holmes-Storage/http"
+	"holmes/Holmes-Storage/amqp"
+	"holmes/Holmes-Storage/context"
+	"holmes/Holmes-Storage/http"
 )
 
 func main() {

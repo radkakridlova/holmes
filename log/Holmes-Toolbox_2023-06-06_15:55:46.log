@@ -1,0 +1,3 @@
+{"CritsFileServer":"","Directory":"/home/csirt/Downloads/testFolder","Comment":"mycomment","Source":"virusshare","MimetypePattern":"","Recursive":false,"Insecure":true,"FPath":"","Tasks":"","TagsStr":"[\"tag1\",\"tag2\"]","GatewayURI":"http://127.0.0.1:8090","Username":"test","Password":"test","Tasking":false}
+/home/csirt/Downloads/testFolder/02ada88638528eb89e67ce30a88ca8a58efab167c389ffd893641459bc64666f.exe	400
+/home/csirt/Downloads/testFolder/a20daed701f5f8b67779c158ce4ff18bfaf8f2db8e4951b0ef48ba4a8c68fb9f.exe	200

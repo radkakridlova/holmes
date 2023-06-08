@@ -13,7 +13,7 @@ import (
 //	"io"
 	//"os"
 
-	"holmes-dp/Holmes-Frontend/interrogation/context"
+	"holmes/Holmes-Frontend/interrogation/context"
 
 	"github.com/gocql/gocql"
 )

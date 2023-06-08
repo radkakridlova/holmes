@@ -4,12 +4,12 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	router2 "holmes-dp/Holmes-Frontend/interrogation/router"
+	router2 "holmes/Holmes-Frontend/interrogation/router"
 	"log"
 	"net/http"
 
-	"holmes-dp/Holmes-Frontend/interrogation/context"
-	"holmes-dp/Holmes-Frontend/push_to_holmes"
+	"holmes/Holmes-Frontend/interrogation/context"
+	"holmes/Holmes-Frontend/push_to_holmes"
 )
 
 var (

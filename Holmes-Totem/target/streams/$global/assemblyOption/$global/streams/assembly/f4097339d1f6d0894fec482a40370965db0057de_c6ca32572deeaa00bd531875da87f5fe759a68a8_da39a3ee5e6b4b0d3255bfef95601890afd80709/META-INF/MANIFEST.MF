@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: nl.grons
+Implementation-Title: metrics-scala
+Implementation-Version: 3.3.0_a2.3
+Implementation-Vendor-Id: nl.grons
+Specification-Vendor: nl.grons
+Specification-Title: metrics-scala
+Specification-Version: 3.3.0_a2.3
+

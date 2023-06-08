@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"holmes-dp/Holmes-Storage/context"
-	"holmes-dp/Holmes-Storage/dataStorage"
-	"holmes-dp/Holmes-Storage/objectStorage"
+	"holmes/Holmes-Storage/context"
+	"holmes/Holmes-Storage/dataStorage"
+	"holmes/Holmes-Storage/objectStorage"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/rakyll/magicmime"
