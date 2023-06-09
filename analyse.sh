@@ -1,15 +1,13 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  echo "Usage: bash analysis.sh <path_to_folder>"
+  echo "Usage: bash analyse.sh <path_to_folder>"
   exit 1
 fi
 
 folder_path="$1"
-
-parent_dir="$(dirname "$folder_path")"
-
-sample_file="${parent_dir}/sampleFile.txt"
+script_dir="$(dirname "$0")"
+sample_file="${script_dir}/sampleFile.txt"
 
 > "$sample_file"
 
